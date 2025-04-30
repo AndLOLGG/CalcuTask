@@ -65,6 +65,44 @@ This provides strong protection against brute-force and rainbow table attacks.
 
 ---
 
+🗂️ Version Control & Repository
+The project is managed using Git and hosted on GitHub:
+
+Source code and diagrams are version-controlled
+
+Branching model follows main for production and feature branches for development
+
+Continuous deployment is connected via GitHub Actions (CI/CD)
+
+Pull Requests (PRs) are reviewed before merging to main
+
+GitHub Repository: https://github.com/AndLOLGG/CalcuTask
+
+---
+
+📬 Contributions
+We welcome contributions to CalcuTask! If you’d like to report bugs, suggest features, or submit code:
+
+Fork the repository
+
+Create a branch (feature/your-feature)
+
+Commit your changes with clear messages
+
+Push the branch and open a Pull Request
+
+Make sure your code:
+
+Passes tests (run mvn test)
+
+Follows existing style and naming conventions
+
+Does not expose any sensitive credentials or config
+
+For a full guide, see [CONTRIBUTING.md](https://github.com/AndLOLGG/CalcuTask/blob/main/CONTRIBUTING.md)
+
+---
+
 ## 📁 Project Structure (Maven)
 
 ```plaintext
