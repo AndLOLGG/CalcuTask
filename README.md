@@ -26,7 +26,7 @@ CalcuTask is a task management system built with IntelliJ IDEA 2024.3.5 (Ultimat
 
 See the domain model UML class diagram below:
 
-![Domain Model](https://github.com/AndLOLGG/CalcuTask/blob/main/CalcuTask%20Domain%20Model.png)
+![Domain Model](https://github.com/AndLOLGG/CalcuTask/blob/main/diagrams/CalcuTask%20Domain%20Model.png)
 
 ## 📐 Entity Relationship Diagram
 
