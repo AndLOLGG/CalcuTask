@@ -60,7 +60,7 @@ mvn clean test
 - Do not log or expose password hashes or tokens
 - All passwords must be hashed using bcrypt
 
-💡 Need Help?
+## 💡 Need Help?
 If you're stuck or have questions, feel free to open an issue or start a discussion.
 
 Thanks for your contribution! 🙌
