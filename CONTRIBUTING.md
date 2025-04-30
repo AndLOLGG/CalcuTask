@@ -18,23 +18,17 @@ Make sure you have:
 
 ## 🚧 How to Contribute
 1. Fork the repository to your own GitHub
-
 2. Clone the project locally:
 git clone https://github.com/AndLOLGG/CalcuTask.git
-
 3. Create a new branch for your feature/fix:
 git checkout -b feature/your-feature-name
-
 4. Make your changes in:
 src/main/java/com/calcutask/ (for backend logic)
 resources/templates/html/ or css/ (for frontend)
-
 5. Run tests with H2:
 mvn test
-
 6. Commit your changes clearly:
 git commit -m "Add: new task filtering feature"
-
 7. Push your branch and open a Pull Request
 
 ---
