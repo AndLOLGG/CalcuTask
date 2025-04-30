@@ -1,11 +1,11 @@
-#🤝 Contributing to CalcuTask
+# 🤝 Contributing to CalcuTask
 Thank you for considering contributing to CalcuTask – a task and project management system built with Spring Boot, HTML/CSS, and MySQL on Azure.
 
 We welcome all kinds of contributions: new features, bug fixes, documentation improvements, and ideas!
 
 ---
 
-##🧰 Project Setup
+## 🧰 Project Setup
 Make sure you have:
 
 - Java 21 (SDK)
