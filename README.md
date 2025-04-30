@@ -65,7 +65,7 @@ This provides strong protection against brute-force and rainbow table attacks.
 
 ---
 
-🗂️ Version Control & Repository
+## 🗂️ Version Control & Repository
 The project is managed using Git and hosted on GitHub:
 
 Source code and diagrams are version-controlled
@@ -80,7 +80,7 @@ GitHub Repository: https://github.com/AndLOLGG/CalcuTask
 
 ---
 
-📬 Contributions
+## 📬 Contributions
 We welcome contributions to CalcuTask! If you’d like to report bugs, suggest features, or submit code:
 
 Fork the repository
