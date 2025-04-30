@@ -1,23 +1,22 @@
-##🤝 Contributing to CalcuTask
+#🤝 Contributing to CalcuTask
 Thank you for considering contributing to CalcuTask – a task and project management system built with Spring Boot, HTML/CSS, and MySQL on Azure.
 
 We welcome all kinds of contributions: new features, bug fixes, documentation improvements, and ideas!
 
 ---
 
-🧰 Project Setup
+##🧰 Project Setup
 Make sure you have:
 
 - Java 21 (SDK)
 - Maven
 - IntelliJ IDEA (or similar IDE)
 - Access to Azure Database for MySQL (or use H2 for local testing)
+- Git & GitHub
 
 ---
 
-Git & GitHub
-
-🚧 How to Contribute
+## 🚧 How to Contribute
 1. Fork the repository to your own GitHub
 
 2. Clone the project locally:
@@ -40,7 +39,7 @@ git commit -m "Add: new task filtering feature"
 
 ---
 
-🧪 Testing
+## 🧪 Testing
 We use H2 In-Memory Database for testing. All unit and integration tests should pass before submitting a pull request.
 
 Run tests with:
@@ -48,7 +47,7 @@ mvn clean test
 
 ---
 
-✅ Guidelines
+## ✅ Guidelines
 - Follow existing code style and structure
 - Use meaningful names and write clean, readable code
 - Ensure all security standards are followed (e.g., passwords use bcrypt)
@@ -57,7 +56,7 @@ mvn clean test
 
 ---
 
-🔐 Passwords & Security
+## 🔐 Passwords & Security
 - Do not log or expose password hashes or tokens
 - All passwords must be hashed using bcrypt
 
