@@ -10,11 +10,11 @@ public class SubtaskRowMapper implements RowMapper<Subtask> {
     @Override
     public Subtask mapRow(ResultSet rs, int rowNum) throws SQLException {
         Subtask subtask = new Subtask();
-        subtask.setSubtaskId(rs.getInt("task_id"));
-        subtask.setSubtaskName(rs.getString("task_name"));
-        subtask.setSubtaskDescription(rs.getString("task_description"));
-        subtask.setSubtaskEstimatedHours(rs.getBigDecimal("task_estimated_hours"));
-        subtask.setSubtaskStatus(rs.getString("task_status"));
+        subtask.setSubtaskId(rs.getInt("subtask_id"));
+        subtask.setSubtaskName(rs.getString("subtask_name"));
+        subtask.setSubtaskDescription(rs.getString("subtask_description"));
+        subtask.setSubtaskEstimatedHours(rs.getBigDecimal("subtask_estimated_hours"));
+        subtask.setSubtaskStatus(rs.getString("subtask_status"));
         project.setProjectId(rs.getInt("project_id"));
         return subtask;
     }
