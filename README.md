@@ -111,7 +111,6 @@ calcutask/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com/calcutask/
-│   │   │       ├── db/                 # JPA repositories and database entities
 │   │   │       ├── controller/         # Web controllers
 │   │   │       ├── model/              # DTOs and domain models
 │   │   │       ├── repository/         # repositories
@@ -120,8 +119,9 @@ calcutask/
 │   │   │       └── CalcuTaskApplication.java
 │   │   └── resources/
 │   │       ├── templates/
-│   │       │   ├── html/               # Thymeleaf HTML templates
 │   │       │   └── css/                # CSS styles
+│   │       │   ├── DB/                 # JPA repositories and database entities
+│   │       │   ├── html/               # Thymeleaf HTML templates
 │   │       └── application.properties
 │
 ├── test/
