@@ -15,7 +15,7 @@ public class SubtaskRowMapper implements RowMapper<Subtask> {
         subtask.setSubtaskDescription(rs.getString("task_description"));
         subtask.setSubtaskEstimatedHours(rs.getBigDecimal("task_estimated_hours"));
         subtask.setSubtaskStatus(rs.getString("task_status"));
-        subtask.setProjectId(rs.getInt("project_id")); // assuming project is referenced by ID
+        project.setProjectId(rs.getInt("project_id"));
         return subtask;
     }
 }

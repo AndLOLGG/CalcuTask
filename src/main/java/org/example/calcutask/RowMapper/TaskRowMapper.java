@@ -1,5 +1,6 @@
 package org.example.calcutask.RowMapper;
 
+import org.example.calcutask.Model.Project;
 import org.example.calcutask.Model.Task;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -15,7 +16,7 @@ public class TaskRowMapper implements RowMapper<Task> {
         task.setTaskDescription(rs.getString("task_description"));
         task.setTaskEstimatedHours(rs.getBigDecimal("task_estimated_hours"));
         task.setTaskStatus(rs.getString("task_status"));
-        task.setProjectId(rs.getInt("project_id")); // assuming project is referenced by ID
+        project.setProjectId(rs.getInt("project_id"));
         return task;
     }
 }
