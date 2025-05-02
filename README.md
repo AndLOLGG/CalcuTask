@@ -118,11 +118,12 @@ calcutask/
 │   │   │       ├── service/            # Business logic
 │   │   │       └── CalcuTaskApplication.java
 │   │   └── resources/
-│   │       ├── templates/
-│   │       │   └── css/                # CSS styles
-│   │       │   ├── DB/                 # JPA repositories and database entities
-│   │       │   ├── html/               # Thymeleaf HTML templates
-│   │       └── application.properties
+│   │           │── DB/                 # JPA repositories and database entities
+│   │           ├── static/
+│   │           │   └── css/                # CSS styles
+│   │           ├── templates/
+│   │           │   ├── html/               # Thymeleaf HTML templates
+│   │           └── application.properties
 │
 ├── test/
 │   └── java/
