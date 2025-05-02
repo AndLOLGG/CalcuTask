@@ -12,7 +12,7 @@ public Task (int taskId, String taskName, String taskDescription, int projectId)
     this.taskDescription = taskDescription;
     this.projectId = projectId;
 }
-public Task() {} /** skal denne linje overhovedet være her? unsure... **/
+public Task() {}
 
 public int getTaskId() {
     return taskId;
@@ -23,7 +23,7 @@ public void setTaskId(int taskId) {
 public String getTaskName() {
     return taskName;
 }
-public void setTaskName() {
+public void setTaskName(String taskName) {
     this.taskName = taskName;
 }
 public String getTaskDescription() {
