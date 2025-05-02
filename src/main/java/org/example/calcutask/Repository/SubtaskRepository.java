@@ -1,4 +1,4 @@
 package org.example.calcutask.Repository;
 
-public class Repository {
+public class SubtaskRepository {
 }

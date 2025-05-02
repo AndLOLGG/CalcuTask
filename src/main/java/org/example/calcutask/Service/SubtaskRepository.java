@@ -1,4 +1,4 @@
 package org.example.calcutask.Service;
 
-public class Service {
+public class SubtaskRepository {
 }
