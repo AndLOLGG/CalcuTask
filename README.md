@@ -115,6 +115,7 @@ calcutask/
 │   │   │       ├── model/              # DTOs and domain models
 │   │   │       ├── db/                 # JPA repositories and database entities
 │   │   │       ├── service/            # Business logic
+│   │   │       ├── rowmapper/
 │   │   │       └── CalcuTaskApplication.java
 │   │   └── resources/
 │   │       ├── templates/
