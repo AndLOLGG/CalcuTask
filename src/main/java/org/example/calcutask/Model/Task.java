@@ -21,35 +21,46 @@ public class Task {
     }
     public Task() {}
 
+    //Getters
     public int getTaskId() {
         return taskId;
     }
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
-    }
+
     public String getTaskName() {
         return taskName;
     }
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
-    }
+
     public String getTaskDescription() {
         return taskDescription;
-    }
-    public void setTaskDescription(String taskDescription) {
-        this.taskDescription = taskDescription;
     }
 
     public BigDecimal getTaskEstimatedHours() {
         return taskEstimatedHours;
     }
 
-    public void setTaskEstimatedHours(BigDecimal taskEstimatedHours) {
-        this.taskEstimatedHours = taskEstimatedHours;
-    }
-
     public String getTaskStatus() {
         return taskStatus;
+    }
+
+    public int getProjectId() {
+        return projectId;
+    }
+
+    //Setters
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public void setTaskDescription(String taskDescription) {
+        this.taskDescription = taskDescription;
+    }
+
+    public void setTaskEstimatedHours(BigDecimal taskEstimatedHours) {
+        this.taskEstimatedHours = taskEstimatedHours;
     }
 
     public void setTaskStatus(String taskStatus) {
@@ -58,9 +69,5 @@ public class Task {
 
     public void setProjectId(int projectId) {
         this.projectId = projectId;
-    }
-
-    public int getProjectId() {
-        return projectId;
     }
 }
