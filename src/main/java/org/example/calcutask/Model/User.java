@@ -9,7 +9,6 @@ public class User {
     private String passwordHash;
     private String role;
 
-    // Constructor
     public User(int userId, String username, String userEmail, String passwordHash, String role) {
         this.userId = userId;
         this.username = username;
