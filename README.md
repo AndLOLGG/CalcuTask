@@ -111,11 +111,12 @@ calcutask/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com/calcutask/
+│   │   │       ├── db/                 # JPA repositories and database entities
 │   │   │       ├── controller/         # Web controllers
 │   │   │       ├── model/              # DTOs and domain models
-│   │   │       ├── db/                 # JPA repositories and database entities
+│   │   │       ├── repository/         # repositories
+│   │   │       ├── rowmapper/          # rowmappers
 │   │   │       ├── service/            # Business logic
-│   │   │       ├── rowmapper/
 │   │   │       └── CalcuTaskApplication.java
 │   │   └── resources/
 │   │       ├── templates/
