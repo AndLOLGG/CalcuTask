@@ -7,18 +7,18 @@ public class Subtask {
     private int subtaskId;
     private String subtaskName;
     private String subtaskDescription;
-    private int taskId;
     private BigDecimal subtaskEstimatedHours;
     private String subtaskStatus;
+    private int taskId;
 
     /** Vi skal tilføje tags senere**/
 
-    public Subtask (int subtaskId, String subtaskName, String subtaskDescription, int taskId, BigDecimal subtaskEstimatedHours, String subtaskStatus) {
+    public Subtask (int subtaskId, String subtaskName, String subtaskDescription, BigDecimal subtaskEstimatedHours, String subtaskStatus, int taskId) {
         this.subtaskName = subtaskName;
         this.subtaskDescription = subtaskDescription;
-        this.taskId = taskId;
         this.subtaskEstimatedHours = subtaskEstimatedHours;
         this.subtaskStatus = subtaskStatus;
+        this.taskId = taskId;
     }
     public Subtask() {}
 
@@ -55,5 +55,13 @@ public class Subtask {
 
     public void setSubtaskStatus(String subtaskStatus) {
         this.subtaskStatus = subtaskStatus;
+    }
+
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
+    }
+
+    public int getTaskId() {
+        return taskId;
     }
 }

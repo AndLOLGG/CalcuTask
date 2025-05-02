@@ -1,5 +1,6 @@
 package org.example.calcutask.RowMapper;
 
+import org.example.calcutask.Model.Project;
 import org.example.calcutask.Model.Subtask;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -15,7 +16,7 @@ public class SubtaskRowMapper implements RowMapper<Subtask> {
         subtask.setSubtaskDescription(rs.getString("subtask_description"));
         subtask.setSubtaskEstimatedHours(rs.getBigDecimal("subtask_estimated_hours"));
         subtask.setSubtaskStatus(rs.getString("subtask_status"));
-        project.setProjectId(rs.getInt("project_id"));
+        subtask.setTaskId(rs.getInt("task_id"));
         return subtask;
     }
 }

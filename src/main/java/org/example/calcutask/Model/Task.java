@@ -6,14 +6,17 @@ public class Task {
     private int taskId;
     private String taskName;
     private String taskDescription;
-    private int projectId;
     private BigDecimal taskEstimatedHours;
     private String taskStatus;
+    private int projectId;
     /** Vi skal tilføje tags senere**/
 
-    public Task (int taskId, String taskName, String taskDescription, int projectId) {
+    public Task (int taskId, String taskName, String taskDescription, BigDecimal taskEstimatedHours, String taskStatus, int projectId) {
+        this.taskId = taskId;
         this.taskName = taskName;
         this.taskDescription = taskDescription;
+        this.taskEstimatedHours = taskEstimatedHours;
+        this.taskStatus = taskStatus;
         this.projectId = projectId;
     }
     public Task() {}
@@ -53,4 +56,11 @@ public class Task {
         this.taskStatus = taskStatus;
     }
 
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
+    }
+
+    public int getProjectId() {
+        return projectId;
+    }
 }
