@@ -1,37 +1,37 @@
 package org.example.calcutask.Model;
 
 
-public class SubTask {
-    private int subTaskId;
-    private String subTaskName;
-    private String subTaskDescription;
+public class Subtask {
+    private int subtaskId;
+    private String subtaskName;
+    private String subtaskDescription;
     private int taskId;
     /** Vi skal tilføje tags senere**/
 
-    public SubTask (int subTaskId, String subTaskName, String subTaskDescription, int taskId) {
-        this.subTaskName = subTaskName;
-        this.subTaskDescription = subTaskDescription;
+    public Subtask (int subtaskId, String subtaskName, String subtaskDescription, int taskId) {
+        this.subtaskName = subtaskName;
+        this.subtaskDescription = subtaskDescription;
         this.taskId = taskId;
     }
-    public SubTask() {}
+    public Subtask() {}
 
-    public int getSubTaskId() {
-        return subTaskId;
+    public int getSubtaskId() {
+        return subtaskId;
     }
-    public void setSubTaskId(int subTaskId) {
-        this.subTaskId = subTaskId;
+    public void setSubtaskId(int subtaskId) {
+        this.subtaskId = subtaskId;
     }
-    public String getSubTaskName() {
-        return subTaskName;
+    public String getSubtaskName() {
+        return subtaskName;
     }
-    public void setSubTaskName(String subTaskName) {
-        this.subTaskName = subTaskName;
+    public void setSubtaskName(String subtaskName) {
+        this.subtaskName = subtaskName;
     }
-    public String getSubTaskDescription() {
-        return subTaskDescription;
+    public String getSubtaskDescription() {
+        return subtaskDescription;
     }
-    public void setSubTaskDescription(String subTaskDescription) {
-        this.subTaskDescription = subTaskDescription;
+    public void setSubtaskDescription(String subtaskDescription) {
+        this.subtaskDescription = subtaskDescription;
     }
 
 }
