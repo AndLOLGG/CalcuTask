@@ -1,8 +1,11 @@
 package org.example.calcutask.Service;
 
+import org.example.calcutask.Model.Project;
 import org.example.calcutask.Repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProjectService {
