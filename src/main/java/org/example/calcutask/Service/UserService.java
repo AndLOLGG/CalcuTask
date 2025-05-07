@@ -1,6 +1,6 @@
 package org.example.calcutask.Service;
 
-import org.apache.catalina.User;
+import org.example.calcutask.Model.User;
 import org.example.calcutask.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

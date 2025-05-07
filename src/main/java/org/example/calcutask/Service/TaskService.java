@@ -2,7 +2,7 @@ package org.example.calcutask.Service;
 
 import org.example.calcutask.Repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.config.Task;
+import org.example.calcutask.Model.Task;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
