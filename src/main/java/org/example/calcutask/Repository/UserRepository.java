@@ -1,11 +1,12 @@
 package org.example.calcutask.Repository;
-import org.apache.catalina.User;
+import org.example.calcutask.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.example.calcutask.RowMapper.UserRowMapper;
 import java.util.List;
+
 
 @Repository
 public class UserRepository {
@@ -15,7 +16,7 @@ public class UserRepository {
 
     public void save(User user) {
         String sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
-        template.update(sql, user.getUsername(), user.getPassword(), user.getRole());
+        template.update(sql, user.getUsername(), user.getPasswordHash(), user.getRole());
     }
 
     public User findByUsername(String username) {
