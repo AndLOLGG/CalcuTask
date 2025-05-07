@@ -20,7 +20,8 @@ public class ProjectService {
     public List<Project> getProjectsByUserId(int userId) {
         return projectRepository.findByUserId(userId);
     }
-
+/**
+ her refereres der til nogle metoder i projectRepository, der endnu ikke er lavet
     public void deleteProject(int id) {
         projectRepository.deleteById(id);
     }
@@ -28,4 +29,6 @@ public class ProjectService {
     public void updateProject(Project project) {
         projectRepository.update(project);
     }
+  **/
+
 }
