@@ -15,7 +15,7 @@ public class UserRepository {
     private JdbcTemplate template;
 
     public void save(User user) {
-        String sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO users (username, password_hash, role) VALUES (?, ?, ?)";
         template.update(sql, user.getUsername(), user.getPasswordHash(), user.getRole());
     }
 
@@ -28,10 +28,10 @@ public class UserRepository {
         }
     }
 
-    public User findById(int id) {
-        String sql = "SELECT * FROM users WHERE id = ?";
+    public User findById(int user_id) {
+        String sql = "SELECT * FROM users WHERE user_id = ?";
         try {
-            return template.queryForObject(sql, new UserRowMapper(), id);
+            return template.queryForObject(sql, new UserRowMapper(), user_id);
         } catch (EmptyResultDataAccessException e) {
             return null;
         }
@@ -42,8 +42,8 @@ public class UserRepository {
         return template.query(sql, new UserRowMapper());
     }
 
-    public void deleteById(int id) {
-        String sql = "DELETE FROM users WHERE id = ?";
-        template.update(sql, id);
+    public void deleteById(int user_id) {
+        String sql = "DELETE FROM users WHERE user_id = ?";
+        template.update(sql, user_id);
     }
 }

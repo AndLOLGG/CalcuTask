@@ -1,3 +1,7 @@
+-- Brug korrekt database
+USE CalcuTasker;
+
+-- Brugertabel
 CREATE TABLE IF NOT EXISTS users (
                                      id INT AUTO_INCREMENT PRIMARY KEY,
                                      username VARCHAR(255),
@@ -5,6 +9,7 @@ CREATE TABLE IF NOT EXISTS users (
                                      role VARCHAR(50)
 );
 
+-- Projekttabel
 CREATE TABLE IF NOT EXISTS projects (
                                         id INT AUTO_INCREMENT PRIMARY KEY,
                                         name VARCHAR(255),
@@ -13,6 +18,7 @@ CREATE TABLE IF NOT EXISTS projects (
                                         FOREIGN KEY (owner_id) REFERENCES users(id)
 );
 
+-- Tasks og subtasks
 CREATE TABLE IF NOT EXISTS tasks (
                                      id INT AUTO_INCREMENT PRIMARY KEY,
                                      name VARCHAR(255),
