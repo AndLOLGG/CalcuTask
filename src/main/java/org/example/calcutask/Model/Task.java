@@ -70,4 +70,15 @@ public class Task {
     public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
+
+    private Integer parentTaskId;
+
+    public Integer getParentTaskId() {
+        return parentTaskId;
+    }
+
+    public void setParentTaskId(Integer parentTaskId) {
+        this.parentTaskId = parentTaskId;
+    }
+
 }
