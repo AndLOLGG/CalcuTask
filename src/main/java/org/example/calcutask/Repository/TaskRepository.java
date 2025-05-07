@@ -14,7 +14,7 @@ public class TaskRepository {
 
     public void save(Task task) {
         String sql = "INSERT INTO tasks (name, description, project_id, parent_task_id) VALUES (?, ?, ?, ?)";
-        template.update(sql, task.getTaskName(), task.getTaskDescription(), task.getProjectId(), task.getParentTaskId());
+        template.update(sql, task.getTaskName(), task.getTaskDescription(), task.getProjectId() /** , task.getParentTaskId()**/);
     }
 
     public List<Task> findByProjectId(int projectId) {
