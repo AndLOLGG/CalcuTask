@@ -2,12 +2,19 @@
 package org.example.calcutask.Controller;
 import org.springframework.stereotype.Controller;
 import org.example.calcutask.Service.UserService;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UserController {
     private final UserService userService;
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login"; // This should correspond to a `login.html` file in `src/main/resources/templates`
     }
 }
 
@@ -99,3 +106,4 @@ public class UserController {
 }
 
 **/
+
