@@ -1,4 +1,5 @@
 -- Brug korrekt database
+CREATE DATABASE IF NOT EXISTS CalcuTasker;
 USE CalcuTasker;
 
 -- Brugertabel
