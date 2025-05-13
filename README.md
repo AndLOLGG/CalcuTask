@@ -14,6 +14,7 @@ CalcuTask is a task management system built with IntelliJ IDEA 2024.3.5 (Ultimat
 - Secure user authentication with bcrypt
 - Responsive HTML/CSS UI
 - Azure-hosted application with MySQL backend
+- Logo design by Canva
 
 ---
 
@@ -28,6 +29,7 @@ CalcuTask is a task management system built with IntelliJ IDEA 2024.3.5 (Ultimat
 - **Security:** Bcrypt password hashing
 - **Code Quality:** Qodana
 - **Modeling Tool:** Visual Paradigm
+- **MALM Solutions-logo:** Canva
 
 ---
 
