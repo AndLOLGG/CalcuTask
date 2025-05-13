@@ -158,10 +158,10 @@ calcutask/
 │
 ├── test/
 │   └── java/
-│       └── com/calcutasktest/          # Unit and integration tests using H2
+│       └── com/calcutasktest/                  # Unit and integration tests using H2
 │
 ├── diagrams/
 │   ├── CalcuTask ERD.png
 │   └── CalcuTask Domain Model.png
-├── .qodana.yaml                        # Qodana configuration
+├── .qodana.yaml                                # Qodana configuration
 └── pom.xml
