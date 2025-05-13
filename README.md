@@ -113,21 +113,47 @@ calcutask/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com/calcutask/
-│   │   │       ├── controller/         # Web controllers
-│   │   │       ├── model/              # DTOs and domain models
-│   │   │       ├── repository/         # Repositories
-│   │   │       ├── rowmapper/          # RowMappers
-│   │   │       ├── service/            # Business logic
+│   │   │       ├── configuration/              # Configuration classes
+│   │   │       │   └── WebConfig.java
+│   │   │       │   └── SecurityConfig.java
+│   │   │       ├── controller/                 # Web controllers
+│   │   │       │   └── ProjectController.java
+│   │   │       │   └── SubtaskController.java
+│   │   │       │   └── TaskController.java
+│   │   │       │   └── UserController.java
+│   │   │       ├── model/                      # DTOs and domain models
+│   │   │       │   └── Project.java
+│   │   │       │   └── Subtask.java
+│   │   │       │   └── Task.java
+│   │   │       │   └── User.java
+│   │   │       ├── repository/                 # Repositories
+│   │   │       │   └── ProjectRepository.java
+│   │   │       │   └── SubtaskRepository.java
+│   │   │       │   └── TaskRepository.java
+│   │   │       │   └── UserRepository.java
+│   │   │       ├── rowmapper/                  # RowMappers
+│   │   │       │   └── ProjectRowMapper.java
+│   │   │       │   └── SubtaskRowMapper.java
+│   │   │       │   └── TaskRowMapper.java
+│   │   │       │   └── UserRowMapper.java
+│   │   │       ├── service/                    # Business logic
+│   │   │       │   └── ProjectService.java
+│   │   │       │   └── SubtaskService.java
+│   │   │       │   └── TaskService.java
+│   │   │       │   └── UserService.java
 │   │   │       └── CalcuTaskApplication.java
 │   │   └── resources/
-│   │       ├── DB/                     # Database schema and initialization scripts
+│   │       ├── DB/                             # Database schema and initialization scripts
+│   │       │   └── schema.sql
 │   │       ├── static/
-│   │       │   └── css/                # CSS styles
+│   │       │   └── css/                        # CSS styles
+│   │       │   └── images/                     # Images
+│   │       │       └── MALM-logo.png
 │   │       ├── templates/
-│   │       │   └── html/               # Thymeleaf HTML templates
-│   │       └── application.properties
-│   │       └── application-local.properties
-│   │       └── application-dev.properties
+│   │       │   └── html/                       # Thymeleaf HTML templates
+│   │       └── application.properties          # Application properties
+│   │       └── application-local.properties    # for localhost:8080
+│   │       └── application-dev.properties      # for fully-deployed web-application
 │
 ├── test/
 │   └── java/
