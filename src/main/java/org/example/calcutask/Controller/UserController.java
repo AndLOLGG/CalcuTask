@@ -14,7 +14,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String showLoginPage() {
-        return "login"; // This should correspond to a `login.html` file in `src/main/resources/templates`
+        return "login";
     }
 }
 
