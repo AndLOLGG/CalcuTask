@@ -1,55 +1,85 @@
 body {
-    font-family: Verdana, sans-serif;
-    background-color: #f4f4f9;
+    font-family: Arial, sans-serif;
+    background-color: #f3f2f1;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+}
+
+.login-page {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-header .logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.login-header h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .login-container {
-    background: red;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
-}
-
-.login-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-top: 20px;
 }
 
 .form-group {
     margin-bottom: 15px;
+    text-align: left;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #333;
 }
 
 .form-group input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 14px;
 }
 
 .login-button {
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+    padding: 12px;
+    background-color: #2b5879;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    font-weight: bold;
 }
 
 .login-button:hover {
-    background-color: #0056b3;
+    background-color: #005a9e;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #666;
+}
+
+footer a {
+    color: #0078d4;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
