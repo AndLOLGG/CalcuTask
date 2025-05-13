@@ -115,17 +115,19 @@ calcutask/
 │   │   │   └── com/calcutask/
 │   │   │       ├── controller/         # Web controllers
 │   │   │       ├── model/              # DTOs and domain models
-│   │   │       ├── repository/         # repositories
-│   │   │       ├── rowmapper/          # rowmappers
+│   │   │       ├── repository/         # Repositories
+│   │   │       ├── rowmapper/          # RowMappers
 │   │   │       ├── service/            # Business logic
 │   │   │       └── CalcuTaskApplication.java
 │   │   └── resources/
-│   │           │── DB/                 # JPA repositories and database entities
-│   │           ├── static/
-│   │           │   └── css/                # CSS styles
-│   │           ├── templates/
-│   │           │   ├── html/               # Thymeleaf HTML templates
-│   │           └── application.properties
+│   │       ├── DB/                     # Database schema and initialization scripts
+│   │       ├── static/
+│   │       │   └── css/                # CSS styles
+│   │       ├── templates/
+│   │       │   └── html/               # Thymeleaf HTML templates
+│   │       └── application.properties
+│   │       └── application-local.properties
+│   │       └── application-dev.properties
 │
 ├── test/
 │   └── java/
