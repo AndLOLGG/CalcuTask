@@ -2,6 +2,7 @@ org\example\calcutask\Model\Project.class
 org\example\calcutask\Controller\UserController.class
 org\example\calcutask\RowMapper\UserRowMapper.class
 org\example\calcutask\Controller\TaskController.class
+org\example\calcutask\Configuration\WebConfig.class
 org\example\calcutask\Model\Task.class
 org\example\calcutask\Controller\ProjectController.class
 org\example\calcutask\Configuration\SecurityConfig.class
