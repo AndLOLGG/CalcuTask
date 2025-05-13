@@ -14,6 +14,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -22,7 +23,8 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout
                         .permitAll()
-                );
+                )
+                .csrf(csrf -> csrf.disable()); // Correct method for disabling CSRF
 
         return http.build();
     }
