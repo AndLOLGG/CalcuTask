@@ -11,9 +11,10 @@ public class ProjectRowMapper implements RowMapper<Project> {
     @Override
     public Project mapRow(ResultSet rs, int rowNum) throws SQLException {
         Project project = new Project();
-        project.setProjectId(rs.getInt("id"));
-        project.setProjectName(rs.getString("name"));
-        project.setProjectDescription(rs.getString("description"));
+        project.setProjectId(rs.getInt("project_id"));
+        project.setProjectName(rs.getString("project_name"));
+        project.setProjectDescription(rs.getString("project_description"));
+        project.setUserId(rs.getInt("owner_id"));
         return project;
     }
 }
