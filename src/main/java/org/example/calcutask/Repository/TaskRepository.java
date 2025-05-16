@@ -22,10 +22,28 @@ public class TaskRepository {
         return template.query(sql, new TaskRowMapper(), projectId);
     }
 
+    public Task findByIdWithSubtasks(int taskId) {
+        // Fetch the task
+        String taskSql = "SELECT * FROM tasks WHERE task_id = ?";
+        Task task = template.queryForObject(taskSql, new TaskRowMapper(), taskId);
+
+        // Fetch associated subtasks
+        String subtaskSql = "SELECT * FROM subtasks WHERE task_id = ?";
+        List<Subtask> subtasks = template.query(subtaskSql, new SubtaskRowMapper(), taskId);
+
+        // Set subtasks in the task
+        task.setSubtasks(subtasks);
+        return task;
+    }
+
     public void deleteById(int id) {
+        String sql = "DELETE FROM tasks WHERE task_id = ?";
+        template.update(sql, id);
     }
 
     public void update(Task task) {
+        String sql = "UPDATE tasks SET name = ?, description = ?, project_id = ? WHERE task_id = ?";
+        template.update(sql, task.getTaskName(), task.getTaskDescription(), task.getProjectId(), task.getTaskId());
     }
 }
 

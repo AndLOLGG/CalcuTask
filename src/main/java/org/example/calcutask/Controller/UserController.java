@@ -12,10 +12,10 @@ public class UserController {
     }
 
 
-    @GetMapping("/login")
-    public String showLoginPage() {
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String showLoginPage() {
+//        return "login";
+//    }
 }
 
 
