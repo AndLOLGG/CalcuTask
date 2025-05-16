@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public class TaskRepository {
-    @Autowired
     private JdbcTemplate template;
 
     public void save(Task task) {

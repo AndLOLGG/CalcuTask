@@ -11,11 +11,10 @@ public class UserController {
         this.userService = userService;
     }
 
-
-//    @GetMapping("/login")
-//    public String showLoginPage() {
-//        return "login";
-//    }
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login";
+    }
 }
 
 
