@@ -1,6 +1,6 @@
 package org.example.calcutask.Model;
-
-import org.example.calcutask.Util.PasswordUtil;
+//
+//import org.example.calcutask.Util.PasswordUtil;
 
 public class User {
     private int userId;
@@ -53,9 +53,9 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public void setPassword(String rawPassword) {
-        this.passwordHash = PasswordUtil.hashPassword(rawPassword);
-    }
+//    public void setPassword(String rawPassword) {
+//        this.passwordHash = PasswordUtil.hashPassword(rawPassword);
+//    }
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;

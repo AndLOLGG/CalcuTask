@@ -13,12 +13,15 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    public void createProject(Project project) {
-        projectRepository.save(project);
+    public void addProject(Project project) {
+
+        projectRepository.addProject(project);
+
+        System.out.println("project saved successfully!");
     }
 
     public List<Project> getProjectsByUserId(int userId) {
-        return projectRepository.findByUserId(userId);
+        return projectRepository.getProjectsByUserId(userId);
     }
 /**
  her refereres der til nogle metoder i projectRepository, der endnu ikke er lavet
