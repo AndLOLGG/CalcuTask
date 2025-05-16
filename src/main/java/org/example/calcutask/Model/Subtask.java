@@ -1,7 +1,7 @@
 package org.example.calcutask.Model;
 
-
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Subtask {
     private int subtaskId;
@@ -10,10 +10,11 @@ public class Subtask {
     private BigDecimal subtaskEstimatedHours;
     private String subtaskStatus;
     private int taskId;
+    private List<Subtask> subtasks; // Child subtasks
 
-    /** Vi skal tilføje tags senere**/
+    /** Vi skal tilføje tags senere **/
 
-    public Subtask (int subtaskId, String subtaskName, String subtaskDescription, BigDecimal subtaskEstimatedHours, String subtaskStatus, int taskId) {
+    public Subtask(int subtaskId, String subtaskName, String subtaskDescription, BigDecimal subtaskEstimatedHours, String subtaskStatus, int taskId) {
         this.subtaskId = subtaskId;
         this.subtaskName = subtaskName;
         this.subtaskDescription = subtaskDescription;
@@ -21,9 +22,10 @@ public class Subtask {
         this.subtaskStatus = subtaskStatus;
         this.taskId = taskId;
     }
+
     public Subtask() {}
 
-    //Getters
+    // Getters
     public int getSubtaskId() {
         return subtaskId;
     }
@@ -48,7 +50,11 @@ public class Subtask {
         return taskId;
     }
 
-    //Setters
+    public List<Subtask> getSubtasks() {
+        return subtasks;
+    }
+
+    // Setters
     public void setSubtaskId(int subtaskId) {
         this.subtaskId = subtaskId;
     }
@@ -71,5 +77,11 @@ public class Subtask {
 
     public void setTaskId(int taskId) {
         this.taskId = taskId;
+    }
+
+    public void setSubtasks(List<Subtask> subtasks) {
+        if (subtasks != null) {
+            this.subtasks = subtasks;
+        }
     }
 }

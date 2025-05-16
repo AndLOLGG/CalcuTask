@@ -35,6 +35,6 @@ public class SubtaskService {
 
     // Delete a subtask by its ID
     public void deleteSubtask(int subtaskId) {
-        subtaskRepository.delete(subtaskId);
+        subtaskRepository.deleteById(subtaskId);
     }
 }

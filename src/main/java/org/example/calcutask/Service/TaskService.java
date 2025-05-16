@@ -23,7 +23,7 @@ public class TaskService {
 
     // Retrieve a task along with its associated subtasks
     public Task getTaskWithSubtasks(int taskId) {
-        return taskRepository.findByIdWithSubtasks(taskId);
+        return taskRepository.findByIdWithSubtask(taskId);
     }
 
     public void deleteTask(int id) {

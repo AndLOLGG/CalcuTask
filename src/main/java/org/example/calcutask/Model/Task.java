@@ -1,6 +1,7 @@
 package org.example.calcutask.Model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Task {
     private int taskId;
@@ -9,6 +10,8 @@ public class Task {
     private BigDecimal taskEstimatedHours;
     private String taskStatus;
     private int projectId;
+    private Subtask subtask;
+    private List<Subtask> subtasks;
     /** Vi skal tilføje tags senere**/
 
     public Task (int taskId, String taskName, String taskDescription, BigDecimal taskEstimatedHours, String taskStatus, int projectId) {
@@ -46,6 +49,14 @@ public class Task {
         return projectId;
     }
 
+    public Subtask getSubtask() {
+        return subtask;
+    }
+
+    public List<Subtask> getSubtasks() {
+        return subtasks;
+    }
+
     //Setters
     public void setTaskId(int taskId) {
         this.taskId = taskId;
@@ -71,14 +82,22 @@ public class Task {
         this.projectId = projectId;
     }
 
-    private Integer parentTaskId;
-
-    public Integer getParentTaskId() {
-        return parentTaskId;
+    public void setSubtask(Subtask subtask) {
+        this.subtask = subtask;
     }
 
-    public void setParentTaskId(Integer parentTaskId) {
-        this.parentTaskId = parentTaskId;
+    public void setSubtasks(List<Subtask> subtasks) {
+        this.subtasks = subtasks;
     }
+
+//    private Integer parentTaskId;
+//
+//    public Integer getParentTaskId() {
+//        return parentTaskId;
+//    }
+//
+//    public void setParentTaskId(Integer parentTaskId) {
+//        this.parentTaskId = parentTaskId;
+//    }
 
 }

@@ -44,10 +44,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 	<build>
 		<plugins>
@@ -64,8 +64,9 @@
 								<include>**/*.properties</include>
 								<include>**/*.yml</include>
 								<include>**/*.xml</include>
-								<include>**/*.html</include> <!-- ← Added because the templates didn't load for Andy -->
+								<include>**/*.html</include> <!-- Ensures templates are included -->
 								<include>**/*.css</include>
+								<include>**/*.sql</include> <!-- Ensures SQL files are included -->
 							</includes>
 						</resource>
 					</resources>

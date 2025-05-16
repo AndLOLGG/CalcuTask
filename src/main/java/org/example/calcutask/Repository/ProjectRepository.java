@@ -18,7 +18,7 @@ public class ProjectRepository {
     }
 //Test version af addProject
 public void addProject(Project project) {
-    String sql = "INSERT INTO projects (name, description, owner_id) VALUES (?, ?, ?)";
+    String sql = "INSERT INTO project (project_name, project_description, owner_id) VALUES (?, ?, ?)";
     jdbcTemplate.update(sql,
             project.getProjectName(),
             project.getProjectDescription(),
@@ -29,8 +29,8 @@ public void addProject(Project project) {
 //        String sql = "INSERT INTO projects (name, description, owner_id) VALUES (?, ?, ?)";
 //        jdbcTemplate.update(sql, project.getProjectName(), project.getProjectDescription(), project.getUserId());
 //    }
-    public List<Project> getProjectsByUserId(Integer userId) {
-        String sql = "SELECT * FROM projects WHERE owner_id = ?";
+    public List<Project> getProjectByUserId(Integer userId) {
+        String sql = "SELECT * FROM project WHERE owner_id = ?";
         return jdbcTemplate.query(sql, new Object[]{userId}, new ProjectRowMapper());
     }
 
