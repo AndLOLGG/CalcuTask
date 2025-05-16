@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error [[${status}]]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: #f7f9fb;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            max-width: 500px;
+        }
+        .emoji {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 24px;
+            background-color: #2f80ed;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+        a:hover {
+            background-color: #1c60b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div th:switch="${status}">
+        <div th:case="404" class="emoji">🔍</div>
+        <div th:case="500" class="emoji">🧯</div>
+        <div th:case="403" class="emoji">🚫</div>
+        <div th:case="408" class="emoji">⏱</div>
+        <div th:case="*" class="emoji">⚠️</div>
+    </div>
+
+    <h1 th:text="'Error ' + ${status}">Something went wrong</h1>
+    <p th:text="${error}">Unexpected error</p>
+    <p th:text="${message}"></p>
+    <p th:text="'Path: ' + ${path}"></p>
+
+    <a href="/">← Return to Safety</a>
+</div>
+</body>
+</html>
