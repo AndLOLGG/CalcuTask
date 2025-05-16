@@ -14,7 +14,9 @@ CREATE TABLE IF NOT EXISTS user (
 CREATE TABLE IF NOT EXISTS project (
                                         project_id INT AUTO_INCREMENT PRIMARY KEY,
                                         project_name VARCHAR(255),
-                                        project_description TEXT
+                                        project_description TEXT,
+                                        owner_id INT,
+                                        FOREIGN KEY (owner_id) REFERENCES user(user_id)
 );
 
 -- Tasks og subtasks
