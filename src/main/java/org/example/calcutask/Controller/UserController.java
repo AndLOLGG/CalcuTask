@@ -28,7 +28,7 @@ public class UserController {
         User user = userService.authenticateAndGetUser(username, password);
         if(user != null) {
             System.out.println(user);
-            return "redirect:/project";
+            return "redirect:/project";}
         return "login";
     }
 
