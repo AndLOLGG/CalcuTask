@@ -26,8 +26,10 @@ public class UserController {
     @PostMapping("/login")
     public String loginUser(@RequestParam String username, @RequestParam String password, HttpSession session) {
         User user = userService.authenticateAndGetUser(username, password);
-        System.out.println("Username: " + username);
-        return "redirect:/project";
+        if(user != null) {
+            System.out.println(user);
+            return "redirect:/project";
+        return "login";
     }
 
 
