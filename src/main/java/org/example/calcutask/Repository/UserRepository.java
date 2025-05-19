@@ -46,4 +46,7 @@ public class UserRepository {
         String sql = "DELETE FROM user WHERE user_id = ?";
         template.update(sql, userId);
     }
+
+
+
 }

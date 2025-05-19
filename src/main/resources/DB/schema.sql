@@ -1,8 +1,6 @@
--- Skift til rigtig database
 CREATE DATABASE IF NOT EXISTS CalcuTasker;
 USE CalcuTasker;
 
--- Deaktiver FK tjek for at kunne droppe tabeller i rigtig rækkefølge
 SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS subtask;
 DROP TABLE IF EXISTS task;

@@ -1,21 +1,39 @@
 
 package org.example.calcutask.Controller;
+import jakarta.servlet.http.HttpSession;
+import org.example.calcutask.Model.User;
 import org.springframework.stereotype.Controller;
 import org.example.calcutask.Service.UserService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
     private final UserService userService;
+
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping("/login")
     public String showLoginPage() {
+        System.out.println("showLoginPage");
         return "login";
     }
+
+    @PostMapping("/login")
+    public String loginUser(@RequestParam String username, @RequestParam String password, HttpSession session) {
+        User user = userService.authenticateAndGetUser(username, password);
+        System.out.println("Username: " + username);
+        return "redirect:/project";
+    }
+
+
 }
+
+
 
 
 
