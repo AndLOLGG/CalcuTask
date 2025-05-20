@@ -34,11 +34,7 @@ public class ProjectService {
     }
 
     public List<Project> getProjectsByUserId(int userId) {
-        String sql = "
-            SELECT project.* 
-            FROM project 
-                JOIN user_project_access ON project.project_id = user_project_access.project_id
-                WHERE user_project_access.user_id = ?";
+        String sql = "SELECT project.* FROM project JOIN user_project_access ON project.project_id = user_project_access.project_id WHERE user_project_access.user_id = ?";
         return jdbcTemplate.query(sql, new Object[]{userId}, new ProjectRowMapper());
     }
 

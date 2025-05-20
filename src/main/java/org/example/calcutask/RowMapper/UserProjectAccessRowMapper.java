@@ -11,8 +11,8 @@ public class UserProjectAccessRowMapper implements RowMapper<UserProjectAccess> 
     public UserProjectAccess mapRow(ResultSet rs, int rowNum) throws SQLException {
         UserProjectAccess upa = new UserProjectAccess();
         upa.setUserId(rs.getInt("user_id"));
-        upa.setProjectId(rs.getString("project_id"));
-        upa.setAccessType(rs.getAccessType("access_type"));
+        upa.setProjectId(rs.getInt("project_id"));
+        upa.setAccessType(rs.getString("access_type"));
         return upa;
     }
 }

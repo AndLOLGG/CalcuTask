@@ -15,7 +15,7 @@ public class UserProjectAccess {
         return accessType;
     }
 
-    public String setAccessType(String accessType) {
+    public void setAccessType(String accessType) {
         this.accessType = accessType;
     }
 
@@ -23,7 +23,7 @@ public class UserProjectAccess {
         return userId;
     }
 
-    public int setUserId(int id) {
+    public void setUserId(int id) {
         this.userId = id;
     }
 
@@ -31,7 +31,7 @@ public class UserProjectAccess {
         return projectId;
     }
 
-    public int setProjectId(int id) {
+    public void setProjectId(int id) {
         this.projectId = id;
     }
 
