@@ -28,11 +28,9 @@ public class UserController {
         User user = userService.authenticateAndGetUser(username, password);
         if(user != null) {
             System.out.println(user);
-            return "redirect:/project";}
+            session.setAttribute('userId', user.getUserId());
         return "login";
     }
-
-
 }
 
 
