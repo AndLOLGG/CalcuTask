@@ -21,6 +21,9 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
+            <tr th:each="message : ${error}">
+                <td th:text="${message}"></td>
+            </tr>
             <button type="submit" class="login-button">Sign In</button>
         </form>
 
