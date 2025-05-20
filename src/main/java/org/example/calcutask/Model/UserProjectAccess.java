@@ -1,9 +1,5 @@
 package org.example.calcutask.Model;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-
 public class UserProjectAccess {
     private int userId;
     private int projectId;
