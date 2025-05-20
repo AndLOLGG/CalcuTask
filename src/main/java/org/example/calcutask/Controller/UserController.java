@@ -29,6 +29,7 @@ public class UserController {
         if(user != null) {
             System.out.println(user);
             session.setAttribute('userId', user.getUserId());
+        }
         return "login";
     }
 }
