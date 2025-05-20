@@ -22,4 +22,14 @@ public class UserService {
     public User findById(int id) {
         return userRepository.findById(id);
     }
+
+    public User authenticateAndGetUser(String username, String password) {
+        User user = userRepository.findByUsername(username);
+        if (user != null && user.getPasswordHash().equals(password)) {
+            return user;
+        }
+        return null;
+    }
+
 }
+

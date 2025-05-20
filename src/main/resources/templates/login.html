@@ -12,7 +12,7 @@
         <h1>Sign in to CalcuTask</h1>
     </div>
     <div class="login-container">
-        <form th:action="@{/login}" method="post">
+        <form method="POST" th:action="@{/login}">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
@@ -23,6 +23,7 @@
             </div>
             <button type="submit" class="login-button">Sign In</button>
         </form>
+
     </div>
     <footer>
         <p>Contact us: <a href="mailto:support@malmsolutions.com">support@malmsolutions.com</a></p>
