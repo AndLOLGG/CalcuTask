@@ -2,6 +2,7 @@ CREATE DATABASE IF NOT EXISTS CalcuTasker;
 USE CalcuTasker;
 
 SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS user_project_access;
 DROP TABLE IF EXISTS subtask;
 DROP TABLE IF EXISTS task;
 DROP TABLE IF EXISTS project;
@@ -23,6 +24,15 @@ CREATE TABLE IF NOT EXISTS project (
                                        project_description TEXT,
                                        owner_id INT,
                                        FOREIGN KEY (owner_id) REFERENCES user(user_id)
+);
+
+-- Mange-til-mange koblingstabel mellem user og project
+CREATE TABLE IF NOT EXISTS user_project_access (
+                                                   user_id INT,
+                                                   project_id INT,
+                                                   PRIMARY KEY (user_id, project_id),
+                                                   FOREIGN KEY (user_id) REFERENCES user(user_id),
+                                                   FOREIGN KEY (project_id) REFERENCES project(project_id)
 );
 
 -- Tasktabel

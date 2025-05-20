@@ -11,6 +11,14 @@ VALUES
     (2, 'API Refactoring', 'Refactor the legacy REST API', 1),
     (3, 'Marketing Dashboard', 'Create dashboard for KPIs', 2);
 
+-- Kobling: hvilke brugere har adgang til hvilke projekter
+INSERT INTO user_project_access (user_id, project_id)
+VALUES
+    (1, 1),  -- Alice ejer projekt 1
+    (2, 1),  -- Bob har også adgang til projekt 1
+    (1, 2),  -- Alice ejer og har adgang til projekt 2
+    (2, 3);  -- Bob ejer og har adgang til projekt 3
+
 -- Tasks
 INSERT INTO task (task_id, task_name, task_description, task_estimated_hours, project_id)
 VALUES
