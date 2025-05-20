@@ -12,12 +12,14 @@ VALUES
     (3, 'Marketing Dashboard', 'Create dashboard for KPIs', 2);
 
 -- Kobling: hvilke brugere har adgang til hvilke projekter
-INSERT INTO user_project_access (user_id, project_id)
+-- Kobling: hvilke brugere har adgang til hvilke projekter + adgangstype
+INSERT INTO user_project_access (user_id, project_id, access_type)
 VALUES
-    (1, 1),  -- Alice ejer projekt 1
-    (2, 1),  -- Bob har også adgang til projekt 1
-    (1, 2),  -- Alice ejer og har adgang til projekt 2
-    (2, 3);  -- Bob ejer og har adgang til projekt 3
+    (1, 1, 'EDIT'),         -- Alice ejer projekt 1 og kan redigere
+    (2, 1, 'READ_ONLY'),    -- Bob må kun læse projekt 1
+    (1, 2, 'EDIT'),         -- Alice har adgang og kan redigere projekt 2
+    (2, 3, 'EDIT');         -- Bob ejer projekt 3 og kan redigere det
+
 
 -- Tasks
 INSERT INTO task (task_id, task_name, task_description, task_estimated_hours, project_id)

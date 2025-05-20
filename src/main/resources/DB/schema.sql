@@ -30,10 +30,12 @@ CREATE TABLE IF NOT EXISTS project (
 CREATE TABLE IF NOT EXISTS user_project_access (
                                                    user_id INT,
                                                    project_id INT,
+                                                   access_type ENUM('READ_ONLY', 'EDIT') NOT NULL DEFAULT 'READ_ONLY',
                                                    PRIMARY KEY (user_id, project_id),
                                                    FOREIGN KEY (user_id) REFERENCES user(user_id),
                                                    FOREIGN KEY (project_id) REFERENCES project(project_id)
 );
+
 
 -- Tasktabel
 CREATE TABLE IF NOT EXISTS task (
