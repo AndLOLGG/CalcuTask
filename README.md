@@ -129,21 +129,26 @@ calcutask/
 │   │   │       │   └── Subtask.java
 │   │   │       │   └── Task.java
 │   │   │       │   └── User.java
+│   │   │       │   └── UserProjectAccess.java
 │   │   │       ├── repository/                 # Repositories
 │   │   │       │   └── ProjectRepository.java
 │   │   │       │   └── SubtaskRepository.java
 │   │   │       │   └── TaskRepository.java
 │   │   │       │   └── UserRepository.java
+│   │   │       │   └── UserProjectAccessRepository.java
 │   │   │       ├── rowmapper/                  # RowMappers
 │   │   │       │   └── ProjectRowMapper.java
 │   │   │       │   └── SubtaskRowMapper.java
 │   │   │       │   └── TaskRowMapper.java
 │   │   │       │   └── UserRowMapper.java
+│   │   │       │   └── UserProjectAccessRowMapper.java
 │   │   │       ├── service/                    # Business logic
 │   │   │       │   └── ProjectService.java
 │   │   │       │   └── SubtaskService.java
 │   │   │       │   └── TaskService.java
 │   │   │       │   └── UserService.java
+│   │   │       ├── util/                       # Utility classes
+│   │   │       │   └── PasswordUtil.java
 │   │   │       └── CalcuTaskApplication.java
 │   │   └── resources/
 │   │       ├── DB/                             # Database schema and initialization scripts
