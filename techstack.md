@@ -49,5 +49,5 @@ All passwords are securely hashed using the BCrypt algorithm to protect user cre
   Used for version-controlled automated builds and deployments
 
 ### 🎨 Branding
-Logo design: Canva – Versionless cloud-based design tool
-The official MALM Solutions logo and UI design elements are created using Canva for a professional visual identity.
+- Logo design: Canva – Versionless cloud-based design tool
+  The official MALM Solutions logo and UI design elements are created using Canva for a professional visual identity.
