@@ -2,7 +2,7 @@
 CalcuTask is a robust task management system developed by MALM Solutions, designed to streamline project and task organization for software teams. The system is built using modern, industry-standard tools and frameworks, emphasizing scalability, security, and ease of use.
 
 ## 🧱 Technology Stack
-###🖥️ Frontend
+### 🖥️ Frontend
 HTML / CSS / Thymeleaf
 The user interface is built using standard web technologies for responsiveness and maintainability. Thymeleaf is used as the templating engine, enabling seamless integration with Spring Boot and dynamic rendering of server-side data.
 
