@@ -158,11 +158,20 @@ calcutask/
 │   │       │   └── css/                        # CSS styles
 │   │       │   └── images/                     # Images
 │   │       │       └── MALM-logo.png
-│   │       ├── templates/
-│   │       │   └── html/                       # Thymeleaf HTML templates
+│   │       ├── templates/                      # Thymeleaf HTML templates
+│   │       │   └── add-project.html
+│   │       │   └── edit-project.html
+│   │       │   └── html.html
+│   │       │   └── login.html
+│   │       │   └── project.html
+│   │       │   └── error/                      # Thymeleaf HTML templates for errors
+│   │       │       └── 403.html
+│   │       │       └── 404.html
+│   │       │       └── 408.html
+│   │       │       └── 500.html
 │   │       └── application.properties          # Application properties
 │   │       └── application-local.properties    # for localhost:8080
-│   │       └── application-dev.properties      # for fully-deployed web-application
+│   │       └── application-dev.properties      # for fully-deployed web-application / production
 │
 ├── test/
 │   └── java/
