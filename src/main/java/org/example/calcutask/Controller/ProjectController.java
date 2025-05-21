@@ -13,15 +13,15 @@ import java.util.List;
 public class ProjectController {
 
     private final ProjectService projectService;
+    private final String userId = "userId";
 
     public ProjectController(ProjectService projectService) {
         this.projectService = projectService;
     }
 
     @GetMapping("/project")
-    public String getAllProjects(Model model) {
-        Integer testUserId = 1;
-        List<Project> projects = projectService.getProjectsByUserId(testUserId);
+    public String getAllProjects(Model model, HttpSession session) {
+        List<Project> projects = projectService.getProjectsByUserId((Integer) session.getAttribute(userId));
         model.addAttribute("projects", projects);
         return "project";
     }
@@ -50,10 +50,13 @@ public class ProjectController {
     }
 
     @GetMapping("/project/edit")
-    public String showEditForm(@RequestParam int projectId, Model model) {
+    public String showEditForm(@RequestParam int projectId, Model model, HttpSession session) {
         Project project = projectService.getProjectById(projectId);
-        model.addAttribute("project", project);
-        return "edit-project";
+        if((Integer) session.getAttribute(userId) == project.getUserId()) {
+            model.addAttribute("project", project);
+            return "edit-project";
+        }
+        return "redirect:/404";
     }
 
     @PostMapping("/project/update")

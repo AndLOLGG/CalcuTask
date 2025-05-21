@@ -1,7 +1,7 @@
 ![CalcuTask Logo](src/main/resources/static/images/malm-logo.png)
 # CalcuTask - Task Management System 
 
-CalcuTask is a task management system built with IntelliJ IDEA 2024.3.5 (Ultimate Edition), Java SDK 21, and Spring Boot. It provides user role separation (Admin/Dev), supports projects with tasks and subtasks, and organizes work using categories. The frontend is built with HTML/CSS, and data is stored in an Azure Database for MySQL.
+CalcuTask is a task management system built with IntelliJ IDEA 2024.3.5 (Ultimate Edition), Java SDK 21, and Spring Boot. It provides user role separation (Admin/Dev), supports projects with tasks and subtasks, and organizes work using categories. The frontend is built with HTML/CSS/Thymeleaf, and data is stored in an Azure Database for MySQL. The application is deployed on Azure using GitHub Actions.
 
 ---
 
@@ -21,8 +21,8 @@ CalcuTask is a task management system built with IntelliJ IDEA 2024.3.5 (Ultimat
 
 ## 🧱 Technologies
 
-- **Frontend:** HTML / CSS
-- **Backend:** Java 21, Spring Boot
+- **Frontend:** HTML / CSS / Thymeleaf
+- **Backend:** Java 21, Spring Boot, JDBC
 - **Database (Production):** Azure Database for MySQL
 - **Database (Testing):** H2 In-Memory Database
 - **Hosting:** Azure App Service

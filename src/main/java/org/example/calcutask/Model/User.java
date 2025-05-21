@@ -53,9 +53,9 @@ public class User {
         this.userEmail = userEmail;
     }
 
-//    public void setPassword(String rawPassword) {
-//        this.passwordHash = PasswordUtil.hashPassword(rawPassword);
-//    }
+   public void setPassword(String rawPassword) {
+       this.passwordHash = rawPassword;
+   }
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;

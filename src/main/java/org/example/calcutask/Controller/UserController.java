@@ -24,13 +24,16 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@RequestParam String username, @RequestParam String password, HttpSession session) {
+    public String loginUser(@RequestParam String username, @RequestParam String password, HttpSession session, Model model) {
         User user = userService.authenticateAndGetUser(username, password);
-        System.out.println("Username: " + username);
-        return "redirect:/project";
+        if(user != null) {
+            System.out.println(user);
+            session.setAttribute("userId", user.getUserId());
+            return "redirect:/project";
+        }
+        model.addAttribute("error", "User or password incorrect");
+        return "login";
     }
-
-
 }
 
 
