@@ -16,6 +16,7 @@ The user interface is built using standard web technologies for responsiveness a
 
 ### 🗄️ Database
 - Production: Azure Database for MySQL – Version 8.0
+
 Cloud-hosted, scalable, and reliable relational database solution used in production.
 - Testing: H2 In-Memory Database – Version 2.2.224
 Lightweight in-memory database used for unit and integration testing to ensure fast and isolated test runs.
