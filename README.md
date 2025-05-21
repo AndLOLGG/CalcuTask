@@ -32,6 +32,8 @@ CalcuTask is a task management system built with IntelliJ IDEA 2024.3.5 (Ultimat
 - **Modeling Tool:** Visual Paradigm
 - **MALM Solutions-logo:** Canva
 
+For a full technologies breakdown, see [TECHSTACK.md](https://github.com/AndLOLGG/CalcuTask/blob/main/TECHSTACK.md)
+
 ---
 
 ## 🔐 Password Security – Bcrypt
