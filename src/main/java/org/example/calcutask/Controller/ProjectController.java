@@ -21,6 +21,10 @@ public class ProjectController {
 
     @GetMapping("/project")
     public String getAllProjects(Model model, HttpSession session) {
+        Integer userIdFromSession = (Integer) session.getAttribute(userId);
+        if (userIdFromSession == null) {
+            return "redirect:/login"; // Redirect to login or an appropriate page
+        }
         List<Project> projects = projectService.getProjectsByUserId((Integer) session.getAttribute(userId));
         model.addAttribute("projects", projects);
         return "project";
