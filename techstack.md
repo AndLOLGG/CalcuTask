@@ -53,10 +53,13 @@ The user interface is built using standard web technologies for responsiveness a
 
 ### 📌 Project Management
 - GitHub Projects – Kanban-based project tracking and planning
-Tasks and feature tracking are managed through GitHub Projects for visibility and team coordination.
+
+  Tasks and feature tracking are managed through GitHub Projects for visibility and team coordination.
 - GitHub Actions
-Used for version-controlled automated builds and deployments
+
+  Used for version-controlled automated builds and deployments
 
 ### 🎨 Branding
 - Logo design: Canva – Versionless cloud-based design tool
-The official MALM Solutions logo and UI design elements are created using Canva for a professional visual identity.
+
+  The official MALM Solutions logo and UI design elements are created using Canva for a professional visual identity.
