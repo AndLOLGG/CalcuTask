@@ -5,9 +5,9 @@ CalcuTask is a robust task management system developed by MALM Solutions, design
 ### 🖥️ Frontend
 **HTML / CSS / Thymeleaf**
 The user interface is built using standard web technologies for responsiveness and maintainability. Thymeleaf is used as the templating engine, enabling seamless integration with Spring Boot and dynamic rendering of server-side data.
-**- HTML5** – Markup language for structure
-**- CSS3** – Styling with responsive layout
-**- Thymeleaf 3.1.1.RELEASE** – Java templating engine for rendering dynamic HTML
+- **HTML5** – Markup language for structure
+- **CSS3** – Styling with responsive layout
+- **Thymeleaf 3.1.1.RELEASE** – Java templating engine for rendering dynamic HTML
 
 ### 🔧 Backend
 **- Java 21** – Modern LTS version with enhanced performance and language features
