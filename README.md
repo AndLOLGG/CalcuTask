@@ -152,6 +152,7 @@ calcutask/
 │   │   │       └── CalcuTaskApplication.java
 │   │   └── resources/
 │   │       ├── DB/                             # Database schema and initialization scripts
+│   │       │   └── data.sql
 │   │       │   └── schema.sql
 │   │       ├── static/
 │   │       │   └── css/                        # CSS styles
