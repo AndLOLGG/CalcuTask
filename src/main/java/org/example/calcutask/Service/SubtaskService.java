@@ -37,4 +37,13 @@ public class SubtaskService {
     public void deleteSubtask(int subtaskId) {
         subtaskRepository.deleteById(subtaskId);
     }
+
+    //
+    public void assignSubtaskToUser(int subtaskId, int userId) {
+        subtaskRepository.assignSubtaskToUser(subtaskId, userId);
+    }
+    public void releaseSubtaskFromUser(int subtaskId) {
+        subtaskRepository.releaseSubtaskFromUser(subtaskId);
+    }
+
 }

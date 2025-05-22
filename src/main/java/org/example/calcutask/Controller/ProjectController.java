@@ -21,14 +21,22 @@ public class ProjectController {
 
     @GetMapping("/project")
     public String getAllProjects(Model model, HttpSession session) {
-        Integer userIdFromSession = (Integer) session.getAttribute(userId);
-        if (userIdFromSession == null) {
-            return "redirect:/login"; // Redirect to login or an appropriate page
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            return "redirect:/login"; // eller vis en 403 side
         }
-        List<Project> projects = projectService.getProjectsByUserId((Integer) session.getAttribute(userId));
+        List<Project> projects = projectService.getProjectsByUserId(userId);
+
+        for (Project p : projects) {
+            String access = projectService.getUserAccessType(userId, p.getProjectId());
+            p.setAccessType(access);
+        }
+
         model.addAttribute("projects", projects);
-        return "project";
+        return "project-list";
     }
+
+
 
     @GetMapping("/project/create")
     public String showCreateForm(Model model) {
@@ -38,14 +46,22 @@ public class ProjectController {
 
     @PostMapping("/project/create")
     public String addProject(@RequestParam String projectName,
-                             @RequestParam String projectDescription) {
+                             @RequestParam String projectDescription,
+                             HttpSession session) {
+        Integer userIdFromSession = (Integer) session.getAttribute(userId);
+
         Project project = new Project();
         project.setProjectName(projectName);
         project.setProjectDescription(projectDescription);
-        project.setUserId(1);
-        projectService.addProject(project);
+        project.setUserId(userIdFromSession); // set owner
+
+        projectService.addProject(project); // gemmer i `project`
+
+        projectService.grantAccessToProject(userIdFromSession);
+
         return "redirect:/project";
     }
+
 
     @PostMapping("/project/delete")
     public String deleteProject(@RequestParam("projectId") int projectId) {
@@ -55,17 +71,31 @@ public class ProjectController {
 
     @GetMapping("/project/edit")
     public String showEditForm(@RequestParam int projectId, Model model, HttpSession session) {
-        Project project = projectService.getProjectById(projectId);
-        if((Integer) session.getAttribute(userId) == project.getUserId()) {
+        Integer userIdFromSession = (Integer) session.getAttribute(userId);
+        String accessType = projectService.getUserAccessType(userIdFromSession, projectId);
+
+        if (!"EDIT".equals(accessType)) {
+
+            return "error/403";
+        }
+
+            Project project = projectService.getProjectById(projectId);
             model.addAttribute("project", project);
             return "edit-project";
+
+
+    }
+        @PostMapping("/project/update")
+        public String updateProject (@ModelAttribute Project project){
+            projectService.updateProjectAndTasks(project);
+            return "redirect:/project";
         }
-        return "redirect:/404";
+
+    @GetMapping("/project/overview")
+    public String showProjectOverview(@RequestParam int projectId, Model model) {
+        Project project = projectService.getFullProjectWithTasks(projectId);
+        model.addAttribute("project", project);
+        return "project-overview";
     }
 
-    @PostMapping("/project/update")
-    public String updateProject(@ModelAttribute Project project) {
-        projectService.updateProjectAndTasks(project);
-        return "redirect:/project";
-    }
 }

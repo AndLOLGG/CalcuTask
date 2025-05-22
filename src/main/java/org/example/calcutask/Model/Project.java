@@ -13,6 +13,9 @@ public class Project {
     private int userId;
     private List<Task> tasks = new ArrayList<>(); // Initieret for at undgå NullPointerException
 
+    // NYT felt til adgangstype
+    private String accessType;
+
     public Project(int projectId, String projectName, String projectDescription, Date createdDate, String createdBy, int userId) {
         this.projectId = projectId;
         this.projectName = projectName;
@@ -31,6 +34,7 @@ public class Project {
     public String getCreatedBy() { return createdBy; }
     public int getUserId() { return userId; }
     public List<Task> getTasks() { return tasks; }
+    public String getAccessType() { return accessType; }
 
     public void setProjectId(int projectId) { this.projectId = projectId; }
     public void setProjectName(String projectName) { this.projectName = projectName; }
@@ -39,4 +43,5 @@ public class Project {
     public void setCreatedBy(String createdBy) { this.createdBy = createdBy; }
     public void setUserId(int userId) { this.userId = userId; }
     public void setTasks(List<Task> tasks) { this.tasks = tasks; }
+    public void setAccessType(String accessType) { this.accessType = accessType; }
 }
