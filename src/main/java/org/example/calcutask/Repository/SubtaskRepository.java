@@ -14,8 +14,14 @@ public class SubtaskRepository {
     @Autowired
     private JdbcTemplate template;
 
+    // Henter subtasks + tilknyttet brugernavn (hvis påtaget)
     public List<Subtask> findByTaskId(int taskId) {
-        String sql = "SELECT * FROM subtask WHERE task_id = ?";
+        String sql = """
+            SELECT s.*, u.username
+            FROM subtask s
+            LEFT JOIN user u ON s.assigned_user_id = u.user_id
+            WHERE s.task_id = ?
+        """;
         return template.query(sql, new SubtaskRowMapper(), taskId);
     }
 
@@ -38,4 +44,14 @@ public class SubtaskRepository {
         String sql = "DELETE FROM subtask WHERE subtask_id = ?";
         template.update(sql, subtaskId);
     }
+
+    public void assignSubtaskToUser(int subtaskId, int userId) {
+        String sql = "UPDATE subtask SET assigned_user_id = ? WHERE subtask_id = ?";
+        template.update(sql, userId, subtaskId);
+    }
+    public void releaseSubtaskFromUser(int subtaskId) {
+        String sql = "UPDATE subtask SET assigned_user_id = NULL WHERE subtask_id = ?";
+        template.update(sql, subtaskId);
+    }
+
 }

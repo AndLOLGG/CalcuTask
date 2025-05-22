@@ -1,8 +1,8 @@
 -- Brugere
 INSERT INTO user (user_id, username, user_password, role)
 VALUES
-    (1, 'Alice Developer', 'password123', 'DEVELOPER'),
-    (2, 'Bob Manager', 'password456', 'MANAGER');
+    (1, 'Alice Manager', 'password123', 'DEVELOPER'),
+    (2, 'Bob Developer', 'password456', 'MANAGER');
 
 -- Projekter
 INSERT INTO project (project_id, project_name, project_description, owner_id)
@@ -25,10 +25,13 @@ VALUES
 INSERT INTO task (task_id, task_name, task_description, task_estimated_hours, project_id)
 VALUES
     (1, 'Frontend Redesign', 'Update HTML/CSS structure', 15.0, 1),
-    (2, 'Backend Cleanup', 'Refactor endpoints and DB calls', 20.0, 2);
+    (2, 'Backend Cleanup', 'Refactor endpoints and DB calls', 20.0, 2),
+    (3, 'Grimrian', 'Flotte fyr', 25.0, 3);
 
 -- Subtasks
 INSERT INTO subtask (subtask_id, subtask_name, subtask_description, subtask_estimated_hours, subtask_status, task_id)
 VALUES
     (1, 'Navbar update', 'Redesign navbar with new branding', 4.0, 'TO_DO', 1),
-    (2, 'Auth endpoint', 'Secure login API refactor', 5.0, 'TO_DO', 2);
+    (2, 'Auth endpoint', 'Secure login API refactor', 5.0, 'TO_DO', 2),
+    (3, 'Grimrian', 'Flotte fyr', 5.0, 'TO_DO', 3);
+

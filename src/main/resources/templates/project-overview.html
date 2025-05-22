@@ -1,0 +1,36 @@
+<h3>Opgaver</h3>
+<div th:each="task : ${project.tasks}">
+    <h4 th:text="${task.taskName}"></h4>
+    <ul>
+        <li th:each="sub : ${task.subtasks}">
+            <span th:text="${sub.subtaskName}"></span>
+            <span th:text="'Status: ' + ${sub.subtaskStatus}"></span>
+
+            <!-- Hvis subtask ikke er påtaget -->
+            <span th:if="${sub.assignedUserId == null}">
+                <form th:action="@{/subtask/assign}" method="post" style="display:inline;">
+                    <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                    <input type="hidden" name="projectId" th:value="${project.projectId}" />
+                    <button type="submit" class="btn btn-success">Påtag</button>
+                </form>
+            </span>
+
+            <!-- Hvis subtask allerede er påtaget -->
+            <span th:if="${sub.assignedUserId != null}">
+                <em>☑ Påtaget af <span th:text="${sub.assignedUsername}"></span></em>
+
+                <!-- Fortryd-knap hvis bruger selv har påtaget sig -->
+                <span th:if="${sub.assignedUserId == session.userId}">
+                    <form th:action="@{/subtask/release}" method="post" style="display:inline;">
+                        <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                        <input type="hidden" name="projectId" th:value="${project.projectId}" />
+                        <button type="submit" class="btn btn-warning">Fortryd</button>
+                    </form>
+                </span>
+            </span>
+        </li>
+    </ul>
+</div>
+
+<!-- Tilbage-knap -->
+<a href="/project" class="btn btn-secondary">⬅ Tilbage til projekter</a>

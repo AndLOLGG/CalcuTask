@@ -39,10 +39,19 @@ public class ProjectService {
     }
 
     public void deleteProject(int projectId) {
+        // Fjern relationer i koblingstabel
+        jdbcTemplate.update("DELETE FROM user_project_access WHERE project_id = ?", projectId);
+
+        // Fjern subtasks
         jdbcTemplate.update("DELETE FROM subtask WHERE task_id IN (SELECT task_id FROM task WHERE project_id = ?)", projectId);
+
+        // Fjern tasks
         jdbcTemplate.update("DELETE FROM task WHERE project_id = ?", projectId);
+
+        // Fjern projektet
         projectRepository.deleteProject(projectId);
     }
+
 
     public Project getProjectById(int projectId) {
         return projectRepository.findById(projectId);
@@ -72,4 +81,18 @@ public class ProjectService {
             }
         }
     }
+    public void grantAccessToProject(int userId) {
+        String sql = "INSERT INTO user_project_access (user_id, project_id, access_type) VALUES (?, LAST_INSERT_ID(), 'EDIT')";
+        jdbcTemplate.update(sql, userId);
+    }
+    public String getUserAccessType(int userId, int projectId) {
+        String sql = "SELECT access_type FROM user_project_access WHERE user_id = ? AND project_id = ?";
+        try {
+            return jdbcTemplate.queryForObject(sql, String.class, userId, projectId);
+        } catch (Exception e) {
+            return "NONE"; // fallback hvis der ikke findes adgang
+        }
+    }
+
+
 }

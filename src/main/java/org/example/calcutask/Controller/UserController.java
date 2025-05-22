@@ -19,7 +19,6 @@ public class UserController {
 
     @GetMapping("/login")
     public String showLoginPage() {
-        System.out.println("showLoginPage");
         return "login";
     }
 
@@ -27,7 +26,6 @@ public class UserController {
     public String loginUser(@RequestParam String username, @RequestParam String password, HttpSession session, Model model) {
         User user = userService.authenticateAndGetUser(username, password);
         if(user != null) {
-            System.out.println(user);
             session.setAttribute("userId", user.getUserId());
             return "redirect:/project";
         }

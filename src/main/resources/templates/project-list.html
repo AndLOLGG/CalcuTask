@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Dine Projekter</title>
+  <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<h2>Your Projects</h2>
+<a href="/project/create">+ Create New Project</a>
+
+<div th:each="project : ${projects}" class="project-box" style="margin-bottom: 20px;">
+  <h3 th:text="${project.projectName}"></h3>
+  <p th:text="${project.projectDescription}"></p>
+
+  <!-- Se oversigt-knap er altid synlig -->
+  <a th:href="@{'/project/overview?projectId=' + ${project.projectId}}" class="btn btn-secondary">Se oversigt</a>
+
+  <!-- Rediger og slet kun hvis adgangstype er EDIT -->
+  <div th:if="${project.accessType == 'EDIT'}" style="margin-top: 8px;">
+    <a th:href="@{'/project/edit?projectId=' + ${project.projectId}}" class="btn btn-primary">Rediger titler</a>
+    <form th:action="@{/project/delete}" method="post" style="display:inline;">
+      <input type="hidden" name="projectId" th:value="${project.projectId}" />
+      <button type="submit" class="btn btn-danger">Slet projekt</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
