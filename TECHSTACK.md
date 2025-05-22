@@ -42,6 +42,7 @@ The user interface is built using standard web technologies for responsiveness a
 - **IntelliJ IDEA 2024.3.5 Ultimate Edition** Licensed to IntelliJ IDEA (EAP)
 
   VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
+  
   The Development environment (IDE) used across the project for coding, debugging, and managing the project lifecycle.
 
 ### 📊 Code Quality & Modeling
