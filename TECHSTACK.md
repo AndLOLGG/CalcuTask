@@ -39,9 +39,12 @@ The user interface is built using standard web technologies for responsiveness a
 - **Apache Maven 3.9.6** – Build automation and dependency management
 
   Project build and dependency management is handled via Apache Maven.
-- **IntelliJ IDEA 2024.3.5 Ultimate Edition** – Development environment (IDE) used across the project
+- **IntelliJ IDEA 2024.3.5 Ultimate Edition** Licensed to IntelliJ IDEA (EAP)
+- VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 
-  The development environment used for coding, debugging, and managing the project lifecycle.
+Development environment (IDE) used across the project
+
+The development environment used for coding, debugging, and managing the project lifecycle.
 
 ### 📊 Code Quality & Modeling
 - **Qodana 2024.1** – Static code analysis tool from JetBrains
