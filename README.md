@@ -1,7 +1,7 @@
 ![CalcuTask Logo](src/main/resources/static/images/malm-logo.png)
 # CalcuTask - Task Management System 
 
-CalcuTask is a task management system built with IntelliJ IDEA 2024.3.5 (Ultimate Edition), Java SDK 21, and Spring Boot. It provides user role separation (Admin/Dev), supports projects with tasks and subtasks, and organizes work using categories. The frontend is built with HTML/CSS, and data is stored in an Azure Database for MySQL.
+CalcuTask is a task management system built with IntelliJ IDEA 2024.3.5 (Ultimate Edition), Java SDK 21, and Spring Boot. It provides user role separation (Admin/Dev), supports projects with tasks and subtasks, and organizes work using categories. The frontend is built with HTML/CSS/Thymeleaf, and data is stored in an Azure Database for MySQL. The application is deployed on Azure using GitHub Actions.
 
 ---
 
@@ -21,8 +21,8 @@ CalcuTask is a task management system built with IntelliJ IDEA 2024.3.5 (Ultimat
 
 ## 🧱 Technologies
 
-- **Frontend:** HTML / CSS
-- **Backend:** Java 21, Spring Boot
+- **Frontend:** HTML / CSS / Thymeleaf
+- **Backend:** Java 21, Spring Boot, JDBC
 - **Database (Production):** Azure Database for MySQL
 - **Database (Testing):** H2 In-Memory Database
 - **Hosting:** Azure App Service
@@ -31,6 +31,8 @@ CalcuTask is a task management system built with IntelliJ IDEA 2024.3.5 (Ultimat
 - **Code Quality:** Qodana
 - **Modeling Tool:** Visual Paradigm
 - **MALM Solutions-logo:** Canva
+
+For a full technologies breakdown, see [TECHSTACK.md](https://github.com/AndLOLGG/CalcuTask/blob/main/TECHSTACK.md)
 
 ---
 
@@ -54,7 +56,7 @@ This provides strong protection against brute-force and rainbow table attacks.
 
 ## 🗃️ Entity Relationship Diagram (ERD)
 
-![ER-Model](https://github.com/AndLOLGG/CalcuTask/blob/main/diagrams/CalcuTask%20ERD.png)
+![ERD](https://raw.githubusercontent.com/AndLOLGG/CalcuTask/main/diagrams/CalcuTask%20ERD3.png)
 
 ---
 
@@ -127,41 +129,57 @@ calcutask/
 │   │   │       │   └── Subtask.java
 │   │   │       │   └── Task.java
 │   │   │       │   └── User.java
+│   │   │       │   └── UserProjectAccess.java
 │   │   │       ├── repository/                 # Repositories
 │   │   │       │   └── ProjectRepository.java
 │   │   │       │   └── SubtaskRepository.java
 │   │   │       │   └── TaskRepository.java
 │   │   │       │   └── UserRepository.java
+│   │   │       │   └── UserProjectAccessRepository.java
 │   │   │       ├── rowmapper/                  # RowMappers
 │   │   │       │   └── ProjectRowMapper.java
 │   │   │       │   └── SubtaskRowMapper.java
 │   │   │       │   └── TaskRowMapper.java
 │   │   │       │   └── UserRowMapper.java
+│   │   │       │   └── UserProjectAccessRowMapper.java
 │   │   │       ├── service/                    # Business logic
 │   │   │       │   └── ProjectService.java
 │   │   │       │   └── SubtaskService.java
 │   │   │       │   └── TaskService.java
 │   │   │       │   └── UserService.java
+│   │   │       ├── util/                       # Utility classes
+│   │   │       │   └── PasswordUtil.java
 │   │   │       └── CalcuTaskApplication.java
 │   │   └── resources/
 │   │       ├── DB/                             # Database schema and initialization scripts
+│   │       │   └── data.sql
 │   │       │   └── schema.sql
 │   │       ├── static/
 │   │       │   └── css/                        # CSS styles
 │   │       │   └── images/                     # Images
 │   │       │       └── MALM-logo.png
-│   │       ├── templates/
-│   │       │   └── html/                       # Thymeleaf HTML templates
+│   │       ├── templates/                      # Thymeleaf HTML templates
+│   │       │   └── add-project.html
+│   │       │   └── edit-project.html
+│   │       │   └── html.html
+│   │       │   └── login.html
+│   │       │   └── project.html
+│   │       │   └── error/                      # Thymeleaf HTML templates for errors
+│   │       │       └── 403.html
+│   │       │       └── 404.html
+│   │       │       └── 408.html
+│   │       │       └── 500.html
 │   │       └── application.properties          # Application properties
 │   │       └── application-local.properties    # for localhost:8080
-│   │       └── application-dev.properties      # for fully-deployed web-application
+│   │       └── application-dev.properties      # for fully-deployed web-application / production
 │
 ├── test/
 │   └── java/
 │       └── com/calcutasktest/                  # Unit and integration tests using H2
 │
 ├── diagrams/
-│   ├── CalcuTask ERD.png
+│   ├── CalcuTask ERD.png                       # 1st version
+│   ├── CalcuTask ERD2.png                      # 2nd version
 │   └── CalcuTask Domain Model.png
 ├── .qodana.yaml                                # Qodana configuration
 └── pom.xml
