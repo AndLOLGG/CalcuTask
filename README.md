@@ -56,7 +56,7 @@ This provides strong protection against brute-force and rainbow table attacks.
 
 ## 🗃️ Entity Relationship Diagram (ERD)
 
-![ER-Model](https://github.com/AndLOLGG/CalcuTask/blob/main/diagrams/CalcuTask%20ERD3.png?v=3)
+![ERD](https://raw.githubusercontent.com/AndLOLGG/CalcuTask/main/diagrams/CalcuTask%20ERD3.png)
 
 ---
 
