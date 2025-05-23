@@ -65,9 +65,15 @@ public class ProjectController {
 
     @PostMapping("/project/delete")
     public String deleteProject(@RequestParam("projectId") int projectId) {
-        projectService.deleteProject(projectId);
-        return "redirect:/project";
+        try {
+            projectService.deleteProject(projectId);
+            return "redirect:/project";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error/500"; // Hvis du har lavet en custom fejlside
+        }
     }
+
 
     @GetMapping("/project/edit")
     public String showEditForm(@RequestParam int projectId, Model model, HttpSession session) {

@@ -31,7 +31,7 @@ VALUES
 -- Subtasks
 INSERT INTO subtask (subtask_id, subtask_name, subtask_description, subtask_estimated_hours, subtask_status, task_id)
 VALUES
-    (1, 'Navbar update', 'Redesign navbar with new branding', 4.0, 'TO_DO', 1),
-    (2, 'Auth endpoint', 'Secure login API refactor', 5.0, 'TO_DO', 2),
-    (3, 'Grimrian', 'Flotte fyr', 5.0, 'TO_DO', 3);
+    (1, 'Navbar update', 'Redesign navbar with new branding', 4.0, 'To-do', 1),
+    (2, 'Auth endpoint', 'Secure login API refactor', 5.0, 'To-do', 2),
+    (3, 'Grimrian', 'Flotte fyr', 5.0, 'To-do', 3);
 
