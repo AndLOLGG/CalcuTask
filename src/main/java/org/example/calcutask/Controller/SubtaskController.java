@@ -14,10 +14,10 @@ public class SubtaskController {
         public SubtaskController(SubtaskService subtaskService) {
             this.subtaskService = subtaskService;
         }
-    @PostMapping("/subtask/assign")
+    @PostMapping("/subtask/statusAndAssign")
     public String assignSubtask(@RequestParam int subtaskId, HttpSession session, @RequestParam int projectId) {
         Integer userId = (Integer) session.getAttribute("userId");
-        subtaskService.assignSubtaskToUser(subtaskId, userId);
+        subtaskService.statusAndAssignSubtaskToUser(subtaskId, userId, 'Igang');
         return "redirect:/project/overview?projectId=" + projectId;
     }
     @PostMapping("/subtask/release")

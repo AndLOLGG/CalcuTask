@@ -45,8 +45,8 @@ public class SubtaskRepository {
         template.update(sql, subtaskId);
     }
 
-    public void assignSubtaskToUser(int subtaskId, int userId) {
-        String sql = "UPDATE subtask SET assigned_user_id = ? WHERE subtask_id = ?";
+    public void statusAndAssignSubtaskToUser(int subtaskId, int userId, String subtaskStatus) {
+        String sql = "UPDATE subtask SET assigned_user_id = ?, subtask_status = ? WHERE subtask_id = ?";
         template.update(sql, userId, subtaskId);
     }
     public void releaseSubtaskFromUser(int subtaskId) {

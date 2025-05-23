@@ -8,10 +8,10 @@
 
             <!-- Hvis subtask ikke er påtaget -->
             <span th:if="${sub.assignedUserId == null}">
-                <form th:action="@{/subtask/assign}" method="post" style="display:inline;">
+                <form th:action="@{/subtask/statusAndAssign}" method="post" style="display:inline;">
                     <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
                     <input type="hidden" name="projectId" th:value="${project.projectId}" />
-                    <button type="submit" class="btn btn-success">Påtag</button>
+                    <button type="submit" class="btn btn-success">Igang</button>
                 </form>
             </span>
 
