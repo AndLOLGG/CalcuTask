@@ -17,7 +17,7 @@ public class SubtaskController {
     @PostMapping("/subtask/statusAndAssign")
     public String assignSubtask(@RequestParam int subtaskId, HttpSession session, @RequestParam int projectId) {
         Integer userId = (Integer) session.getAttribute("userId");
-        subtaskService.statusAndAssignSubtaskToUser(subtaskId, userId, 'Igang');
+        subtaskService.statusAndAssignSubtaskToUser(subtaskId, userId, "Igang");
         return "redirect:/project/overview?projectId=" + projectId;
     }
     @PostMapping("/subtask/release")
