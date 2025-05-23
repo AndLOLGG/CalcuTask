@@ -42,8 +42,12 @@ public class SubtaskService {
     public void statusAndAssignSubtaskToUser(int subtaskId, int userId, String subtaskStatus) {
         subtaskRepository.statusAndAssignSubtaskToUser(subtaskId, userId, subtaskStatus);
     }
+
     public void releaseSubtaskFromUser(int subtaskId) {
         subtaskRepository.releaseSubtaskFromUser(subtaskId);
     }
 
+    public void updateStatus(int subtaskId, String status) {
+        subtaskRepository.updateStatus(subtaskId, status);
+    }
 }
