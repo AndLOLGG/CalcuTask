@@ -38,11 +38,22 @@
 
                     </span>
 
-                    <form th:action="@{/subtask/release}" method="post" style="display:inline;">
-                        <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
-                        <input type="hidden" name="projectId" th:value="${project.projectId}" />
-                        <button type="submit" class="btn btn-warning">Fortryd</button>
-                    </form>
+                    <span th:if="${sub.subtaskStatus == 'Test'}">
+                        <form th:action="@{/subtask/updateTaskStatus}" method="post" style="display:inline;">
+                            <input type="hidden" name="status" th:value="Done" />
+                            <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                            <input type="hidden" name="projectId" th:value="${project.projectId}" />
+                            <button type="submit" class="btn btn-warning">Done</button>
+                        </form>
+                    </span>
+
+                    <span th:if="${sub.subtaskStatus != 'Done'}">
+                        <form th:action="@{/subtask/release}" method="post" style="display:inline;">
+                            <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                            <input type="hidden" name="projectId" th:value="${project.projectId}" />
+                            <button type="submit" class="btn btn-warning">Frigiv</button>
+                        </form>
+                    </span>
                 </span>
             </span>
         </li>

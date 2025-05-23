@@ -1,7 +1,7 @@
 package org.example.calcutask.Model;
 
 public enum Status {
-    Klar, 
+    To-do, 
     Igang,
     Blokeret,
     Test,
