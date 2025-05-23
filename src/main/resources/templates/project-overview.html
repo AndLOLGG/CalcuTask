@@ -23,14 +23,14 @@
                 <span th:if="${sub.assignedUserId == session.userId}">
                     <span th:if="${sub.subtaskStatus == 'Igang'}">
                         <form th:action="@{/subtask/updateTaskStatus}" method="post" style="display:inline;">
-                            <input type="hidden" name="subtaskStatus" th:value="Blokeret" />
+                            <input type="hidden" name="status" th:value="Blokeret" />
                             <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
                             <input type="hidden" name="projectId" th:value="${project.projectId}" />
                             <button type="submit" class="btn btn-warning">Blokeret</button>
                         </form>
 
                         <form th:action="@{/subtask/updateTaskStatus}" method="post" style="display:inline;">
-                            <input type="hidden" name="subtaskStatus" th:value="Test" />
+                            <input type="hidden" name="status" th:value="Test" />
                             <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
                             <input type="hidden" name="projectId" th:value="${project.projectId}" />
                             <button type="submit" class="btn btn-warning">Test</button>

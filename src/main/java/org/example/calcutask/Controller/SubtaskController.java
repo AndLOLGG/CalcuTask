@@ -27,10 +27,10 @@ public class SubtaskController {
         return "redirect:/project/overview?projectId=" + projectId;
     }
 
-    @PostMapping("/subtak/updateTaskStatus")
+    @PostMapping("/subtask/updateTaskStatus")
     public String updateTaskStatus(@RequestParam int subtaskId, @RequestParam int projectId, @RequestParam Status status,  HttpSession session) {
         Integer userId = getUserIdFromSession(session);
-        subtaskService.updateStatus(subtaskId, status);
+        subtaskService.updateStatus(subtaskId, status.name());
         return "redirect:/project/overview?projectId=" + projectId;
     }
 
