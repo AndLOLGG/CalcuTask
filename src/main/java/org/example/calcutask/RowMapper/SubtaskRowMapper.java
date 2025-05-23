@@ -16,8 +16,8 @@ public class SubtaskRowMapper implements RowMapper<Subtask> {
         subtask.setSubtaskEstimatedHours(rs.getBigDecimal("subtask_estimated_hours"));
         subtask.setSubtaskStatus(rs.getString("subtask_status"));
         subtask.setTaskId(rs.getInt("task_id"));
-        subtask.setAssignedUserId(rs.getObject("assigned_user_id", Integer.class)); // ← bruger-ID
-        subtask.setAssignedUsername(rs.getString("username")); // ← brugernavn fra JOIN
+        subtask.setAssignedUserId(rs.getObject("assigned_user_id", Integer.class));
+        subtask.setAssignedUsername(rs.getString("username"));
         return subtask;
     }
 }
