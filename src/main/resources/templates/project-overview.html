@@ -21,13 +21,13 @@
 
                 <!-- Fortryd-knap hvis bruger selv har påtaget sig -->
                 <span th:if="${sub.assignedUserId == session.userId}">
-                    <span th:if="${sub.subtaskStatus == Igang}">
+                   <span th:if="${sub.subtaskStatus == 'Igang'}">
                         vi er blokeret
                         vi er klar til test
                     </span>
-                    <span th:elseif="${sub.subtaskStatus == Test}">
-                        vi er done
-                    </span>
+<!--                    <span th:elseif="${sub.subtaskStatus == Test}">-->
+<!--                         vi er done-->
+<!--                    </span>-->
                     <form th:action="@{/subtask/release}" method="post" style="display:inline;">
                         <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
                         <input type="hidden" name="projectId" th:value="${project.projectId}" />

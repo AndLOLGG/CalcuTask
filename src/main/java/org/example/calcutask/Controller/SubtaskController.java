@@ -1,6 +1,7 @@
 package org.example.calcutask.Controller;
 
 import jakarta.servlet.http.HttpSession;
+import org.example.calcutask.Model.Status;
 import org.example.calcutask.Service.SubtaskService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class SubtaskController {
     @PostMapping("/subtask/statusAndAssign")
     public String assignSubtask(@RequestParam int subtaskId, HttpSession session, @RequestParam int projectId) {
         Integer userId = (Integer) session.getAttribute("userId");
-        subtaskService.statusAndAssignSubtaskToUser(subtaskId, userId, Status.Igang);
+        subtaskService.statusAndAssignSubtaskToUser(subtaskId, userId, Status.Igang.name());
         return "redirect:/project/overview?projectId=" + projectId;
     }
     @PostMapping("/subtask/release")
