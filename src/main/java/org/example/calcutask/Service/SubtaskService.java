@@ -1,5 +1,6 @@
 package org.example.calcutask.Service;
 
+import org.example.calcutask.Model.Status;
 import org.example.calcutask.Model.Subtask;
 import org.example.calcutask.Repository.SubtaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class SubtaskService {
     }
 
     public void releaseSubtaskFromUser(int subtaskId) {
-        subtaskRepository.releaseSubtaskFromUser(subtaskId);
+        subtaskRepository.releaseSubtaskFromUser(subtaskId, Status.Todo.name());
     }
 
     public void updateStatus(int subtaskId, String status) {
