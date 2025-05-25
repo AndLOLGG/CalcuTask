@@ -32,6 +32,7 @@ public class Subtask {
     public Subtask(String subtaskName, String subtaskDescription, Integer subtaskEstimatedHours, Integer taskId) {
         this.subtaskName = subtaskName;
         this.subtaskDescription = subtaskDescription;
+        this.subtaskStatus = "To-do";
         this.subtaskEstimatedHours = subtaskEstimatedHours;
         this.taskId = taskId;
     }

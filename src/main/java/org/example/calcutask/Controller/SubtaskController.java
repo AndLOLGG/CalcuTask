@@ -70,6 +70,7 @@ public class SubtaskController {
     @GetMapping("/subtask/create")
     public String createTask(@RequestParam int taskId, Model model) {
         model.addAttribute("subtask", new Subtask(taskId));
+        model.addAttribute("taskId", taskId);
         return "create-subtask";
     }
 
@@ -81,7 +82,7 @@ public class SubtaskController {
         if(hasAccess) {
             Subtask st = new Subtask(subtask.getSubtaskName(), subtask.getSubtaskDescription(), subtask.getSubtaskEstimatedHours(), subtask.getTaskId());
             subtaskService.createSubtask(st);
-            return "redirect:/subtask/overview";
+            return "redirect:/subtask/overview?taskId=" + subtask.getTaskId();
         }
         return "redirect:/login";
     }
