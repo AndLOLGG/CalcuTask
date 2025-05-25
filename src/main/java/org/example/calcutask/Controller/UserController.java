@@ -43,8 +43,10 @@ public class UserController {
    @GetMapping("/user/edit-user")
    public String showEditUserForm(@RequestParam int userId, HttpSession session, Model model) {
        Integer loggedInUserId = (Integer) session.getAttribute("userId");
-       if (loggedInUserId == null || loggedInUserId != userId) {
-           return "redirect:/login";
+       if(userService.findById(loggedInUserId).getRole() != "ADMIN") {
+        if (loggedInUserId == null || loggedInUserId != userId) {
+            return "redirect:/login";
+        }
        }
 
        User user = userService.findById(userId);
