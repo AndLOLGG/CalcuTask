@@ -61,7 +61,7 @@
                         <button type="submit" class="btn btn-danger">Frigiv</button>
                     </form>
 
-                    <a th:href="@{'/task/edit?taskId=' + ${taskId} + '&subtaskId=' + ${sub.subtaskId}}" class="btn btn-secondary">Redigere</a>
+                    <a th:href="@{'/subtask/edit?taskId=' + ${taskId} + '&subtaskId=' + ${sub.subtaskId}}" class="btn btn-secondary">Redigere</a>
 
                     <!-- <form th:action="@{/subtask/edit}" method="post" style="display:inline;">
                         <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
