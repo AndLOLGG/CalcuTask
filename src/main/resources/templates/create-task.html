@@ -4,19 +4,21 @@
   <title>Create Task</title>
 </head>
 <body>
-<h1>Create a new task</h1>
+  <h1>Create a new task</h1>
 
-<form th:action="@{/task/create}" method="post">
-  <input type="hidden" name="projectId" th:value="${projectId}" />
-  <label for="taskName">Task Name:</label><br>
-  <input type="text" id="taskName" name="taskName"><br><br>
+  <form th:action="@{/task/create}" method="post">
+    <input type="hidden" name="projectId" th:value="${projectId}" />
+    <label for="taskName">Task Name:</label><br>
+    <input type="text" id="taskName" name="taskName"><br><br>
 
-  <label for="taskDescription">Task Description:</label><br>
-  <textarea id="taskDescription" name="taskDescription"></textarea><br><br>
+    <label for="taskDescription">Task Description:</label><br>
+    <textarea id="taskDescription" name="taskDescription"></textarea><br><br>
 
-  <button type="submit">Create task</button>
-</form>
+    <label for="subtaskEstimatedHours">Estimated Time:</label><br>
+    <textarea id="subtaskEstimatedHours" name="subtaskEstimatedHours"></textarea><br><br>
 
-<a th:href="@{/project}">← Back to Projects</a>
+    <button type="submit">Create task</button>
+  </form>
+  <a th:href="@{'/subtask/overview?taskId=' + ${taskId}}">← Back to subtask overview</a>
 </body>
 </html>

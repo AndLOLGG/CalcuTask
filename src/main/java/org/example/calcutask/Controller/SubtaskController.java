@@ -104,7 +104,7 @@ public class SubtaskController {
     public String updateSubtask(@ModelAttribute Subtask subtask) {
         Subtask st = subtask;
         subtaskService.updateSubtask(st);
-        return "redirect:/project";
+        return "redirect:/subtask/overview?taskId=" + subtask.getTaskId();
     }
 
 }

@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>edit subtask</title>
+    <title>Rediger subtask</title>
 </head>
 <body>
-    ret sub task
+
+<h2>Rediger subtask</h2>
+
+<form th:action="@{/subtask/edit}" th:object="${subtask}" method="post">
+    <input type="hidden" th:field="*{taskId}"/>
+    <label for="subtaskName">Tasktitel:</label><br>
+    <input type="text" id="subtaskName" th:field="*{subtaskName}" required/><br><br>
+
+    <label for="subtaskDescription">taskbeskrivelse:</label><br>
+    <textarea id="subtaskDescription" th:field="*{subtaskDescription}" rows="3" cols="40"></textarea><br><br>
+
+    </div>
+
+    <button type="submit">Gem ændringer</button>
+    <a th:href="@{/project}">Annuller</a>
+</form>
+
 </body>
 </html>
