@@ -38,6 +38,8 @@ public class SubtaskRepository {
     public void update(Subtask subtask) {
         String sql = "UPDATE subtask SET subtask_name = ?, subtask_description = ?, subtask_estimated_hours = ? WHERE subtask_id = ?";
         template.update(sql, subtask.getSubtaskName(), subtask.getSubtaskDescription(), subtask.getSubtaskEstimatedHours(), subtask.getSubtaskId());
+        System.out.println(subtask.getSubtaskEstimatedHours());
+        System.out.println(subtask.getSubtaskId());
     }
 
     public void deleteById(int subtaskId) {
