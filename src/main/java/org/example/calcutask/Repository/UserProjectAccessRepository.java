@@ -18,6 +18,6 @@ public class UserProjectAccessRepository {
 
     public UserProjectAccess hasUserAccessToProject(Integer userId, Integer projectId) {
         String sql = "SELECT * FROM user_project_access WHERE user_id = ? AND project_id = ?";
-        return template.queryForObject(sql, userId, projectId, new UserProjectAccessRepositoryRowMapper());
+        return template.queryForObject(sql, new UserProjectAccessRowMapper(), userId, projectId);
     }
 }

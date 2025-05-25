@@ -1,6 +1,5 @@
 package org.example.calcutask.Service;
 
-import org.example.calcutask.Model.UserProjectAccess;
 import org.example.calcutask.Repository.UserProjectAccessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

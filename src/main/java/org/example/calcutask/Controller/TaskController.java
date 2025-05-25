@@ -1,28 +1,38 @@
 package org.example.calcutask.Controller;
+import jakarta.servlet.http.HttpSession;
+import org.example.calcutask.Model.Task;
+import org.example.calcutask.Service.UserProjectAccessService;
 import org.springframework.stereotype.Controller;
 import org.example.calcutask.Service.TaskService;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TaskController {
+    private final UserProjectAccessService userProjectAccessService;
+
     private final TaskService taskService;
-    public TaskController(TaskService taskService, UserProjectAccessService userProjectAccessService) {
+    public TaskController(TaskService taskService,  UserProjectAccessService userProjectAccessService) {
         this.taskService = taskService;
         this.userProjectAccessService = userProjectAccessService;
     }
 
-    @GetMapping('/task/create')
-    public String createTask(Model model) {
+    @GetMapping("/task/create")
+    public String createTask(@RequestParam int projectId, Model model) {
+        model.addAttribute("projectId", projectId);
         model.addAttribute("Task", new Task());
-        return "taskCreate";
+        return "create-task";
     }
 
-    @PostMapping('/task/create')
+    @PostMapping("/task/create")
     public String createTask(@RequestParam String taskName, @RequestParam String taskDescription, @RequestParam int projectId, HttpSession session) {
         Integer userId = getUserIdFromSession(session);
         Boolean hasAccess = userProjectAccessService.hasUserAccessToProject(userId, projectId);
         if(hasAccess) {
             Task t = new Task(taskName, taskDescription, projectId);
-            taskService.create(task);
+            taskService.createTask(t);
             return "project-list";
         }
         return "login";

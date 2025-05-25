@@ -12,7 +12,7 @@
 <div th:each="project : ${projects}" class="project-box" style="margin-bottom: 20px;">
   <h3 th:text="${project.projectName}"></h3>
   <p th:text="${project.projectDescription}"></p>
-  <a th:href="@{'/task/create=' + ${project.projectId}}" class="btn btn-secondary">Opret Task</a>
+  <a th:href="@{/task/create(projectId=${project.projectId})}" class="btn btn-secondary">Opret Task</a>
 
   <tr th:each="task : ${tasks}" th:if="${task.projectId} == ${project.projectId}">
       <div>
