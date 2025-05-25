@@ -27,7 +27,7 @@ public class UserController {
         User user = userService.authenticateAndGetUser(username, password);
         if(user != null) {
             session.setAttribute("userId", user.getUserId());
-            session.setAttribute("userRole", user,getRole());
+            session.setAttribute("userRole", user.getRole());
             return "redirect:/project";
         }
         model.addAttribute("error", "User or password incorrect");
