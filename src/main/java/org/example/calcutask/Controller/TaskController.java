@@ -33,9 +33,9 @@ public class TaskController {
         if(hasAccess) {
             Task t = new Task(taskName, taskDescription, projectId);
             taskService.createTask(t);
-            return "project-list";
+            return "redirect:/project";
         }
-        return "login";
+        return "redirect:/login";
     }
 
 
