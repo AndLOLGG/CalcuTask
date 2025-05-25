@@ -3,6 +3,7 @@ package org.example.calcutask.Service;
 import org.example.calcutask.Model.Status;
 import org.example.calcutask.Model.Subtask;
 import org.example.calcutask.Repository.SubtaskRepository;
+import org.example.calcutask.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +26,11 @@ public class SubtaskService {
     public List<Subtask> getSubtasksByTaskId(int taskId) {
         List<Subtask> subtasks = subtaskRepository.findByTaskId(taskId);
         for (Subtask sb : subtasks) {
-            sb.setAssignedUsername = userRepository.findById(sb.getAssignedUserId());
+            if(sb.getAssignedUserId() != null) {
+                sb.setAssignedUsername(userRepository.findById(sb.getAssignedUserId()).getUsername());
+            }
         }
-        return sb;
+        return subtasks;
     }
 
     // Retrieve a specific subtask by its ID
