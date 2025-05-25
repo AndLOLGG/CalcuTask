@@ -27,38 +27,22 @@ public class UserController {
         User user = userService.authenticateAndGetUser(username, password);
         if(user != null) {
             session.setAttribute("userId", user.getUserId());
+            session.setAttribute("userRole", user,getRole());
             return "redirect:/project";
         }
         model.addAttribute("error", "User or password incorrect");
         return "login";
     }
+
+    @GetMapping("/users") 
+    public String showUsers() {
+        return "users";
+    }
 }
 
-
-
-
-
-
-
 /**
-package org.example.calcutask.Controller;
-//
-//import jakarta.servlet.http.HttpSession;
-//import org.example.calcutask.Service.UserService;
-import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.ModelAttribute;
-//import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.PostMapping;
-//
 @Controller
 public class UserController {
-//    private final UserService userService;
-//
-//    public ProjectController(UserService userService) {
-//        this.userService = userService;
-//    }
 //    @GetMapping("/user/create")
 //    public String showCreateForm(Model model) {
 //        model.addAttribute("user", new User());

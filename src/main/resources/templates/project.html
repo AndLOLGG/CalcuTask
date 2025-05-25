@@ -11,40 +11,45 @@
     }
   </script>
 </head>
+
 <body>
+  <h1>All users</h1>
+  <span th:if="${session.userRole == 'ADMIN'}">
+    <a href="/users" class="btn btn-secondary">Vis alle bruger</a>
+  </span>
 
-<h1>Your Projects</h1>
+  <h1>Your Projects</h1>
 
-<a th:href="@{/project/create}">+ Create New Project</a>
+  <a th:href="@{/project/create}">+ Create New Project</a>
 
-<ul>
-  <li th:each="project : ${projects}">
-    <div>
-      <strong th:text="${project.projectName}">Project Name</strong><br>
-      <span th:text="${project.projectDescription}">Project Description</span><br>
+  <ul>
+    <li th:each="project : ${projects}">
+      <div>
+        <strong th:text="${project.projectName}">Project Name</strong><br>
+        <span th:text="${project.projectDescription}">Project Description</span><br>
 
-      <!-- EDIT-knap -->
-      <button type="button" th:attr="onclick=|toggleEditButtons(${project.projectId})|">Edit</button>
+        <!-- EDIT-knap -->
+        <button type="button" th:attr="onclick=|toggleEditButtons(${project.projectId})|">Edit</button>
 
-      <!-- Skjult redigeringssektion -->
-      <div th:attr="id='edit-options-' + ${project.projectId}" style="display:none; margin-top: 5px;">
+        <!-- Skjult redigeringssektion -->
+        <div th:attr="id='edit-options-' + ${project.projectId}" style="display:none; margin-top: 5px;">
 
-        <!-- Rediger titler -->
-        <form th:action="@{/project/edit}" method="get" style="display:inline;">
-          <input type="hidden" name="projectId" th:value="${project.projectId}" />
-          <button type="submit">Rediger titler</button>
-        </form>
+          <!-- Rediger titler -->
+          <form th:action="@{/project/edit}" method="get" style="display:inline;">
+            <input type="hidden" name="projectId" th:value="${project.projectId}" />
+            <button type="submit">Rediger titler</button>
+          </form>
 
-        <!-- Slet projekt -->
-        <form th:action="@{/project/delete}" method="post" style="display:inline;">
-          <input type="hidden" name="projectId" th:value="${project.projectId}" />
-          <button type="submit" style="color: red;">Slet projekt</button>
-        </form>
+          <!-- Slet projekt -->
+          <form th:action="@{/project/delete}" method="post" style="display:inline;">
+            <input type="hidden" name="projectId" th:value="${project.projectId}" />
+            <button type="submit" style="color: red;">Slet projekt</button>
+          </form>
 
+        </div>
       </div>
-    </div>
-  </li>
-</ul>
+    </li>
+  </ul>
 
 </body>
 </html>
