@@ -7,6 +7,7 @@
 <h1>Create a new task</h1>
 
 <form th:action="@{/task/create}" method="post">
+  <input type="hidden" name="projectId" th:value="${projectId}" />
   <label for="taskName">Task Name:</label><br>
   <input type="text" id="taskName" name="taskName"><br><br>
 
