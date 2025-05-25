@@ -21,6 +21,7 @@ public class SubtaskController {
     private final SubtaskService subtaskService;
     private final TaskService taskService;
     private final UserProjectAccessService userProjectAccessService;
+
     public SubtaskController(SubtaskService subtaskService, TaskService taskService, UserProjectAccessService userProjectAccessService) {
         this.subtaskService = subtaskService;
         this.taskService = taskService;
@@ -79,10 +80,13 @@ public class SubtaskController {
         if(hasAccess) {
             Subtask st = new Subtask(subtask.getSubtaskName(), subtask.getSubtaskDescription(), subtask.getSubtaskEstimatedHours(), subtask.getTaskId());
             subtaskService.createSubtask(st);
-            return "subtask-overview";
+            return "redirect:/subtask-overview";
         }
         return "redirect:/login";
     }
+
+    // http://localhost:8080/subtask/overview?taskId=4
+    // http://localhost:8080/subtask/create
 
     @GetMapping("/subtask/edit") 
     public String editSubtask(@RequestParam int taskId, @RequestParam int subtaskId, Model model, HttpSession session) {
