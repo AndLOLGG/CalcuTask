@@ -94,7 +94,8 @@ public class SubtaskController {
         Boolean hasAccess = userProjectAccessService.hasUserAccessToProject(userId, t.getProjectId());
         if(hasAccess) {
             Subtask subtask = subtaskService.getSubtaskById(subtaskId);
-            return "subtask/edit-subtask";
+            model.addAttribute("subtask", subtask);
+            return "edit-subtask";
         }
         return "redirect:/login";
     }
