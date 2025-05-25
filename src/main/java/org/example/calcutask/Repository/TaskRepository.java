@@ -8,13 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
 public class TaskRepository {
 
-    @Autowired
-    private JdbcTemplate template;
+
+    private final JdbcTemplate template;
+
+    public TaskRepository(JdbcTemplate jdbcTemplate) {
+        this.template = jdbcTemplate;
+    }
 
     public void save(Task task) {
         String sql = "INSERT INTO task (task_name, task_description, task_estimated_hours, project_id) VALUES (?, ?, ?, ?)";
@@ -26,7 +32,7 @@ public class TaskRepository {
         return template.query(sql, new TaskRowMapper(), projectId);
     }
 
-    public List<Task> findByProjectId(List<Integer> projectIds) {
+    public List<Task> findByProjectIds(List<Integer> projectIds) {
         if (projectIds == null || projectIds.isEmpty()) {
             return new ArrayList<>();
         }

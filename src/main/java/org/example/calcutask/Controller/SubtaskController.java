@@ -2,10 +2,15 @@ package org.example.calcutask.Controller;
 
 import jakarta.servlet.http.HttpSession;
 import org.example.calcutask.Model.Status;
+import org.example.calcutask.Model.Subtask;
 import org.example.calcutask.Service.SubtaskService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class SubtaskController {
@@ -37,7 +42,7 @@ public class SubtaskController {
     @GetMapping("/subtask/edit")
     public String editSubtask(@RequestParam int subtaskId, HttpSession session, Model model) {
         Integer userId = getUserIdFromSession(session);
-        model.setAttribute("subtask", subtaskService.getSubtaskById(subtaskId);)
+        model.addAttribute("subtask", subtaskService.getSubtaskById(subtaskId));
         return "edit-subtask";
     }
 
@@ -47,7 +52,7 @@ public class SubtaskController {
 
     @GetMapping("/subtask/overview")
     public String showProjectOverview(@RequestParam int taskId, Model model) {
-        List<Subtask> subtasks = SubtaskService.getSubtasksByTaskId(taskId);
+        List<Subtask> subtasks = subtaskService.getSubtasksByTaskId(taskId);
         model.addAttribute("subTasks", subtasks);
         return "subtask-overview";
     }
