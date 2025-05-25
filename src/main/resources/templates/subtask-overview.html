@@ -61,7 +61,7 @@
                         <button type="submit" class="btn btn-danger">Frigiv</button>
                     </form>
 
-                    <form th:action="@{/subtask/edit}" th:object="${subtask}" method="post" style="display:inline;">
+                    <form th:action="@{/subtask/edit}" method="post" style="display:inline;">
                         <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
                         <input type="hidden" name="taskId" th:value="${taskId}" />
                         <button type="submit" class="btn btn-danger">Redigere</button>
