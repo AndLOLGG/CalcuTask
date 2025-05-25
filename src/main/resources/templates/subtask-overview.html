@@ -18,7 +18,7 @@
         <span th:if="${sub.assignedUserId == null}">
             <form th:action="@{/subtask/statusAndAssign}" method="post" style="display:inline;">
                 <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
-                <input type="hidden" th:field="*{taskId}"/>
+                <input type="hidden" name="taskId" th:value="${taskId}" />
                 <button type="submit" class="btn btn-success">Igang</button>
             </form>
         </span>
@@ -33,12 +33,14 @@
                     <form th:action="@{/subtask/updateTaskStatus}" method="post" style="display:inline;">
                         <input type="hidden" name="status" value="Blokeret" />
                         <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                        <input type="hidden" name="taskId" th:value="${taskId}" />
                         <button type="submit" class="btn btn-warning">Blokeret</button>
                     </form>
 
                     <form th:action="@{/subtask/updateTaskStatus}" method="post" style="display:inline;">
                         <input type="hidden" name="status" value="Test" />
                         <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                        <input type="hidden" name="taskId" th:value="${taskId}" />
                         <button type="submit" class="btn btn-warning">Test</button>
                     </form>
                 </span>
@@ -47,6 +49,7 @@
                     <form th:action="@{/subtask/updateTaskStatus}" method="post" style="display:inline;">
                         <input type="hidden" name="status" value="Done" />
                         <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                        <input type="hidden" name="taskId" th:value="${taskId}" />
                         <button type="submit" class="btn btn-success">Done</button>
                     </form>
                 </span>
@@ -54,11 +57,13 @@
                 <span th:if="${sub.subtaskStatus != 'Done'}">
                     <form th:action="@{/subtask/release}" method="post" style="display:inline;">
                         <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                        <input type="hidden" name="taskId" th:value="${taskId}" />
                         <button type="submit" class="btn btn-danger">Frigiv</button>
                     </form>
 
                     <form th:action="@{/subtask/edit}" th:object="${subtask}" method="post" style="display:inline;">
                         <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                        <input type="hidden" name="taskId" th:value="${taskId}" />
                         <button type="submit" class="btn btn-danger">Redigere</button>
                     </form>
                 </span>

@@ -29,23 +29,23 @@ public class SubtaskController {
     }
 
     @PostMapping("/subtask/statusAndAssign")
-    public String assignSubtask(@RequestParam int subtaskId, HttpSession session) {
+    public String assignSubtask(@RequestParam int subtaskId, @RequestParam int taskId, HttpSession session) {
         Integer userId = getUserIdFromSession(session);
         subtaskService.statusAndAssignSubtaskToUser(subtaskId, userId, Status.Igang.name());
-        return "redirect:/project/overview?taskId=" + taskId;
+        return "redirect:/subtask/overview?taskId=" + taskId;
     }
 
     @PostMapping("/subtask/release")
-    public String releaseSubtask(@RequestParam int subtaskId, @RequestParam int projectId) {
+    public String releaseSubtask(@RequestParam int subtaskId, @RequestParam int taskId) {
         subtaskService.releaseSubtaskFromUser(subtaskId);
-        return "redirect:/project/overview?projectId=" + projectId;
+        return "redirect:/subtask/overview?taskId=" + taskId;
     }
 
     @PostMapping("/subtask/updateTaskStatus")
-    public String updateTaskStatus(@RequestParam int subtaskId, @RequestParam int projectId, @RequestParam Status status,  HttpSession session) {
+    public String updateTaskStatus(@RequestParam int subtaskId, @RequestParam int taskId, @RequestParam Status status,  HttpSession session) {
         Integer userId = getUserIdFromSession(session);
         subtaskService.updateStatus(subtaskId, status.name());
-        return "redirect:/project/overview?projectId=" + projectId;
+        return "redirect:/subtask/overview?taskId=" + taskId;
     }
 
 //    @GetMapping("/subtask/edit")
