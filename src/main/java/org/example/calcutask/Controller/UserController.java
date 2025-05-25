@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.example.calcutask.Service.UserService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -39,14 +40,14 @@ public class UserController {
         return "users";
     }
 
-   @GetMapping("/user/edit/{id}")
-   public String showEditUserForm(int userId, @PathVariable("id"), HttpSession session, Model model) {
+   @GetMapping("/user/edit-user")
+   public String showEditUserForm(@RequestParam int userId, HttpSession session, Model model) {
        Integer loggedInUserId = (Integer) session.getAttribute("userId");
        if (loggedInUserId == null || loggedInUserId != userId) {
            return "redirect:/login";
        }
 
-       User user = userService.getUserById(userId);
+       User user = userService.findById(userId);
        model.addAttribute("user", user);
        return "edit-user";
    }

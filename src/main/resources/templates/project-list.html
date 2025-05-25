@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Dine Projekter</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 </head>
 <body>
@@ -14,7 +13,7 @@
   </span>
   <span th:unless="${session.userRole == 'ADMIN'}">
     <h1>Redigere bruger</h1>
-    <a href="/edit-user" class="btn btn-secondary">Redigere navn</a>
+    <a th:href="@{'/user/edit-user?userId=' + ${session.userId}}"  class="btn btn-secondary">Redigere navn</a>
   </span>
 
 <h2>Your Projects</h2>
