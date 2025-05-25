@@ -7,7 +7,7 @@ public class Subtask {
     private int subtaskId;
     private String subtaskName;
     private String subtaskDescription;
-    private BigDecimal subtaskEstimatedHours;
+    private Integer subtaskEstimatedHours;
     private String subtaskStatus;
     private int taskId;
     private Integer assignedUserId; // Hvem der har påtaget sig subtasken
@@ -17,7 +17,7 @@ public class Subtask {
     /** Vi skal tilføje tags senere **/
 
     public Subtask(int subtaskId, String subtaskName, String subtaskDescription,
-                   BigDecimal subtaskEstimatedHours, String subtaskStatus,
+                   Integer subtaskEstimatedHours, String subtaskStatus,
                    int taskId, Integer assignedUserId, String assignedUsername) {
         this.subtaskId = subtaskId;
         this.subtaskName = subtaskName;
@@ -28,7 +28,12 @@ public class Subtask {
         this.assignedUserId = assignedUserId;
         this.assignedUsername = assignedUsername;
     }
-
+    public Subtask(String subtaskName, String subtaskDescription, Integer subtaskEstimatedHours, Integer taskId) {
+        this.subtaskName = subtaskName;
+        this.subtaskDescription = subtaskDescription;
+        this.subtaskEstimatedHours = subtaskEstimatedHours;
+        this.taskId = taskId;
+    }
     public Subtask(int taskId) {
         this.taskId = taskId;
     }
@@ -48,7 +53,7 @@ public class Subtask {
         return subtaskDescription;
     }
 
-    public BigDecimal getSubtaskEstimatedHours() {
+    public Integer getSubtaskEstimatedHours() {
         return subtaskEstimatedHours;
     }
 
@@ -85,7 +90,7 @@ public class Subtask {
         this.subtaskDescription = subtaskDescription;
     }
 
-    public void setSubtaskEstimatedHours(BigDecimal subtaskEstimatedHours) {
+    public void setSubtaskEstimatedHours(Integer subtaskEstimatedHours) {
         this.subtaskEstimatedHours = subtaskEstimatedHours;
     }
 
