@@ -38,6 +38,19 @@ public class UserController {
     public String showUsers() {
         return "users";
     }
+
+   @GetMapping("/user/edit/{id}")
+   public String showEditUserForm(int userId, @PathVariable("id"), HttpSession session, Model model) {
+       Integer loggedInUserId = (Integer) session.getAttribute("userId");
+       if (loggedInUserId == null || loggedInUserId != userId) {
+           return "redirect:/login";
+       }
+
+       User user = userService.getUserById(userId);
+       model.addAttribute("user", user);
+       return "edit-user";
+   }
+
 }
 
 /**
@@ -53,18 +66,6 @@ public class UserController {
 //        userService.addUser(user);
 //        return "redirect:/login";
 //    }
-//    @GetMapping("/user/{id}/edit")
-//    public String showEditUserForm(@PathVariable("id") int userId, HttpSession session, Model model) {
-//        Integer loggedInUserId = (Integer) session.getAttribute("userId");
-//        if (loggedInUserId == null || loggedInUserId != userId) {
-//            return "redirect:/";
-//        }
-//
-//        User user = userService.getUserById(userId);
-//        model.addAttribute("user", user);
-//        return "edit-user";
-//    }
-//
 //    @PostMapping("/user/{id}/edit")
 //    public String updateUser(@PathVariable("id") int userId, @ModelAttribute User user, HttpSession session) {
 //        Integer loggedInUserId = (Integer) session.getAttribute("userId");

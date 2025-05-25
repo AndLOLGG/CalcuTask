@@ -8,9 +8,13 @@
 </head>
 </head>
 <body>
-  <h1>All users</h1>
   <span th:if="${session.userRole == 'ADMIN'}">
+    <h1>Se alle brugere</h1>
     <a href="/users" class="btn btn-secondary">Vis alle bruger</a>
+  </span>
+  <span th:unless="${session.userRole == 'ADMIN'}">
+    <h1>Redigere bruger</h1>
+    <a href="/edit-user" class="btn btn-secondary">Redigere navn</a>
   </span>
 
 <h2>Your Projects</h2>
