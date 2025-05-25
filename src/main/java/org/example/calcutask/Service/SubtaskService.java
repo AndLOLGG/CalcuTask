@@ -13,6 +13,8 @@ public class SubtaskService {
 
     @Autowired
     private SubtaskRepository subtaskRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     // Create a new subtask
     public void createSubtask(Subtask subtask) {
@@ -21,7 +23,11 @@ public class SubtaskService {
 
     // Retrieve all subtasks for a specific task
     public List<Subtask> getSubtasksByTaskId(int taskId) {
-        return subtaskRepository.findByTaskId(taskId);
+        List<Subtask> subtasks = subtaskRepository.findByTaskId(taskId);
+        for (Subtask sb : subtasks) {
+            sb.setAssignedUsername = userRepository.findById(sb.getAssignedUserId());
+        }
+        return sb;
     }
 
     // Retrieve a specific subtask by its ID
