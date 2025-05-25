@@ -48,7 +48,7 @@ public class TaskController {
 
     @PostMapping("/task/update")
     public String updateTask(@ModelAttribute Task task) {
-        Task t = task; 
+        taskService.updateTask(task);
         return "redirect:/project";
     }
 
