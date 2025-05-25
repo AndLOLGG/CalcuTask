@@ -19,7 +19,7 @@ public class ProjectController {
         this.projectService = projectService;
     }
 
-    @GetMapping("/project")
+    @GetMapping("/project-list")
     public String getAllProjects(Model model, HttpSession session) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
