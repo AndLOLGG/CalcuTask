@@ -10,6 +10,8 @@
 
 <form th:action="@{/subtask/edit}" th:object="${subtask}" method="post">
     <input type="hidden" th:field="*{taskId}"/>
+    <input type="hidden" name="subtaskId" th:value="${subtaskId}" />
+
     <label for="subtaskName">Tasktitel:</label><br>
     <input type="text" id="subtaskName" th:field="*{subtaskName}" required/><br><br>
 
