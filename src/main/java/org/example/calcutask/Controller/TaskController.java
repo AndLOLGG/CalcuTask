@@ -40,14 +40,17 @@ public class TaskController {
     }
 
     @GetMapping("/task/edit") 
-    public String editTask(@RequestParam int taskId, Model model) {
+    public String editTask(@RequestParam int taskId, @RequestParam int projectId, Model model) {
         Task t = taskService.findById(taskId);
+        t.setProjectId(projectId);
         model.addAttribute("task", t);
         return "edit-task";
     }
 
     @PostMapping("/task/update")
-    public String updateTask(@ModelAttribute Task task) {
+    public String updateTask(@ModelAttribute Task task @RequestParam int projectId) {
+        Task t = task;
+        task.setProjectId(projectId);
         taskService.updateTask(task);
         return "redirect:/project";
     }
