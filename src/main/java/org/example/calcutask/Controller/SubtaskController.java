@@ -94,10 +94,9 @@ public class SubtaskController {
         Boolean hasAccess = userProjectAccessService.hasUserAccessToProject(userId, t.getProjectId());
         if(hasAccess) {
             Subtask subtask = subtaskService.getSubtaskById(subtaskId);
-            Subtask st = new Subtask(subtask.getSubtaskName(), subtask.getSubtaskDescription(), subtask.getSubtaskEstimatedHours(), subtask.getTaskId());
-            subtaskService.createSubtask(st);
+            return "subtask/edit-subtask";
         }
-        return "edit-subtask";
+        return "redirect:/login";
     }
 
     @PostMapping("/subtask/edit")
