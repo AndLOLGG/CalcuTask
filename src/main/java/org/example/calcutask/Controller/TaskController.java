@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.example.calcutask.Service.TaskService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -46,7 +47,7 @@ public class TaskController {
     }
 
     @PostMapping("/task/update")
-    public String updateTask(@ModelAttribute task) {
+    public String updateTask(@ModelAttribute Task task) {
         Task t = task; 
         return "redirect:/project";
     }
