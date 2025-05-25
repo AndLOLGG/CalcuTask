@@ -16,8 +16,9 @@ import java.util.List;
 public class SubtaskController {
     private final SubtaskService subtaskService;
     
-    public SubtaskController(SubtaskService subtaskService) {
+    public SubtaskController(SubtaskService subtaskService, TaskService taskService) {
         this.subtaskService = subtaskService;
+        this.taskService = taskService;
     }
 
     @PostMapping("/subtask/statusAndAssign")
@@ -54,8 +55,51 @@ public class SubtaskController {
     public String showProjectOverview(@RequestParam int taskId, Model model) {
         List<Subtask> subtasks = subtaskService.getSubtasksByTaskId(taskId);
         model.addAttribute("subTasks", subtasks);
+        model.addAttribute("taskId", taskId);
         return "subtask-overview";
     }
+
+    @GetMapping("/subtask/create")
+    public String createTask(@RequestParam int taskId, Model model) {
+        model.addAttribute("subtask", new Subtask(taskId));
+        return "create-subtask";
+    }
+
+    @PostMapping("/subtask/create")
+    public String createTask(@ModelAttribute Subtask subtask, HttpSession session) {
+        Integer userId = getUserIdFromSession(session);
+        Task t = taskService.findById(taskId);
+        Boolean hasAccess = userProjectAccessService.hasUserAccessToProject(userId, t.projectId);
+        if(hasAccess) {
+            Subtask st = new Subtask(subtask.getSubtaskName, subtask.getSubtaskDescription, subtask.getTaskEstimatedHours, subtask.getTaskId());
+            subtaskService.createSubtask(st);
+            return "subtask-overview";
+        }
+        return "redirect:/login";
+    }
+
+    @GetMapping("/subtask/edit") 
+    public String editTask(@RequestParam int taskId, @RequestParam int subtaskId, Model model) {
+        Integer userId = getUserIdFromSession(session);
+        Task t = taskService.findById(taskId);
+        Boolean hasAccess = userProjectAccessService.hasUserAccessToProject(userId, t.projectId);
+        if(hasAccess) {
+            Subtask st = new Subtask(subtask.getSubtaskName, subtask.getSubtaskDescription, subtask.getTaskEstimatedHours, subtask.getTaskId());
+            subtaskService.createSubtask(st);
+        }
+        Task t = subtask.findById(taskId);
+        t.setProjectId(projectId);
+        model.addAttribute("task", t);
+        return "edit-task";
+    }
+
+    @PostMapping("/subtask/edit")
+    public String updateTask(@ModelAttribute Subtask subtask) {
+        Subtask st = subtask;
+        subtaskService.updateSubtask(st);
+        return "redirect:/project";
+    }
+
 }
 
 

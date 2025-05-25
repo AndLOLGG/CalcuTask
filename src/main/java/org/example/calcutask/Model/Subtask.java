@@ -29,6 +29,10 @@ public class Subtask {
         this.assignedUsername = assignedUsername;
     }
 
+    public Subtask(int taskId) {
+        this.taskId = taskId;
+    }
+    
     public Subtask() {}
 
     // Getters

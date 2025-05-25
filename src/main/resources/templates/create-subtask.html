@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+  <title>Create Subtask</title>
+</head>
+<body>
+    <h1>Create a new Subtask</h1>
+
+    <form th:action="@{/subtask/create}" th:object="${subtask}" method="post">
+        <input type="hidden" th:field="*{taskId}"/>
+        <label for="subtaskName">Subtask Name:</label><br>
+        <input type="text" id="subtaskName" name="subtaskName"><br><br>
+
+        <label for="subtaskDescription">Subtask Description:</label><br>
+        <textarea id="subtaskDescription" name="subtaskDescription"></textarea><br><br>
+
+        <label for="subtaskStatus">Subtask status:</label><br>
+        <input type="text" id="subtaskStatus" name="subtaskStatus"><br><br>
+
+        <label for="subtaskEstimatedHours">Estimated Time:</label><br>
+        <input type="text" id="subtaskEstimatedHours" name="subtaskEstimatedHours"><br><br>
+
+        <button type="submit">Create subtask</button>
+    </form>
+
+    <a th:href="@{'/subtask/overview?taskId=' + ${taskId}}">← Back to subtask overview</a>
+</body>
+</html>

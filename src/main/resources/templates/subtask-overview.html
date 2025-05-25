@@ -6,6 +6,8 @@
 </head>
 <body>
     <h3>Opgaver</h3>
+    <a th:href="@{/subtask/create(taskId=${taskId})}" class="btn btn-secondary">Opret Subtask</a>
+
 
 <ul>
     <li th:each="sub : ${subTasks}">
@@ -54,9 +56,9 @@
                         <button type="submit" class="btn btn-danger">Frigiv</button>
                     </form>
 
-                    <form th:action="@{/subtask/edit}" method="post" style="display:inline;">
+                    <form th:action="@{/subtask/edit}" th:object="${subtask}" method="post" style="display:inline;">
                         <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
-                        <button type="submit" class="btn btn-danger">Ret</button>
+                        <button type="submit" class="btn btn-danger">Redigere</button>
                     </form>
                 </span>
             </span>

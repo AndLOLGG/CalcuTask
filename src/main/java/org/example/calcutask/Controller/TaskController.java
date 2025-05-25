@@ -57,7 +57,6 @@ public class TaskController {
     private int getUserIdFromSession(HttpSession session) {
         return (Integer) session.getAttribute("userId");
     }
-    //CREATE TASK AND EDIT TASK
 }
 
 
