@@ -16,7 +16,8 @@
     <label for="subtaskDescription">taskbeskrivelse:</label><br>
     <textarea id="subtaskDescription" th:field="*{subtaskDescription}" rows="3" cols="40"></textarea><br><br>
 
-    </div>
+    <label for="subtaskEstimatedHours">Estimated Time:</label><br>
+    <input type="text" id="subtaskEstimatedHours" th:field="*{subtaskEstimatedHours}" required/><br><br>
 
     <button type="submit">Gem ændringer</button>
     <a th:href="@{/project}">Annuller</a>
