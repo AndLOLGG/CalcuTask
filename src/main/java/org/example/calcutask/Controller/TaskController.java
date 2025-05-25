@@ -5,10 +5,33 @@ import org.example.calcutask.Service.TaskService;
 @Controller
 public class TaskController {
     private final TaskService taskService;
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, UserProjectAccessService userProjectAccessService) {
         this.taskService = taskService;
+        this.userProjectAccessService = userProjectAccessService;
     }
 
+    @GetMapping('/task/create')
+    public String createTask(Model model) {
+        model.addAttribute("Task", new Task());
+        return "taskCreate";
+    }
+
+    @PostMapping('/task/create')
+    public String createTask(@RequestParam String taskName, @RequestParam String taskDescription, @RequestParam int projectId, HttpSession session) {
+        Integer userId = getUserIdFromSession(session);
+        Boolean hasAccess = userProjectAccessService.hasUserAccessToProject(userId, projectId);
+        if(hasAccess) {
+            Task t = new Task(taskName, taskDescription, projectId);
+            taskService.create(task);
+            return "project-list";
+        }
+        return "login";
+    }
+
+
+    private int getUserIdFromSession(HttpSession session) {
+        return (Integer) session.getAttribute("userId");
+    }
     //CREATE TASK AND EDIT TASK
 }
 
