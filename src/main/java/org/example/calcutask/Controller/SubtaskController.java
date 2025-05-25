@@ -34,8 +34,22 @@ public class SubtaskController {
         return "redirect:/project/overview?projectId=" + projectId;
     }
 
+    @GetMapping("/subtask/edit")
+    public String editSubtask(@RequestParam int subtaskId, HttpSession session, Model model) {
+        Integer userId = getUserIdFromSession(session);
+        model.setAttribute("subtask", subtaskService.getSubtaskById(subtaskId);)
+        return "edit-subtask";
+    }
+
     private int getUserIdFromSession(HttpSession session) {
         return (Integer) session.getAttribute("userId");
+    }
+
+    @GetMapping("/subtask/overview")
+    public String showProjectOverview(@RequestParam int taskId, Model model) {
+        List<Subtask> subtasks = SubtaskService.getSubtasksByTaskId(taskId);
+        model.addAttribute("subTasks", subtasks);
+        return "subtask-overview";
     }
 }
 

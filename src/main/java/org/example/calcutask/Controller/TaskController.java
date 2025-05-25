@@ -9,8 +9,7 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-
-
+    //CREATE TASK AND EDIT TASK
 }
 
 
@@ -70,23 +69,5 @@ public class TaskController {
 //        TaskService.addTask(task);
 //        return "redirect:/task";
 //    }
-//
-//    @GetMapping("/wishlist/{id}/add-wish")
-//    public String showAddWishForm(@PathVariable("id") int taskId, Model model, HttpSession session) {
-//        Integer loggedInUserId = (Integer) session.getAttribute("userId");
-//        if (loggedInUserId == null) {
-//            return "redirect:/login";
-//        }
-//
-//        Task task = taskService.getTaskById(taskId);
-//        if (task == null || task.getUserId() != loggedInUserId) {
-//            return "redirect:/";
-//        }
-//
-//        model.addAttribute("taskId", taskId);
-//        model.addAttribute("task", new Task());
-//        return "add-task";
-//    }
 }
-
  **/

@@ -26,6 +26,17 @@ public class TaskRepository {
         return template.query(sql, new TaskRowMapper(), projectId);
     }
 
+    public List<Task> findByProjectId(List<Integer> projectIds) {
+        if (projectIds == null || projectIds.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        String placeholders = String.join(",", Collections.nCopies(projectIds.size(), "?"));
+
+        String sql = "SELECT * FROM task WHERE project_id IN (" + placeholders + ")";
+        return template.query(sql, projectIds.toArray(), new TaskRowMapper());
+    }
+
     public Task findByIdWithSubtask(int taskId) {
         String taskSql = "SELECT * FROM task WHERE task_id = ?";
         Task task = template.queryForObject(taskSql, new TaskRowMapper(), taskId);

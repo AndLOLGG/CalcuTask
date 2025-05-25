@@ -13,10 +13,13 @@ import java.util.List;
 public class ProjectController {
 
     private final ProjectService projectService;
+    private final TaskService taskService;
+    private final SubtaskService subtaskService;
     private final String userId = "userId";
 
     public ProjectController(ProjectService projectService) {
         this.projectService = projectService;
+        this.taskService = new TaskService();
     }
 
     @GetMapping("/project")
@@ -26,12 +29,14 @@ public class ProjectController {
             return "redirect:/login"; // eller vis en 403 side
         }
         List<Project> projects = projectService.getProjectsByUserId(userId);
-
+        List<Integer> projectIds = new List<Integer>(); 
         for (Project p : projects) {
             String access = projectService.getUserAccessType(userId, p.getProjectId());
+            projectIds.add(p.getProjectId());
             p.setAccessType(access);
         }
 
+        model.addAttribute("tasks",taskService.getTasksByProjectId(projectIds));
         model.addAttribute("projects", projects);
         return "project-list";
     }
@@ -96,12 +101,4 @@ public class ProjectController {
             projectService.updateProjectAndTasks(project);
             return "redirect:/project";
         }
-
-    @GetMapping("/project/overview")
-    public String showProjectOverview(@RequestParam int projectId, Model model) {
-        Project project = projectService.getFullProjectWithTasks(projectId);
-        model.addAttribute("project", project);
-        return "project-overview";
-    }
-
 }
