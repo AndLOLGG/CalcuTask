@@ -6,6 +6,11 @@
   <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
+  <h1>All users</h1>
+  <span th:if="${session.userRole == 'ADMIN'}">
+    <a href="/users" class="btn btn-secondary">Vis alle bruger</a>
+  </span>
+
 <h2>Your Projects</h2>
 <a href="/project/create">+ Create New Project</a>
 

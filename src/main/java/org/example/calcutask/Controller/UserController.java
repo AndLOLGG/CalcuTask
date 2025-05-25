@@ -28,7 +28,7 @@ public class UserController {
         if(user != null) {
             session.setAttribute("userId", user.getUserId());
             session.setAttribute("userRole", user.getRole());
-            return "redirect:/project";
+            return "redirect:/project-list";
         }
         model.addAttribute("error", "User or password incorrect");
         return "login";
