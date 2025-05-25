@@ -13,12 +13,8 @@
 
     <label for="taskDescription">Task Description:</label><br>
     <textarea id="taskDescription" name="taskDescription"></textarea><br><br>
-
-    <label for="subtaskEstimatedHours">Estimated Time:</label><br>
-    <textarea id="subtaskEstimatedHours" name="subtaskEstimatedHours"></textarea><br><br>
-
     <button type="submit">Create task</button>
   </form>
-  <a th:href="@{'/subtask/overview?taskId=' + ${taskId}}">← Back to subtask overview</a>
+  <a th:href="@{'/project'}">← Back to subtask overview</a>
 </body>
 </html>
