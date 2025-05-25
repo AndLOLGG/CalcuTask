@@ -47,10 +47,9 @@ public class TaskController {
         return "edit-task";
     }
 
-    @PostMapping("/task/update")
-    public String updateTask(@ModelAttribute Task task @RequestParam int projectId) {
+    @PostMapping("/task/edit")
+    public String updateTask(@ModelAttribute Task task) {
         Task t = task;
-        task.setProjectId(projectId);
         taskService.updateTask(task);
         return "redirect:/project";
     }
