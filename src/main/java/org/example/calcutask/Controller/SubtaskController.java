@@ -29,11 +29,12 @@ public class SubtaskController {
     }
 
     @PostMapping("/subtask/statusAndAssign")
-    public String assignSubtask(@RequestParam int subtaskId, HttpSession session, @RequestParam int projectId) {
+    public String assignSubtask(@RequestParam int subtaskId, HttpSession session) {
         Integer userId = getUserIdFromSession(session);
         subtaskService.statusAndAssignSubtaskToUser(subtaskId, userId, Status.Igang.name());
-        return "redirect:/project/overview?projectId=" + projectId;
+        return "redirect:/project/overview?taskId=" + taskId;
     }
+
     @PostMapping("/subtask/release")
     public String releaseSubtask(@RequestParam int subtaskId, @RequestParam int projectId) {
         subtaskService.releaseSubtaskFromUser(subtaskId);
@@ -80,13 +81,10 @@ public class SubtaskController {
         if(hasAccess) {
             Subtask st = new Subtask(subtask.getSubtaskName(), subtask.getSubtaskDescription(), subtask.getSubtaskEstimatedHours(), subtask.getTaskId());
             subtaskService.createSubtask(st);
-            return "redirect:/subtask-overview";
+            return "redirect:/subtask/overview";
         }
         return "redirect:/login";
     }
-
-    // http://localhost:8080/subtask/overview?taskId=4
-    // http://localhost:8080/subtask/create
 
     @GetMapping("/subtask/edit") 
     public String editSubtask(@RequestParam int taskId, @RequestParam int subtaskId, Model model, HttpSession session) {

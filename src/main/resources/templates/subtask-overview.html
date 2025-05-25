@@ -18,6 +18,7 @@
         <span th:if="${sub.assignedUserId == null}">
             <form th:action="@{/subtask/statusAndAssign}" method="post" style="display:inline;">
                 <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                <input type="hidden" th:field="*{taskId}"/>
                 <button type="submit" class="btn btn-success">Igang</button>
             </form>
         </span>
