@@ -54,6 +54,11 @@ public class TaskRepository {
         return task;
     }
 
+    public Task findById(int taskId) {
+        String taskSql = "SELECT * FROM task WHERE task_id = ?";
+        return template.queryForObject(taskSql, new TaskRowMapper(), taskId);
+    }
+
     public void update(Task task) {
         String sql = "UPDATE task SET task_name = ?, task_description = ?, task_estimated_hours = ?, project_id = ? WHERE task_id = ?";
         template.update(sql, task.getTaskName(), task.getTaskDescription(), task.getTaskEstimatedHours(), task.getProjectId(), task.getTaskId());

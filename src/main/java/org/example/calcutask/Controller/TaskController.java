@@ -38,6 +38,18 @@ public class TaskController {
         return "redirect:/login";
     }
 
+    @GetMapping("/task/edit") 
+    public String editTask(@RequestParam int taskId, Model model) {
+        Task t = taskService.findById(taskId);
+        model.addAttribute("task", t);
+        return "edit-task";
+    }
+
+    @PostMapping("/task/update")
+    public String updateTask(@ModelAttribute task) {
+        Task t = task; 
+        return "redirect:/project";
+    }
 
     private int getUserIdFromSession(HttpSession session) {
         return (Integer) session.getAttribute("userId");

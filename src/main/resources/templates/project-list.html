@@ -18,8 +18,7 @@
       <div>
         <td th:text="${task.taskName}"></td>
         <a th:href="@{'/subtask/overview?taskId=' + ${task.taskId}}" class="btn btn-secondary">Se sub-tasks</a>
-        <a th:href="@{'/task/edit?taskId=' + ${task.taskId}}" class="btn btn-secondary">Ret Task</a>
-        
+        <a th:href="@{'/task/edit?taskId=' + ${task.taskId}}" class="btn btn-secondary">Rediger Task</a>
       </div>
   </tr>
 

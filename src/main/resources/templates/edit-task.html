@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rediger task</title>
+</head>
+<body>
+
+<h2>Rediger task</h2>
+
+<form th:action="@{/task/update}" th:object="${task}" method="post">
+    <input type="hidden" th:field="*{taskId}"/>
+
+    <label for="taskName">Tasktitel:</label><br>
+    <input type="text" id="taskName" th:field="*{taskName}" required/><br><br>
+
+    <label for="taskDescription">taskbeskrivelse:</label><br>
+    <textarea id="taskDescription" th:field="*{taskDescription}" rows="3" cols="40"></textarea><br><br>
+
+    </div>
+
+    <button type="submit">Gem ændringer</button>
+    <a th:href="@{/project}">Annuller</a>
+</form>
+
+</body>
+</html>
