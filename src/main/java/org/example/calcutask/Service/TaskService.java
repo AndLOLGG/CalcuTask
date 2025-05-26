@@ -17,8 +17,16 @@ public class TaskService {
         taskRepository.save(task);
     }
 
+    public Task findById(int taskId) {
+        return taskRepository.findById(taskId);
+    }
+
     public List<Task> getTasksByProjectId(int projectId) {
         return taskRepository.findByProjectId(projectId);
+    }
+
+    public List<Task> getTasksByProjectIds(List<Integer> projectIds) {
+        return taskRepository.findByProjectIds(projectIds);
     }
 
     // Retrieve a task along with its associated subtasks

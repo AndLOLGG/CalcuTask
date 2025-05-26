@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
+  <meta charset="UTF-8">
   <title>Create Project</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
+
 <h1>Create a New Project</h1>
 
 <form th:action="@{/project/create}" method="post">
@@ -13,9 +16,10 @@
   <label for="projectDescription">Project Description:</label><br>
   <textarea id="projectDescription" name="projectDescription"></textarea><br><br>
 
-  <button type="submit">Create Project</button>
+  <button type="submit" class="btn">Create Project</button>
 </form>
 
-<a th:href="@{/project}">← Back to Projects</a>
+<a th:href="@{/project}" class="btn">← Back to Projects</a>
+
 </body>
 </html>
