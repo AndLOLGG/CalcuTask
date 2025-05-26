@@ -94,8 +94,8 @@ public class SubtaskController {
         return "redirect:/login";
     }
 
-    @PostMapping("/project/delete")
-    public String deleteProject(@RequestParam int subtaskId, @RequestParam int taskId) {
+    @PostMapping("/subtask/delete")
+    public String deleteSubtask(@RequestParam int subtaskId, @RequestParam int taskId) {
         try {
             subtaskService.deleteSubtask(subtaskId);
             return "redirect:/subtask/overview?taskId=" + taskId;
