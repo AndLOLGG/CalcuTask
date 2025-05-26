@@ -67,7 +67,7 @@ public class ProjectController {
 
         projectService.grantAccessToProject(userIdFromSession);
 
-        return "redirect:/project-list";
+        return "redirect:/project";
     }
 
 
@@ -102,6 +102,6 @@ public class ProjectController {
         @PostMapping("/project/update")
         public String updateProject (@ModelAttribute Project project){
             projectService.updateProjectAndTasks(project);
-            return "redirect:/project-list";
+            return "redirect:/project";
         }
 }
