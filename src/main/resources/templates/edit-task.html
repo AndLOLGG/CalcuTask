@@ -26,10 +26,10 @@
 </form>
 
 <form th:action="@{/task/delete}" method="post">
-    <input type="hidden" th:field="*{taskId}"/>
-
-  <button type="submit" class="btn">slet</button>
+    <input type="hidden" name="taskId" th:value="${task.taskId}" />
+    <button type="submit" class="btn btn-danger">Slet</button>
 </form>
+
 
 
 </body>
