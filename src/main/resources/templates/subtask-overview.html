@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Subtask Overview</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<h3>Opgaver</h3>
+<a th:href="@{/subtask/create(taskId=${taskId})}" class="btn btn-secondary">Opret Subtask</a>
+
+<ul>
+    <li th:each="sub : ${subTasks}">
+        <strong th:text="${sub.subtaskName}"></strong><br/>
+        <span th:text="'Status: ' + ${sub.subtaskStatus}"></span><br/>
+        <span th:text="'Estimeret tid: ' + ${sub.subtaskEstimatedHours} + ' timer'"></span><br/><br/>
+
+        <!-- Hvis subtask ikke er påtaget -->
+        <span th:if="${sub.assignedUserId == null}">
+            <form th:action="@{/subtask/statusAndAssign}" method="post" style="display:inline;">
+                <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                <input type="hidden" name="taskId" th:value="${taskId}" />
+                <button type="submit" class="btn btn-success">Igang</button>
+            </form>
+        </span>
+
+        <!-- Hvis subtask allerede er påtaget -->
+        <span th:if="${sub.assignedUserId != null}">
+            <em>☑ Påtaget af <span th:text="${sub.assignedUsername}"></span></em><br/>
+
+            <!-- Hvis bruger selv har påtaget sig -->
+            <span th:if="${sub.assignedUserId == session.userId}">
+                <span th:if="${sub.subtaskStatus == 'Igang'}">
+                    <form th:action="@{/subtask/updateTaskStatus}" method="post" style="display:inline;">
+                        <input type="hidden" name="status" value="Blokeret" />
+                        <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                        <input type="hidden" name="taskId" th:value="${taskId}" />
+                        <button type="submit" class="btn btn-warning">Blokeret</button>
+                    </form>
+
+                    <form th:action="@{/subtask/updateTaskStatus}" method="post" style="display:inline;">
+                        <input type="hidden" name="status" value="Test" />
+                        <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                        <input type="hidden" name="taskId" th:value="${taskId}" />
+                        <button type="submit" class="btn btn-warning">Test</button>
+                    </form>
+                </span>
+
+                <span th:if="${sub.subtaskStatus == 'Test'}">
+                    <form th:action="@{/subtask/updateTaskStatus}" method="post" style="display:inline;">
+                        <input type="hidden" name="status" value="Done" />
+                        <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                        <input type="hidden" name="taskId" th:value="${taskId}" />
+                        <button type="submit" class="btn btn-success">Done</button>
+                    </form>
+                </span>
+
+                <span th:if="${sub.subtaskStatus != 'Done'}">
+                    <form th:action="@{/subtask/release}" method="post" style="display:inline;">
+                        <input type="hidden" name="subtaskId" th:value="${sub.subtaskId}" />
+                        <input type="hidden" name="taskId" th:value="${taskId}" />
+                        <button type="submit" class="btn btn-danger">Frigiv</button>
+                    </form>
+
+                    <a th:href="@{'/subtask/edit?taskId=' + ${taskId} + '&subtaskId=' + ${sub.subtaskId}}" class="btn btn-secondary">Redigere</a>
+                </span>
+            </span>
+        </span>
+    </li>
+</ul>
+
+<!-- Tilbage-knap -->
+<a href="/project" class="btn btn-secondary">⬅ Tilbage til projekter</a>
+
+</body>
+</html>

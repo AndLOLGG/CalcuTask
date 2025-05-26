@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Rediger projekt</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
 
@@ -17,26 +17,6 @@
 
     <label for="projectDescription">Projektbeskrivelse:</label><br>
     <textarea id="projectDescription" th:field="*{projectDescription}" rows="3" cols="40"></textarea><br><br>
-
-    <!-- Tasks -->
-    <div th:each="task, tStat : ${project.tasks}">
-        <h3>Task [[${tStat.index + 1}]]</h3>
-
-        <input type="hidden" name="tasks[[${tStat.index}]].taskId" th:value="${task.taskId}" />
-
-        <label>Tasktitel:</label><br>
-        <input type="text" name="tasks[[${tStat.index}]].taskName" th:value="${task.taskName}" /><br><br>
-
-        <!-- Subtasks -->
-        <div th:each="subtask, sStat : ${task.subtasks}">
-            <label>Subtasktitel:</label><br>
-            <input type="hidden" name="tasks[[${tStat.index}]].subtasks[[${sStat.index}]].subtaskId"
-                   th:value="${subtask.subtaskId}" />
-            <input type="text" name="tasks[[${tStat.index}]].subtasks[[${sStat.index}]].subtaskName"
-                   th:value="${subtask.subtaskName}" />
-            <br><br>
-        </div>
-    </div>
 
     <button type="submit">Gem ændringer</button>
     <a th:href="@{/project}">Annuller</a>

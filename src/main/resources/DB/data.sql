@@ -35,3 +35,11 @@ VALUES
     (2, 'Auth endpoint', 'Secure login API refactor', 5.0, 'To-do', 2),
     (3, 'Grimrian', 'Flotte fyr', 5.0, 'To-do', 3);
 
+UPDATE task t
+SET task_estimated_hours = (
+    SELECT IFNULL(SUM(s.subtask_estimated_hours), 0)
+    FROM subtask s
+    WHERE s.task_id = t.task_id
+);
+
+

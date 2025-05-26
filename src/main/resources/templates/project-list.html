@@ -3,20 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Dine Projekter</title>
-  <link rel="stylesheet" th:href="@{/styles.css}" />
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
 <h2>Your Projects</h2>
-<a href="/project/create">+ Create New Project</a>
+<a href="/project/create" class="btn btn-primary">+ Create New Project</a>
 
 <div th:each="project : ${projects}" class="project-box" style="margin-bottom: 20px;">
   <h3 th:text="${project.projectName}"></h3>
   <p th:text="${project.projectDescription}"></p>
+  <a th:href="@{/task/create(projectId=${project.projectId})}" class="btn btn-secondary">Opret Task</a>
 
-  <!-- Se oversigt-knap er altid synlig -->
-  <a th:href="@{'/project/overview?projectId=' + ${project.projectId}}" class="btn btn-secondary">Se oversigt</a>
+  <div th:each="task : ${tasks}" th:if="${task.projectId} == ${project.projectId}" style="margin-left: 15px; margin-top: 10px;">
+    <p>
+      <strong th:text="${task.taskName}"></strong><br/>
+      <span th:text="'Estimeret tid: ' + ${task.taskEstimatedHours} + ' timer'"></span><br/>
+    </p>
+    <a th:href="@{'/subtask/overview?taskId=' + ${task.taskId}}" class="btn btn-secondary">Se sub-tasks</a>
+    <a th:href="@{'/task/edit?taskId=' + ${task.taskId} + '&projectId=' + ${task.projectId}}" class="btn btn-secondary">Rediger Task</a>
+  </div>
 
-  <!-- Rediger og slet kun hvis adgangstype er EDIT -->
   <div th:if="${project.accessType == 'EDIT'}" style="margin-top: 8px;">
     <a th:href="@{'/project/edit?projectId=' + ${project.projectId}}" class="btn btn-primary">Rediger titler</a>
     <form th:action="@{/project/delete}" method="post" style="display:inline;">

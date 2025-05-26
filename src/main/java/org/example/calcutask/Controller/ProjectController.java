@@ -3,21 +3,27 @@ package org.example.calcutask.Controller;
 import jakarta.servlet.http.HttpSession;
 import org.example.calcutask.Model.Project;
 import org.example.calcutask.Service.ProjectService;
+import org.example.calcutask.Service.TaskService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class ProjectController {
 
     private final ProjectService projectService;
+    private final TaskService taskService;
+
     private final String userId = "userId";
 
-    public ProjectController(ProjectService projectService) {
+    public ProjectController(ProjectService projectService, TaskService taskService) {
         this.projectService = projectService;
+        this.taskService = taskService;
     }
+
 
     @GetMapping("/project")
     public String getAllProjects(Model model, HttpSession session) {
@@ -26,12 +32,14 @@ public class ProjectController {
             return "redirect:/login"; // eller vis en 403 side
         }
         List<Project> projects = projectService.getProjectsByUserId(userId);
-
+        List<Integer> projectIds = new ArrayList<>();
         for (Project p : projects) {
             String access = projectService.getUserAccessType(userId, p.getProjectId());
+            projectIds.add(p.getProjectId());
             p.setAccessType(access);
         }
 
+        model.addAttribute("tasks",taskService.getTasksByProjectIds(projectIds));
         model.addAttribute("projects", projects);
         return "project-list";
     }
@@ -96,12 +104,4 @@ public class ProjectController {
             projectService.updateProjectAndTasks(project);
             return "redirect:/project";
         }
-
-    @GetMapping("/project/overview")
-    public String showProjectOverview(@RequestParam int projectId, Model model) {
-        Project project = projectService.getFullProjectWithTasks(projectId);
-        model.addAttribute("project", project);
-        return "project-overview";
-    }
-
 }

@@ -22,6 +22,13 @@ public class Task {
         this.taskStatus = taskStatus;
         this.projectId = projectId;
     }
+    
+    public Task(String taskName, String taskDescription, Integer projectId) {
+        this.taskName = taskName;
+        this.taskDescription = taskDescription;
+        this.projectId = projectId;
+    }
+
     public Task() {}
 
     //Getters

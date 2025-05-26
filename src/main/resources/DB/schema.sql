@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS subtask (
                                        subtask_id INT AUTO_INCREMENT PRIMARY KEY,
                                        subtask_name VARCHAR(255),
                                        subtask_description TEXT,
-                                       subtask_estimated_hours DECIMAL(4, 2),
+                                       subtask_estimated_hours INT,
                                        subtask_status VARCHAR(50),
                                        assigned_user_id INT DEFAULT NULL,
                                        task_id INT,

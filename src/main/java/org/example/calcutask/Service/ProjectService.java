@@ -30,7 +30,6 @@ public class ProjectService {
 
     public void addProject(Project project) {
         projectRepository.addProject(project);
-        System.out.println("project saved successfully!");
     }
 
     public List<Project> getProjectsByUserId(int userId) {
