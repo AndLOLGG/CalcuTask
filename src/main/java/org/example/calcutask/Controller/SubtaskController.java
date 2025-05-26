@@ -48,13 +48,6 @@ public class SubtaskController {
         return "redirect:/subtask/overview?taskId=" + taskId;
     }
 
-//    @GetMapping("/subtask/edit")
-//    public String editSubtask(@RequestParam int subtaskId, HttpSession session, Model model) {
-//        Integer userId = getUserIdFromSession(session);
-//        model.addAttribute("subtask", subtaskService.getSubtaskById(subtaskId));
-//        return "edit-subtask";
-//    }
-
     private int getUserIdFromSession(HttpSession session) {
         return (Integer) session.getAttribute("userId");
     }
@@ -62,6 +55,7 @@ public class SubtaskController {
     @GetMapping("/subtask/overview")
     public String showProjectOverview(@RequestParam int taskId, Model model) {
         List<Subtask> subtasks = subtaskService.getSubtasksByTaskId(taskId);
+
         model.addAttribute("subTasks", subtasks);
         model.addAttribute("taskId", taskId);
         return "subtask-overview";
@@ -98,6 +92,17 @@ public class SubtaskController {
             return "edit-subtask";
         }
         return "redirect:/login";
+    }
+
+    @PostMapping("/project/delete")
+    public String deleteProject(@RequestParam int subtaskId, @RequestParam int taskId) {
+        try {
+            subtaskService.deleteSubtask(subtaskId);
+            return "redirect:/subtask/overview?taskId=" + taskId;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error/500"; // Hvis du har lavet en custom fejlside
+        }
     }
 
     @PostMapping("/subtask/edit")

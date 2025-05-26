@@ -65,7 +65,9 @@ public class TaskRepository {
     }
 
     public void deleteById(int taskId) {
-        String sql = "DELETE FROM task WHERE task_id = ?";
-        template.update(sql, taskId);
+        String sql1 = "DELETE FROM Subtask WHERE task_Id = ?";
+        template.update(sql1, taskId);
+        String sql2 = "DELETE FROM task WHERE task_id = ?";
+        template.update(sql2, taskId);
     }
 }
