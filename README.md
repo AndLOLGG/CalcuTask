@@ -50,7 +50,7 @@ This provides strong protection against brute-force and rainbow table attacks.
 
 ## 📐 Domain Model
 
-![Domain Model](https://github.com/AndLOLGG/CalcuTask/blob/main/diagrams/CalcuTask%20Domain%20Model.png)
+![Domain Model](https://github.com/AndLOLGG/CalcuTask/blob/main/diagrams/CalcuTask%20Domain%20Model%20v3.png)
 
 ---
 
