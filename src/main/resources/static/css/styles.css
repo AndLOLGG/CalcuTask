@@ -1,21 +1,143 @@
+/* ======= GLOBAL ======= */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f2f1;
+    background-color: #e6f3f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #003f5c;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 40px 20px;
 }
 
+/* ======= HEADINGS ======= */
+h1, h2, h3 {
+    color: #002b45;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ======= LINKS ======= */
+a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ======= FORMULARER ======= */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: #003f5c;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+/* ======= KNAPPER ======= */
+button,
+.btn {
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover,
+.btn:hover {
+    background-color: #005f87;
+}
+
+/* Farver til specialknapper */
+.btn-danger {
+    background-color: #ff4d4d;
+}
+.btn-danger:hover {
+    background-color: #e60000;
+}
+
+.btn-secondary {
+    background-color: #5a99c7;
+}
+.btn-secondary:hover {
+    background-color: #3c7ba7;
+}
+
+.btn-success {
+    background-color: #2e8b57;
+}
+.btn-success:hover {
+    background-color: #226b44;
+}
+
+.btn-warning {
+    background-color: #f4a261;
+}
+.btn-warning:hover {
+    background-color: #e76f51;
+}
+
+input[type="submit"] {
+    font-weight: bold;
+}
+
+/* ======= LISTEDE ELEMENTER ======= */
+ul {
+    list-style: none;
+    padding-left: 0;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+li {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ======= LOGIN ======= */
 .login-page {
     text-align: center;
     width: 100%;
     max-width: 400px;
     background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 60px auto;
 }
 
 .login-header .logo {
@@ -24,8 +146,8 @@ body {
 }
 
 .login-header h1 {
-    font-size: 24px;
-    color: #333;
+    font-size: 26px;
+    color: #003f5c;
     margin-bottom: 20px;
 }
 
@@ -39,10 +161,10 @@ body {
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
     font-weight: bold;
-    color: #333;
+    color: #003f5c;
+    margin-bottom: 5px;
+    display: block;
 }
 
 .form-group input {
@@ -53,64 +175,50 @@ body {
     font-size: 14px;
 }
 
-.login-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #2b5879;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.login-button:hover {
-    background-color: #005a9e;
-}
-
+/* ======= FOOTER ======= */
 footer {
-    margin-top: 20px;
-    font-size: 12px;
+    margin-top: 30px;
+    font-size: 13px;
     color: #666;
+    text-align: center;
 }
 
 footer a {
     color: #0078d4;
-    text-decoration: none;
 }
 
 footer a:hover {
     text-decoration: underline;
 }
-body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
+
+/* ======= PROJECT PAGE LAYOUT ======= */
+.project-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-ul {
-    list-style: none;
-    padding-left: 0;
-    max-width: 600px; /* centrér ikke for meget */
+.project-box {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    text-align: center;
 }
 
-li {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #f9f9f9;
+.project-box h3 {
+    margin-bottom: 10px;
+    color: #003f5c;
 }
 
-form button {
-    background-color: #ff4d4d;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
+.project-box p {
+    margin-bottom: 15px;
+    color: #333;
 }
 
-form button:hover {
-    background-color: #e60000;
+.project-box .btn {
+    margin: 5px;
 }

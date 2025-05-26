@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
-  <title>Create Subtask</title>
+    <meta charset="UTF-8">
+    <title>Create Subtask</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
-    <h1>Create a new Subtask</h1>
 
-    <form th:action="@{/subtask/create}" th:object="${subtask}" method="post">
-        <input type="hidden" th:field="*{taskId}"/>
-        <label for="subtaskName">Subtask Name:</label><br>
-        <input type="text" id="subtaskName" name="subtaskName"><br><br>
+<h1 style="text-align: center;">Create a New Subtask</h1>
 
-        <label for="subtaskDescription">Subtask Description:</label><br>
-        <textarea id="subtaskDescription" name="subtaskDescription"></textarea><br><br>
+<form th:action="@{/subtask/create}" th:object="${subtask}" method="post">
+    <input type="hidden" th:field="*{taskId}" />
 
-        <label for="subtaskEstimatedHours">Estimated Time:</label><br>
-        <input type="text" id="subtaskEstimatedHours" name="subtaskEstimatedHours"><br><br>
+    <label for="subtaskName">Subtask Name:</label>
+    <input type="text" id="subtaskName" th:field="*{subtaskName}" required />
 
-        <button type="submit">Create subtask</button>
-    </form>
+    <label for="subtaskDescription">Subtask Description:</label>
+    <textarea id="subtaskDescription" th:field="*{subtaskDescription}" required></textarea>
 
-    <a th:href="@{'/subtask/overview?taskId=' + ${taskId}}">← Back to subtask overview</a>
+    <label for="subtaskEstimatedHours">Estimated Time:</label>
+    <input type="number" id="subtaskEstimatedHours" th:field="*{subtaskEstimatedHours}" required />
+
+    <button type="submit" class="btn btn-danger">Create Subtask</button>
+</form>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a th:href="@{'/subtask/overview?taskId=' + ${taskId}}" class="btn btn-secondary">← Back to Subtask Overview</a>
+</div>
+
 </body>
 </html>

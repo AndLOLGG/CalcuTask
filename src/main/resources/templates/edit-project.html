@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Rediger projekt</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
 
@@ -17,8 +17,6 @@
 
     <label for="projectDescription">Projektbeskrivelse:</label><br>
     <textarea id="projectDescription" th:field="*{projectDescription}" rows="3" cols="40"></textarea><br><br>
-
-    </div>
 
     <button type="submit">Gem ændringer</button>
     <a th:href="@{/project}">Annuller</a>

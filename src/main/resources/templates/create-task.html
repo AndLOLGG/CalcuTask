@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
+  <meta charset="UTF-8">
   <title>Create Task</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
-  <h1>Create a new task</h1>
+<h1>Create a new task</h1>
 
-  <form th:action="@{/task/create}" method="post">
-    <input type="hidden" name="projectId" th:value="${projectId}" />
-    <label for="taskName">Task Name:</label><br>
-    <input type="text" id="taskName" name="taskName"><br><br>
+<form th:action="@{/task/create}" method="post">
+  <input type="hidden" name="projectId" th:value="${projectId}" />
+  <label for="taskName">Task Name:</label><br>
+  <input type="text" id="taskName" name="taskName"><br><br>
 
-    <label for="taskDescription">Task Description:</label><br>
-    <textarea id="taskDescription" name="taskDescription"></textarea><br><br>
-    <button type="submit">Create task</button>
-  </form>
-  <a th:href="@{'/project'}">← Back to subtask overview</a>
+  <label for="taskDescription">Task Description:</label><br>
+  <textarea id="taskDescription" name="taskDescription"></textarea><br><br>
+  <button type="submit">Create task</button>
+</form>
+
+<a th:href="@{'/project'}">← Back to subtask overview</a>
 </body>
 </html>

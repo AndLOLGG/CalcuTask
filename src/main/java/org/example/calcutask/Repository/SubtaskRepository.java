@@ -32,19 +32,38 @@ public class SubtaskRepository {
 
     public void save(Subtask subtask) {
         String sql = "INSERT INTO subtask (subtask_name, subtask_description, subtask_estimated_hours, subtask_status, task_id) VALUES (?, ?, ?, ?, ?)";
-        template.update(sql, subtask.getSubtaskName(), subtask.getSubtaskDescription(), subtask.getSubtaskEstimatedHours(), subtask.getSubtaskStatus(), subtask.getTaskId());
+        template.update(sql,
+                subtask.getSubtaskName(),
+                subtask.getSubtaskDescription(),
+                subtask.getSubtaskEstimatedHours(),
+                subtask.getSubtaskStatus(),
+                subtask.getTaskId()
+        );
+        updateTaskEstimatedHours(subtask.getTaskId());
     }
 
     public void update(Subtask subtask) {
         String sql = "UPDATE subtask SET subtask_name = ?, subtask_description = ?, subtask_estimated_hours = ? WHERE subtask_id = ?";
-        template.update(sql, subtask.getSubtaskName(), subtask.getSubtaskDescription(), subtask.getSubtaskEstimatedHours(), subtask.getSubtaskId());
-        System.out.println(subtask.getSubtaskEstimatedHours());
-        System.out.println(subtask.getSubtaskId());
+        template.update(sql,
+                subtask.getSubtaskName(),
+                subtask.getSubtaskDescription(),
+                subtask.getSubtaskEstimatedHours(),
+                subtask.getSubtaskId()
+        );
+        updateTaskEstimatedHours(subtask.getTaskId());
     }
 
     public void deleteById(int subtaskId) {
+        // Find taskId først, så vi kan opdatere tasken bagefter
+        String getTaskIdSql = "SELECT task_id FROM subtask WHERE subtask_id = ?";
+        Integer taskId = template.queryForObject(getTaskIdSql, Integer.class, subtaskId);
+
         String sql = "DELETE FROM subtask WHERE subtask_id = ?";
         template.update(sql, subtaskId);
+
+        if (taskId != null) {
+            updateTaskEstimatedHours(taskId);
+        }
     }
 
     public void statusAndAssignSubtaskToUser(int subtaskId, int userId, String subtaskStatus) {
@@ -60,5 +79,19 @@ public class SubtaskRepository {
     public void updateStatus(int subtaskId, String status) {
         String sql = "UPDATE subtask SET subtask_status = ? WHERE subtask_id = ?";
         template.update(sql, status, subtaskId);
+    }
+
+    // 🔁 Summerer estimated_hours for alle subtasks og opdaterer task
+    private void updateTaskEstimatedHours(int taskId) {
+        String sql = """
+            UPDATE task
+            SET task_estimated_hours = (
+                SELECT IFNULL(SUM(subtask_estimated_hours), 0)
+                FROM subtask
+                WHERE task_id = ?
+            )
+            WHERE task_id = ?
+        """;
+        template.update(sql, taskId, taskId);
     }
 }
