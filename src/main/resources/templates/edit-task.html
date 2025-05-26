@@ -20,8 +20,6 @@
     <textarea id="taskDescription" th:field="*{taskDescription}" rows="3" cols="40"></textarea><br><br>
 
     <button type="submit">Gem ændringer</button>
-    <a th:href="@{/task/delete(taskId=${taskId})}" class="btn btn-secondary">Slet task</a>
-
     <a th:href="@{/project}">Annuller</a>
 </form>
 

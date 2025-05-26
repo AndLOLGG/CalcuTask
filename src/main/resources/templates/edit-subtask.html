@@ -23,8 +23,13 @@
     <input type="number" id="subtaskEstimatedHours" th:field="*{subtaskEstimatedHours}" required/><br><br>
 
     <button type="submit">Gem ændringer</button>
-    <a th:href="@{/subtask/delete(subtask=${subtask.subtaskId}, taskId=${taskId})}" class="btn btn-secondary">Slet task</a>
     <a th:href="@{'/subtask/overview?taskId=' + ${taskId}}">Annuller</a>
+</form>
+
+<form th:action="@{/subtask/delete}" method="post">
+    <input type="hidden" name="taskId" th:value="${task.taskId}" />
+    <input type="hidden" name="subtaskId" th:value="${subtask.subtaskId}" />
+    <button type="submit" class="btn btn-danger">Slet</button>
 </form>
 
 </body>
