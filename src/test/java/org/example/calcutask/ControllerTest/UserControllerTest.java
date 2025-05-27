@@ -1,80 +1,119 @@
 package org.example.calcutask.ControllerTest;
 
+import jakarta.servlet.http.HttpSession;
 import org.example.calcutask.Controller.UserController;
 import org.example.calcutask.Model.User;
 import org.example.calcutask.Service.UserService;
+import org.example.calcutask.Repository.UserProjectAccessRepository;
+import org.example.calcutask.Repository.ProjectRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.mock.web.MockHttpSession;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.ui.Model;
 
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
 class UserControllerTest {
 
-    private MockMvc mockMvc;
+    private UserController userController;
     private UserService userService;
+    private UserProjectAccessRepository accessRepository;
+    private ProjectRepository projectRepository;
 
     @BeforeEach
     void setup() {
+        // Mock dependencies
         userService = Mockito.mock(UserService.class);
-        UserController userController = new UserController(userService);
+        accessRepository = Mockito.mock(UserProjectAccessRepository.class);
+        projectRepository = Mockito.mock(ProjectRepository.class);
 
-        mockMvc = MockMvcBuilders.standaloneSetup(userController)
-                .setViewResolvers((viewName, locale) -> new org.springframework.web.servlet.view.InternalResourceView("/WEB-INF/views/" + viewName + ".jsp"))
-                .build();
+        // Initialize the controller with mocked dependencies
+        userController = new UserController(userService, accessRepository, projectRepository);
     }
 
     @Test
-    void testShowLoginPage() throws Exception {
-        mockMvc.perform(get("/login"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("login"));
+    void testShowLoginPage() {
+        // Test the login page view name
+        String viewName = userController.showLoginPage();
+        assertEquals("login", viewName, "The login page view name should be 'login'");
     }
 
     @Test
-    void testLoginUser_Success() throws Exception {
+    void testLoginUser_Success() {
+        // Mock user authentication
         User mockUser = new User();
         mockUser.setUserId(1);
-
+        mockUser.setRole("USER");
         when(userService.authenticateAndGetUser(anyString(), anyString())).thenReturn(mockUser);
 
-        mockMvc.perform(post("/login")
-                        .param("username", "testUser")
-                        .param("password", "password123"))
-                .andExpect(status().is3xxRedirection()) // Expect 3xx redirection
-                .andExpect(redirectedUrl("/project")) // Verify redirection URL
-                .andExpect(request().sessionAttribute("userId", 1)); // Verify session attribute
+        // Mock session and model
+        HttpSession session = mock(HttpSession.class);
+        Model model = mock(Model.class);
+
+        // Call the loginUser method
+        String viewName = userController.loginUser("testUser", "password123", session, model);
+
+        // Verify session attributes and redirection
+        verify(session).setAttribute("userId", 1);
+        verify(session).setAttribute("userRole", "USER");
+        assertEquals("redirect:/project", viewName, "The user should be redirected to '/project' after successful login");
     }
 
     @Test
-    void testLoginUser_Failure() throws Exception {
+    void testLoginUser_Failure() {
+        // Mock failed authentication
         when(userService.authenticateAndGetUser(anyString(), anyString())).thenReturn(null);
 
-        mockMvc.perform(post("/login")
-                        .param("username", "testUser")
-                        .param("password", "wrongPassword"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("login"))
-                .andExpect(model().attributeExists("error"));
+        // Mock session and model
+        HttpSession session = mock(HttpSession.class);
+        Model model = mock(Model.class);
+
+        // Call the loginUser method
+        String viewName = userController.loginUser("testUser", "wrongPassword", session, model);
+
+        // Verify error attribute and view name
+        verify(model).addAttribute(eq("error"), anyString());
+        assertEquals("login", viewName, "The login page should be shown again on failed login");
     }
 
     @Test
-    void testLogoutUser() throws Exception {
-        MockHttpSession session = new MockHttpSession();
-        session.setAttribute("userId", 1);
+    void testLogoutUser() {
+        // Mock session
+        HttpSession session = mock(HttpSession.class);
 
-        mockMvc.perform(get("/logout").session(session))
-                .andExpect(status().is3xxRedirection()) // Expect 3xx redirection
-                .andExpect(redirectedUrl("/login")); // Verify redirection URL
+        // Call the logout method
+        String viewName = userController.logout(session);
 
-        // Verify session invalidation
-        assert session.getAttribute("userId") == null;
+        // Verify session invalidation and redirection
+        verify(session).invalidate();
+        assertEquals("redirect:/login", viewName, "The user should be redirected to '/login' after logout");
+    }
+
+    @Test
+    void testShowEditUserForm_AsAdmin() {
+        // Mock session and model
+        HttpSession session = mock(HttpSession.class);
+        Model model = mock(Model.class);
+
+        // Mock session attributes
+        when(session.getAttribute("userId")).thenReturn(1);
+        when(session.getAttribute("userRole")).thenReturn("ADMIN");
+
+        // Mock repository and service calls
+        when(userService.getAllUsers()).thenReturn(Collections.emptyList());
+        when(projectRepository.findAllProjects()).thenReturn(Collections.emptyList());
+
+        // Call the showEditUserForm method
+        String viewName = userController.showEditUserForm(1, null, session, model);
+
+        // Verify model attributes and view name
+        verify(model).addAttribute(eq("users"), anyList());
+        verify(model).addAttribute(eq("projects"), anyList());
+        assertEquals("admin-edit-access", viewName, "The admin edit access page should be shown for admins");
     }
 }
