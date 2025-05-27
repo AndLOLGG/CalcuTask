@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret ny bruger</title>
+</head>
+<body>
+<h2>Opret ny bruger</h2>
+
+<form th:action="@{/admin/create-user}" method="post">
+    <label>Brugernavn:</label>
+    <input type="text" name="username" required/>
+    <label>Password:</label>
+    <input type="text" name="password" required/>
+    <label>Rolle:</label>
+    <select name="role">
+        <option value="USER">USER</option>
+        <option value="ADMIN">ADMIN</option>
+    </select>
+    <button type="submit">Opret bruger</button>
+</form>
+
+<a th:href="@{/project}" class="btn btn-secondary">← Tilbage</a>
+</body>
+</html>
