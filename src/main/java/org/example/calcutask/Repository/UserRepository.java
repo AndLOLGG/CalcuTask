@@ -15,7 +15,7 @@ public class UserRepository {
     private JdbcTemplate template;
 
     public void save(User user) {
-        String sql = "INSERT INTO user (username, password_hash, role) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO user (username, user_password, role) VALUES (?, ?, ?)";
         template.update(sql, user.getUsername(), user.getPasswordHash(), user.getRole());
     }
 
