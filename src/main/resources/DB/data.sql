@@ -2,7 +2,8 @@
 INSERT INTO user (user_id, username, user_password, role)
 VALUES
     (1, 'Alice Manager', 'password123', 'DEVELOPER'),
-    (2, 'Bob Developer', 'password456', 'MANAGER');
+    (2, 'Bob Developer', 'password456', 'MANAGER'),
+    (3, 'Admin', 'admin', 'ADMIN');
 
 -- Projekter
 INSERT INTO project (project_id, project_name, project_description, owner_id)
