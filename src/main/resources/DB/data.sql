@@ -1,46 +1,43 @@
 -- Brugere
-INSERT INTO user (user_id, username, user_password, role)
+INSERT INTO user (username, user_password, role)
 VALUES
-    (1, 'Alice Manager', 'password123', 'DEVELOPER'),
-    (2, 'Bob Developer', 'password456', 'MANAGER'),
-    (3, 'Admin', 'admin', 'ADMIN');
+    ('Alice Manager', 'password123', 'DEVELOPER'),
+    ('Bob Developer', 'password456', 'MANAGER'),
+    ('Admin', 'admin', 'ADMIN');
 
 -- Projekter
-INSERT INTO project (project_id, project_name, project_description, owner_id)
+INSERT INTO project (project_name, project_description, owner_id)
 VALUES
-    (1, 'Website Redesign', 'Revamp the landing page and dashboard', 1),
-    (2, 'API Refactoring', 'Refactor the legacy REST API', 1),
-    (3, 'Marketing Dashboard', 'Create dashboard for KPIs', 2);
+    ('Website Redesign', 'Revamp the landing page and dashboard', 1),
+    ('API Refactoring', 'Refactor the legacy REST API', 1),
+    ('Marketing Dashboard', 'Create dashboard for KPIs', 2);
 
--- Kobling: hvilke brugere har adgang til hvilke projekter
--- Kobling: hvilke brugere har adgang til hvilke projekter + adgangstype
+-- Adgang til projekter
 INSERT INTO user_project_access (user_id, project_id, access_type)
 VALUES
-    (1, 1, 'EDIT'),         -- Alice ejer projekt 1 og kan redigere
-    (2, 1, 'READ_ONLY'),    -- Bob må kun læse projekt 1
-    (1, 2, 'EDIT'),         -- Alice har adgang og kan redigere projekt 2
-    (2, 3, 'EDIT');         -- Bob ejer projekt 3 og kan redigere det
+    (1, 1, 'EDIT'),        -- Alice ejer projekt 1
+    (2, 1, 'READ_ONLY'),   -- Bob kan kun læse projekt 1
+    (1, 2, 'EDIT'),        -- Alice redigerer projekt 2
+    (2, 3, 'EDIT');        -- Bob ejer projekt 3
 
-
--- Tasks
-INSERT INTO task (task_id, task_name, task_description, task_estimated_hours, project_id)
+-- Tasks (inkl. actual_hours som INT)
+INSERT INTO task (task_name, task_description, task_estimated_hours, actual_hours, project_id)
 VALUES
-    (1, 'Frontend Redesign', 'Update HTML/CSS structure', 15.0, 1),
-    (2, 'Backend Cleanup', 'Refactor endpoints and DB calls', 20.0, 2),
-    (3, 'Grimrian', 'Flotte fyr', 25.0, 3);
+    ('Frontend Redesign', 'Update HTML/CSS structure', 15, NULL, 1),
+    ('Backend Cleanup', 'Refactor endpoints and DB calls', 20, NULL, 2),
+    ('Grimrian', 'Flotte fyr', 25, NULL, 3);
 
 -- Subtasks
-INSERT INTO subtask (subtask_id, subtask_name, subtask_description, subtask_estimated_hours, subtask_status, task_id)
+INSERT INTO subtask (subtask_name, subtask_description, subtask_estimated_hours, subtask_status, task_id)
 VALUES
-    (1, 'Navbar update', 'Redesign navbar with new branding', 4.0, 'To-do', 1),
-    (2, 'Auth endpoint', 'Secure login API refactor', 5.0, 'To-do', 2),
-    (3, 'Grimrian', 'Flotte fyr', 5.0, 'To-do', 3);
+    ('Navbar update', 'Redesign navbar with new branding', 4, 'TO_DO', 1),
+    ('Auth endpoint', 'Secure login API refactor', 5, 'TO_DO', 2),
+    ('Grimrian', 'Flotte fyr', 5, 'TO_DO', 3);
 
+-- Opdater estimeret tid på tasks baseret på subtasks (INT-venlig version)
 UPDATE task t
 SET task_estimated_hours = (
     SELECT IFNULL(SUM(s.subtask_estimated_hours), 0)
     FROM subtask s
     WHERE s.task_id = t.task_id
 );
-
-

@@ -41,4 +41,9 @@ public class TaskService {
     public void updateTask(Task task) {
         taskRepository.update(task);
     }
+
+    public void updateActualHours(int taskId, int actualHours) {
+        taskRepository.updateActualHours(taskId, actualHours);
+    }
+
 }

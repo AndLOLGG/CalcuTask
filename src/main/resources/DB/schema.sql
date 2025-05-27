@@ -1,5 +1,9 @@
-CREATE DATABASE IF NOT EXISTS CalcuTasker;
+DROP DATABASE IF EXISTS CalcuTasker;
+CREATE DATABASE CalcuTasker;
 USE CalcuTasker;
+
+-- så følger du med dine CREATE TABLE-statements osv.
+
 
 SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS user_project_access;
@@ -36,12 +40,13 @@ CREATE TABLE IF NOT EXISTS user_project_access (
                                                    FOREIGN KEY (project_id) REFERENCES project(project_id)
 );
 
--- Tasktabel med task_status til statusvisning
+-- Tasktabel med både estimeret og reelt tidsforbrug
 CREATE TABLE IF NOT EXISTS task (
                                     task_id INT AUTO_INCREMENT PRIMARY KEY,
                                     task_name VARCHAR(255),
                                     task_description TEXT,
-                                    task_estimated_hours DECIMAL(4, 2),
+                                    task_estimated_hours INT,
+                                    actual_hours INT, -- Reelt tidsforbrug
                                     task_status VARCHAR(50) DEFAULT 'TO_DO',
                                     project_id INT,
                                     FOREIGN KEY (project_id) REFERENCES project(project_id)
