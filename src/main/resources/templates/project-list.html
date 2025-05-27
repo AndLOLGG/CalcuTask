@@ -13,12 +13,10 @@
 </div>
 
 <span th:if="${session.userRole == 'ADMIN'}">
-  <h1>Se alle brugere</h1>
   <a th:href="@{/user/edit-user(userId=${session.userId})}" class="btn btn-secondary">Vis alle brugere</a>
 </span>
 
 <span th:unless="${session.userRole == 'ADMIN'}">
-  <h1>Rediger bruger</h1>
   <a th:href="@{/user/edit-user(userId=${session.userId})}" class="btn btn-secondary">Rediger brugernavn</a>
 </span>
 
