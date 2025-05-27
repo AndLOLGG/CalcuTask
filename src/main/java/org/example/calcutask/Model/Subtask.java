@@ -116,4 +116,15 @@ public class Subtask {
     public void setSubtasks(List<Subtask> subtasks) {
         this.subtasks = subtasks;
     }
+
+    private Integer actualHours; // tilføj denne variabel
+
+    public Integer getActualHours() {
+        return actualHours;
+    }
+
+    public void setActualHours(Integer actualHours) {
+        this.actualHours = actualHours;
+    }
+
 }

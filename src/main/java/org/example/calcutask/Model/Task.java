@@ -97,6 +97,17 @@ public class Task {
         this.subtasks = subtasks;
     }
 
+    private Integer actualHours;
+
+    public Integer getActualHours() {
+        return actualHours;
+    }
+
+    public void setActualHours(Integer actualHours) {
+        this.actualHours = actualHours;
+    }
+
+
 //    private Integer parentTaskId;
 //
 //    public Integer getParentTaskId() {

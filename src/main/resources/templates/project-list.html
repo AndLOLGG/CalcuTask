@@ -34,7 +34,19 @@
     <p>
       <strong th:text="${task.taskName}"></strong><br/>
       <span th:text="'Estimeret tid: ' + ${task.taskEstimatedHours} + ' timer'"></span><br/>
+      <span th:text="'Reelt tidsforbrug: ' + (${task.actualHours != null} ? ${task.actualHours} + ' timer' : 'Ikke angivet')"></span><br/>
     </p>
+
+    <!-- EDIT adgang: Formular til opdatering af actualHours -->
+    <div th:if="${project.accessType == 'EDIT'}">
+      <form th:action="@{/task/update-actual}" method="post" style="margin-bottom: 10px;">
+        <input type="hidden" name="taskId" th:value="${task.taskId}" />
+        <label for="actualHours">Opdater reelt forbrug:</label>
+        <input type="number" name="actualHours" th:value="${task.actualHours}" min="0" required />
+        <button type="submit" class="btn btn-secondary">Gem</button>
+      </form>
+    </div>
+
     <a th:href="@{'/subtask/overview?taskId=' + ${task.taskId}}" class="btn btn-secondary">Se sub-tasks</a>
     <a th:href="@{'/task/edit?taskId=' + ${task.taskId} + '&projectId=' + ${task.projectId}}" class="btn btn-secondary">Rediger Task</a>
   </div>
