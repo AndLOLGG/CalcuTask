@@ -64,6 +64,12 @@ public class TaskController {
             return "error/500"; // Hvis du har lavet en custom fejlside
         }
     }
+    @PostMapping("/task/update-actual")
+    public String updateActualTime(@RequestParam int taskId, @RequestParam int actualHours) {
+        taskService.updateActualHours(taskId, actualHours);
+        return "redirect:/project";
+    }
+
 
     private int getUserIdFromSession(HttpSession session) {
         return (Integer) session.getAttribute("userId");
