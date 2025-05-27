@@ -6,14 +6,21 @@
   <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
-  <span th:if="${session.userRole == 'ADMIN'}">
-    <h1>Se alle brugere</h1>
-    <a href="/users" class="btn btn-secondary">Vis alle bruger</a>
-  </span>
-  <span th:unless="${session.userRole == 'ADMIN'}">
-    <h1>Redigere bruger</h1>
-    <a th:href="@{'/user/edit-user?userId=' + ${session.userId}}"  class="btn btn-secondary">Redigere navn</a>
-  </span>
+
+<!-- Logud-knap -->
+<div style="display: flex; justify-content: flex-end; margin: 10px;">
+  <a href="/logout" class="btn btn-danger">Log ud</a>
+</div>
+
+<span th:if="${session.userRole == 'ADMIN'}">
+  <h1>Se alle brugere</h1>
+  <a th:href="@{/user/edit-user(userId=${session.userId})}" class="btn btn-secondary">Vis alle brugere</a>
+</span>
+
+<span th:unless="${session.userRole == 'ADMIN'}">
+  <h1>Rediger bruger</h1>
+  <a th:href="@{/user/edit-user(userId=${session.userId})}" class="btn btn-secondary">Rediger brugernavn</a>
+</span>
 
 <h2>Your Projects</h2>
 <a href="/project/create" class="btn btn-primary">+ Create New Project</a>

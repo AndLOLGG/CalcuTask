@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Rediger adgang</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+<!-- Tilbage-knap -->
+<a th:href="@{/project}" class="btn btn-secondary" style="margin-bottom: 15px;">← Tilbage til projekter</a>
+
+<h2>Rediger brugeradgange</h2>
+
+<div style="margin-bottom: 20px;">
+    <a th:href="@{/admin/edit-user-form}" class="btn btn-secondary">➤ Rediger brugerinfo</a>
+    <a th:href="@{/admin/create-user-form}" class="btn btn-primary">+ Opret ny bruger</a>
+</div>
+
+
+<!-- Vis besked hvis adgang er opdateret -->
+<div th:if="${success}">
+    <p style="color: green;">Adgang er opdateret!</p>
+</div>
+
+<!-- Brugerliste og adgangsform -->
+<div th:each="user : ${users}">
+    <form th:action="@{/admin/update-access}" method="post">
+        <input type="hidden" name="userId" th:value="${user.userId}" />
+
+        <p><strong th:text="${user.username}">[Brugernavn]</strong></p>
+
+        <div th:each="project : ${projects}">
+            <label>
+                <input type="checkbox"
+                       name="projectIds"
+                       th:value="${project.projectId}"
+                       th:checked="${userAccessMap[user.userId]?.contains(project.projectId)}" />
+                <span th:text="${project.projectName}">[Projekt]</span>
+            </label>
+            <br/>
+        </div>
+
+        <button type="submit">Gem adgang</button>
+    </form>
+    <hr/>
+</div>
+
+</body>
+</html>

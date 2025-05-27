@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="">
+<html xmlns:th="http://www.thymeleaf.org" lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Edit user</title>
+    <title>Rediger bruger</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
-    Her kan jeg rette mig selv.
+
+<h2>Rediger din profil</h2>
+
+<form th:action="@{/user/update}" method="post">
+    <input type="hidden" name="userId" th:value="${user.userId}" />
+
+    <label for="username">Brugernavn:</label><br/>
+    <input type="text" id="username" name="username" th:value="${user.username}" required/><br/><br/>
+
+    <label for="password">Nyt kodeord:</label><br/>
+    <input type="password" id="password" name="password" required/><br/><br/>
+
+    <button type="submit">Gem ændringer</button>
+</form>
+
+<a th:href="@{/project}" class="btn btn-secondary">← Tilbage</a>
+
 </body>
 </html>

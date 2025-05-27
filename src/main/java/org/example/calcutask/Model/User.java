@@ -1,19 +1,17 @@
 package org.example.calcutask.Model;
-//
-//import org.example.calcutask.Util.PasswordUtil;
 
 public class User {
     private int userId;
     private String username;
     private String userEmail;
-    private String passwordHash;
+    private String password;
     private String role;
 
-    public User(int userId, String username, String userEmail, String passwordHash, String role) {
+    public User(int userId, String username, String userEmail, String password, String role) {
         this.userId = userId;
         this.username = username;
         this.userEmail = userEmail;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.role = role;
     }
 
@@ -32,8 +30,8 @@ public class User {
         return userEmail;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
 
     public String getRole() {
@@ -53,12 +51,8 @@ public class User {
         this.userEmail = userEmail;
     }
 
-   public void setPassword(String rawPassword) {
-       this.passwordHash = rawPassword;
-   }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setRole(String role) {

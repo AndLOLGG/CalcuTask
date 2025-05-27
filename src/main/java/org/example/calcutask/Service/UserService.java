@@ -5,6 +5,8 @@ import org.example.calcutask.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -25,11 +27,19 @@ public class UserService {
 
     public User authenticateAndGetUser(String username, String password) {
         User user = userRepository.findByUsername(username);
-        if (user != null && user.getPasswordHash().equals(password)) {
+        if (user != null && user.getPassword().equals(password)) {
             return user;
         }
         return null;
     }
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+    public void updateUser(User user) {
+        userRepository.update(user);
+    }
+
+
 
 }
 
