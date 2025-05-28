@@ -70,4 +70,9 @@ public class TaskRepository {
         String sql2 = "DELETE FROM task WHERE task_id = ?";
         template.update(sql2, taskId);
     }
+    public void updateActualHours(int taskId, int actualHours) {
+        String sql = "UPDATE task SET actual_hours = ? WHERE task_id = ?";
+        template.update(sql, actualHours, taskId);
+    }
+
 }

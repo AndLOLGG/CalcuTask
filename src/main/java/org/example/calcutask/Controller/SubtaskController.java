@@ -9,10 +9,7 @@ import org.example.calcutask.Service.TaskService;
 import org.example.calcutask.Service.UserProjectAccessService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,7 +39,7 @@ public class SubtaskController {
     }
 
     @PostMapping("/subtask/updateTaskStatus")
-    public String updateTaskStatus(@RequestParam int subtaskId, @RequestParam int taskId, @RequestParam Status status,  HttpSession session) {
+    public String updateTaskStatus(@RequestParam int subtaskId, @RequestParam int taskId, @RequestParam Status status, HttpSession session) {
         Integer userId = getUserIdFromSession(session);
         subtaskService.updateStatus(subtaskId, status.name());
         return "redirect:/subtask/overview?taskId=" + taskId;
@@ -55,7 +52,6 @@ public class SubtaskController {
     @GetMapping("/subtask/overview")
     public String showProjectOverview(@RequestParam int taskId, Model model) {
         List<Subtask> subtasks = subtaskService.getSubtasksByTaskId(taskId);
-
         model.addAttribute("subTasks", subtasks);
         model.addAttribute("taskId", taskId);
         return "subtask-overview";
@@ -73,7 +69,7 @@ public class SubtaskController {
         Integer userId = getUserIdFromSession(session);
         Task t = taskService.findById(subtask.getTaskId());
         Boolean hasAccess = userProjectAccessService.hasUserAccessToProject(userId, t.getProjectId());
-        if(hasAccess) {
+        if (hasAccess) {
             Subtask st = new Subtask(subtask.getSubtaskName(), subtask.getSubtaskDescription(), subtask.getSubtaskEstimatedHours(), subtask.getTaskId());
             subtaskService.createSubtask(st);
             return "redirect:/subtask/overview?taskId=" + subtask.getTaskId();
@@ -81,13 +77,14 @@ public class SubtaskController {
         return "redirect:/login";
     }
 
-    @GetMapping("/subtask/edit") 
+    @GetMapping("/subtask/edit")
     public String editSubtask(@RequestParam int taskId, @RequestParam int subtaskId, Model model, HttpSession session) {
         Integer userId = getUserIdFromSession(session);
         Task t = taskService.findById(taskId);
         Boolean hasAccess = userProjectAccessService.hasUserAccessToProject(userId, t.getProjectId());
-        if(hasAccess) {
+        if (hasAccess) {
             Subtask subtask = subtaskService.getSubtaskById(subtaskId);
+            subtask.setTaskId(taskId); // 💡 vigtigt for at taskId ikke er null
             model.addAttribute("subtask", subtask);
             return "edit-subtask";
         }
@@ -107,14 +104,7 @@ public class SubtaskController {
 
     @PostMapping("/subtask/edit")
     public String updateSubtask(@ModelAttribute Subtask subtask) {
-        Subtask st = subtask;
-        subtaskService.updateSubtask(st);
+        subtaskService.updateSubtask(subtask);
         return "redirect:/subtask/overview?taskId=" + subtask.getTaskId();
     }
-
 }
-
-
-
-
-

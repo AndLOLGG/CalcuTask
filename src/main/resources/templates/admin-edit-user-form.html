@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rediger Brugere</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+<h2>Rediger brugerinformation</h2>
+
+<div th:each="user : ${users}">
+    <form th:action="@{/admin/update-user}" method="post">
+        <input type="hidden" name="userId" th:value="${user.userId}" />
+
+        <div class="form-group">
+            <label>Brugernavn:</label>
+            <input type="text" name="username" th:value="${user.username}" required />
+        </div>
+
+        <div class="form-group">
+            <label>Adgangskode:</label>
+            <input type="text" name="password" required />
+        </div>
+
+        <button type="submit" class="btn btn-success">Opdater</button>
+    </form>
+    <hr/>
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a th:href="@{/project}" class="btn btn-secondary">← Tilbage</a>
+</div>
+
+</body>
+</html>

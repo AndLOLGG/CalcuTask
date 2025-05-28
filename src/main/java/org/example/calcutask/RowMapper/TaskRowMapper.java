@@ -17,6 +17,7 @@ public class TaskRowMapper implements RowMapper<Task> {
         task.setTaskEstimatedHours(rs.getBigDecimal("task_estimated_hours"));
         task.setTaskStatus(rs.getString("task_status"));
         task.setProjectId(rs.getInt("project_id"));
+        task.setActualHours(rs.getObject("actual_hours", Integer.class));
         return task;
     }
 }
