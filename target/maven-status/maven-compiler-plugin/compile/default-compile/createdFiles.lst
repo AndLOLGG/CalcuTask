@@ -20,6 +20,7 @@ org\example\calcutask\Model\UserProjectAccess.class
 org\example\calcutask\Configuration\WebConfig.class
 org\example\calcutask\RowMapper\UserProjectAccessRowMapper.class
 org\example\calcutask\Model\Task.class
+org\example\calcutask\Configuration\SecurityConfig.class
 org\example\calcutask\Service\UserProjectAccessService.class
 org\example\calcutask\Model\Subtask.class
 org\example\calcutask\Repository\TaskRepository.class
