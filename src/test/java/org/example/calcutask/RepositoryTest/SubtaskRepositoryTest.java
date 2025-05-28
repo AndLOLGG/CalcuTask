@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package org.example.calcutask.RepositoryTest;
 
 import org.example.calcutask.CalcuTaskApplication;
@@ -70,3 +71,9 @@ public class SubtaskRepositoryTest {
         assertEquals("TO_DO", updated.getSubtaskStatus());
     }
 }
+=======
+//package org.example.calcutask.RepositoryTest;
+//
+//public class SubtaskRepositoryTest {
+//}
+>>>>>>> main
