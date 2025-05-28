@@ -1,4 +1,4 @@
-//package org.example.calcutask.ServiceTest;
+package org.example.calcutask.ServiceTest;//package org.example.calcutask.ServiceTest;
 //
 //import org.example.calcutask.Model.User;
 //import org.example.calcutask.Repository.UserRepository;
@@ -48,7 +48,7 @@
 //    }
 //
 
-<<<<<<< HEAD
+
 import org.example.calcutask.Model.Task;
 import org.example.calcutask.Model.User;
 import org.example.calcutask.Repository.TaskRepository;
@@ -56,6 +56,7 @@ import org.example.calcutask.Repository.UserRepository;
 import org.example.calcutask.Service.TaskService;
 import org.example.calcutask.Service.UserService;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -158,7 +159,8 @@ class UserServiceTest {
         verify(userRepository, times(1)).update(user);
     }
 
-    static class TaskServiceTest {
+    @Nested
+    class TaskServiceTest {
 
         @Mock
         private TaskRepository taskRepository;
@@ -252,7 +254,7 @@ class UserServiceTest {
         }
     }
 }
-=======
+
 //    @Test
 //    void testFindById() {
 //        int id = 1;
@@ -311,4 +313,4 @@ class UserServiceTest {
 //        verify(userRepository, times(1)).update(user);
 //    }
 //}
->>>>>>> main
+
