@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package org.example.calcutask.RepositoryTest;
 
 import org.example.calcutask.CalcuTaskApplication;
@@ -84,7 +84,7 @@ public class ProjectRepositoryTest {
     }
 
 }
-=======
+
 //package org.example.calcutask.RepositoryTest;
 //
 //import org.example.calcutask.Model.Project;
@@ -162,4 +162,4 @@ public class ProjectRepositoryTest {
 //        assertEquals(1, projects.size());
 //    }
 //}
->>>>>>> main
+
