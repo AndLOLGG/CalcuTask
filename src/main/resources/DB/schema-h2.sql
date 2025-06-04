@@ -1,57 +1,69 @@
--- Drop tables if they exist
-DROP TABLE IF EXISTS user_project_access;
-DROP TABLE IF EXISTS subtask;
-DROP TABLE IF EXISTS task;
-DROP TABLE IF EXISTS project;
-DROP TABLE IF EXISTS user;
+-- DROP EXISTING TABLES
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS USER_PROJECT_ACCESS;
+DROP TABLE IF EXISTS SUBTASK;
+DROP TABLE IF EXISTS TASK;
+DROP TABLE IF EXISTS PROJECT;
+DROP VIEW IF EXISTS "user";
+DROP TABLE IF EXISTS APP_USER;
+SET FOREIGN_KEY_CHECKS=1;
 
--- User table
-CREATE TABLE IF NOT EXISTS user (
-                                    user_id INT AUTO_INCREMENT PRIMARY KEY,
-                                    username VARCHAR(255),
-                                    user_password VARCHAR(255),
-                                    role VARCHAR(50)
+-- USER TABLE
+CREATE TABLE IF NOT EXISTS APP_USER (
+                                        USER_ID INT AUTO_INCREMENT PRIMARY KEY,
+                                        USERNAME VARCHAR(255),
+                                        USER_PASSWORD VARCHAR(255),
+                                        ROLE VARCHAR(50)
 );
 
--- Project table
-CREATE TABLE IF NOT EXISTS project (
-                                       project_id INT AUTO_INCREMENT PRIMARY KEY,
-                                       project_name VARCHAR(255),
-                                       project_description TEXT,
-                                       owner_id INT,
-                                       FOREIGN KEY (owner_id) REFERENCES user(user_id)
+-- PROJECT TABLE
+CREATE TABLE IF NOT EXISTS PROJECT (
+                                       PROJECT_ID INT AUTO_INCREMENT PRIMARY KEY,
+                                       PROJECT_NAME VARCHAR(255),
+                                       PROJECT_DESCRIPTION TEXT,
+                                       OWNER_ID INT,
+                                       FOREIGN KEY (OWNER_ID) REFERENCES APP_USER(USER_ID)
 );
 
--- Many-to-many relationship table between user and project
-CREATE TABLE IF NOT EXISTS user_project_access (
-                                                   user_id INT,
-                                                   project_id INT,
-                                                   access_type VARCHAR(10) NOT NULL DEFAULT 'READ_ONLY',
-                                                   PRIMARY KEY (user_id, project_id),
-                                                   FOREIGN KEY (user_id) REFERENCES user(user_id),
-                                                   FOREIGN KEY (project_id) REFERENCES project(project_id)
+-- USER_PROJECT_ACCESS TABLE
+CREATE TABLE IF NOT EXISTS USER_PROJECT_ACCESS (
+                                                   USER_ID INT,
+                                                   PROJECT_ID INT,
+                                                   ACCESS_TYPE VARCHAR(20) DEFAULT 'READ_ONLY',
+                                                   PRIMARY KEY (USER_ID, PROJECT_ID),
+                                                   FOREIGN KEY (USER_ID) REFERENCES APP_USER(USER_ID),
+                                                   FOREIGN KEY (PROJECT_ID) REFERENCES PROJECT(PROJECT_ID)
 );
 
--- Task table with task_status for status tracking
-CREATE TABLE IF NOT EXISTS task (
-                                    task_id INT AUTO_INCREMENT PRIMARY KEY,
-                                    task_name VARCHAR(255),
-                                    task_description TEXT,
-                                    task_estimated_hours DECIMAL(4, 2),
-                                    task_status VARCHAR(50) DEFAULT 'TO_DO',
-                                    project_id INT,
-                                    FOREIGN KEY (project_id) REFERENCES project(project_id)
+-- TASK TABLE
+CREATE TABLE IF NOT EXISTS TASK (
+                                    TASK_ID INT AUTO_INCREMENT PRIMARY KEY,
+                                    TASK_NAME VARCHAR(255),
+                                    TASK_DESCRIPTION TEXT,
+                                    TASK_ESTIMATED_HOURS INT,
+                                    ACTUAL_HOURS INT,
+                                    TASK_STATUS VARCHAR(50) DEFAULT 'TO_DO',
+                                    PROJECT_ID INT,
+                                    FOREIGN KEY (PROJECT_ID) REFERENCES PROJECT(PROJECT_ID)
 );
 
--- Subtask table with assigned_user_id for assignment
-CREATE TABLE IF NOT EXISTS subtask (
-                                       subtask_id INT AUTO_INCREMENT PRIMARY KEY,
-                                       subtask_name VARCHAR(255),
-                                       subtask_description TEXT,
-                                       subtask_estimated_hours INT,
-                                       subtask_status VARCHAR(50),
-                                       assigned_user_id INT DEFAULT NULL,
-                                       task_id INT,
-                                       FOREIGN KEY (task_id) REFERENCES task(task_id),
-                                       FOREIGN KEY (assigned_user_id) REFERENCES user(user_id)
+-- SUBTASK TABLE
+CREATE TABLE IF NOT EXISTS SUBTASK (
+                                       SUBTASK_ID INT AUTO_INCREMENT PRIMARY KEY,
+                                       SUBTASK_NAME VARCHAR(255),
+                                       SUBTASK_DESCRIPTION TEXT,
+                                       SUBTASK_ESTIMATED_HOURS INT,
+                                       SUBTASK_STATUS VARCHAR(50),
+                                       ASSIGNED_USER_ID INT DEFAULT NULL,
+                                       TASK_ID INT,
+                                       FOREIGN KEY (TASK_ID) REFERENCES TASK(TASK_ID),
+                                       FOREIGN KEY (ASSIGNED_USER_ID) REFERENCES APP_USER(USER_ID)
 );
+
+CREATE VIEW "user" AS
+SELECT
+    USER_ID,
+    USERNAME,
+    USER_PASSWORD,
+    ROLE
+FROM APP_USER;

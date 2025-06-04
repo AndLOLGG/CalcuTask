@@ -20,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD,
         scripts = {"classpath:schema-h2.sql", "classpath:data-h2.sql"}
 )
+
 public class SubtaskRepositoryTest {
 
     @Autowired
