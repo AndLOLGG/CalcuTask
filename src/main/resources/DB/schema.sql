@@ -52,6 +52,14 @@ CREATE TABLE IF NOT EXISTS task (
                                     FOREIGN KEY (project_id) REFERENCES project(project_id)
 );
 
+-- USER TABLE FOR H2 DATABASE
+CREATE TABLE IF NOT EXISTS APP_USER (
+                                        USER_ID INT AUTO_INCREMENT PRIMARY KEY,
+                                        USERNAME VARCHAR(255),
+                                        USER_PASSWORD VARCHAR(255),
+                                        ROLE VARCHAR(50)
+);
+
 -- Subtasktabel med assigned_user_id til påtagelse
 CREATE TABLE IF NOT EXISTS subtask (
                                        subtask_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -60,7 +68,9 @@ CREATE TABLE IF NOT EXISTS subtask (
                                        subtask_estimated_hours INT,
                                        subtask_status VARCHAR(50),
                                        assigned_user_id INT DEFAULT NULL,
+                                       ASSIGNED_USER_ID_H2 INT DEFAULT NULL, -- For H2 compatibility
                                        task_id INT,
                                        FOREIGN KEY (task_id) REFERENCES task(task_id),
-                                       FOREIGN KEY (assigned_user_id) REFERENCES user(user_id)
+                                       FOREIGN KEY (assigned_user_id) REFERENCES user(user_id),
+                                       FOREIGN KEY (ASSIGNED_USER_ID_H2) REFERENCES APP_USER(USER_ID)
 );
