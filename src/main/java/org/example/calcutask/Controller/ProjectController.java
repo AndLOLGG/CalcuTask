@@ -65,10 +65,9 @@ public class ProjectController {
         Project project = new Project();
         project.setProjectName(projectName);
         project.setProjectDescription(projectDescription);
-        project.setUserId(userIdFromSession); // set owner
+        project.setUserId(userIdFromSession);
 
-        projectService.addProject(project); // gemmer i `project`
-
+        projectService.addProject(project);
         projectService.grantAccessToProject(userIdFromSession);
 
         return "redirect:/project";
