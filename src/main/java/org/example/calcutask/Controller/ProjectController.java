@@ -24,6 +24,10 @@ public class ProjectController {
         this.taskService = taskService;
     }
 
+    @GetMapping("/")
+    public String redirectMapper(){
+        return "redirect:/login";
+    }
 
     @GetMapping("/project")
     public String getAllProjects(Model model, HttpSession session) {

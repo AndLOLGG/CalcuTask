@@ -6,7 +6,7 @@ name: Build and deploy JAR app to Azure Web App - malmsolutions
 on:
   push:
     branches:
-      - main
+      - azuretest
   workflow_dispatch:
 
 jobs:
