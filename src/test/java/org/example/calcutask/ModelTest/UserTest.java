@@ -41,7 +41,7 @@ class UserTest {
         assertEquals(0, user.getUserId());
         assertNull(user.getUsername());
         assertNull(user.getUserEmail());
-        assertNull(user.getPassword()); // Updated method
+        assertNull(user.getPassword());
         assertNull(user.getRole());
     }
 }
