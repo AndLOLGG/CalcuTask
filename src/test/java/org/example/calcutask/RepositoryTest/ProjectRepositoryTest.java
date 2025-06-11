@@ -67,7 +67,7 @@ class ProjectRepositoryTest {
 
         // Assert
         assertNotNull(project);
-        assertEquals("Website Redesign", project.getProjectName()); // Matcher din SQL seed-data
+        assertEquals("Website Redesign", project.getProjectName());
     }
 
     @Test
