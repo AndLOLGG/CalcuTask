@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS project (
                                        FOREIGN KEY (owner_id) REFERENCES user(user_id)
 );
 
--- Mange-til-mange koblingstabel mellem user og project
+-- Mange-til-mange koblingstabel mellem user og projekt
 CREATE TABLE IF NOT EXISTS user_project_access (
                                                    user_id INT,
                                                    project_id INT,
