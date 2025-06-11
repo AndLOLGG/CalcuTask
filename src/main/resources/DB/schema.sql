@@ -2,7 +2,6 @@ DROP DATABASE IF EXISTS CalcuTasker;
 CREATE DATABASE CalcuTasker;
 USE CalcuTasker;
 
--- så følger du med dine CREATE TABLE-statements osv.
 
 
 SET FOREIGN_KEY_CHECKS=0;
