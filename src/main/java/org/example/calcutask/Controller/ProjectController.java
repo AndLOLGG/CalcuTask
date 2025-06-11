@@ -81,7 +81,7 @@ public class ProjectController {
             return "redirect:/project";
         } catch (Exception e) {
             e.printStackTrace();
-            return "error/500"; // Hvis du har lavet en custom fejlside
+            return "error/500"; // Hvis du har lavet en custom fejlside.
         }
     }
 
