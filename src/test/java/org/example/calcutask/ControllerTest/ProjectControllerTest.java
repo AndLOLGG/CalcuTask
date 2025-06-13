@@ -29,7 +29,7 @@ class ProjectControllerTest {
     @MockBean
     private TaskService taskService;
 
-    // Test for retrieving all projects when a session exists
+    // Testt for retrieving all projects when a session exists
     @Test
     void testGetAllProjects() throws Exception {
         // Mock a project to be returned by the service
